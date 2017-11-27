@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f4f2f0"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/layout_height_top"
+        layout="@layout/layout_height_top"
+        android:visibility="visible"></include>
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_toolbar" />
+
+
+    <com.rt.zgloan.weight.EditTextWithDel
+        android:id="@+id/edit_input_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:hint="请输入手机号码"
+        android:maxLength="11"
+        android:paddingBottom="16dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="15dp"
+        android:paddingTop="16dp"
+        android:phoneNumber="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/color_cccccc"
+        android:textSize="13sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="26dp"
+        android:background="@color/global_line_color"></View>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <EditText
+            android:id="@+id/edit_verification_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:hint="请输入验证码"
+            android:inputType="number"
+            android:maxLength="6"
+            android:paddingLeft="25dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/color_cccccc"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_get_graphical_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="12dp"
+            android:background="@mipmap/icon_get_verification"
+            android:gravity="center"
+            android:text="获取验证码"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_sp_13" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="26dp"
+        android:background="@color/global_line_color"></View>
+
+
+    <com.rt.zgloan.weight.EditTextWithDel
+        android:id="@+id/edit_login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:hint="请设置8-20位登录密码"
+        android:paddingBottom="16dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="15dp"
+        android:paddingTop="16dp"
+        android:password="true"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/color_cccccc"
+        android:textSize="13sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="26dp"
+        android:background="@color/global_line_color"></View>
+
+
+    <RelativeLayout
+        android:id="@+id/Rl_invite_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/rel_invite_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp">
+
+                <com.rt.zgloan.weight.EditTextWithDel
+                    android:id="@+id/edit_invite_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入邀请码（可选）"
+                    android:paddingLeft="25dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/color_cccccc"
+                    android:textSize="@dimen/size_sp_14" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_my_invite_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_10"
+            android:text="我有邀请码︾"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_sp_14"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_agreement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp">
+
+        <CheckBox
+            android:id="@+id/ck_agreement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:button="@drawable/checkbox_agreement_selector"
+            android:checked="false"
+            android:drawablePadding="15dp" />
+
+        <LinearLayout
+            android:id="@+id/Ll_register_agreement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="9dp"
+            android:layout_toRightOf="@id/ck_agreement"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_loan_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="同意用户服务协议"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/colorPrimary"></View>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_sure"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/global_btn_height"
+        android:layout_marginLeft="@dimen/global_btn_margin_left_right"
+        android:layout_marginRight="@dimen/global_btn_margin_left_right"
+        android:layout_marginTop="56dp"
+        android:background="@mipmap/icon_bg_btn"
+        android:text="注册"
+        android:textSize="@dimen/size_sp_15" />
+</LinearLayout>
