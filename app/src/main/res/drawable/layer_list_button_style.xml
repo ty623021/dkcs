@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created by xiejingwen at -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/shape_bg_ff8d3c_corner_10px">
+    </item>
+    <item>
+        <selector>
+            <item android:state_pressed="true" >
+                <shape>
+                    <!-- 圆角 -->
+                    <corners
+                        android:radius="2dp"/><!-- 设置圆角半径 -->
+                    <solid android:color="@color/colorAccent"/>
+                </shape>
+            </item>
+            <item android:state_enabled="false">
+                <shape>
+                    <!-- 圆角 -->
+                    <corners
+                        android:radius="2dp"/><!-- 设置圆角半径 -->
+                    <solid android:color="@color/btn_gray"/>
+                </shape>
+            </item>
+            <item android:state_enabled="true" android:drawable="@drawable/shape_bg_ff8d3c_corner_10px"/>
+        </selector>
+    </item>
+</layer-list>

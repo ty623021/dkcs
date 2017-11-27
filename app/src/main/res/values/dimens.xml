@@ -1,0 +1,158 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- 标题栏文字大小 -->
+    <dimen name="title_text_size">18sp</dimen>
+    <dimen name="title_other_text_size">15sp</dimen>
+
+    <dimen name="title_height">44dp</dimen>
+    <!-- app按钮各项值-->
+    <dimen name="global_btn_height">45dp</dimen>
+    <dimen name="global_btn_margin_left_right">28dp</dimen>
+    <!-- google风格刷新View -->
+    <!--头部view的高度-->
+    <dimen name="refresh_header_height_google">80dp</dimen>
+    <!--下拉的高度-->
+    <dimen name="refresh_trigger_offset_google">80dp</dimen>
+    <!--下拉的最大高度-->
+    <dimen name="refresh_final_offset_google">150dp</dimen>
+    <!--下拉圆的大小-->
+    <dimen name="refresh_drawable_size_google">40dp</dimen>
+
+    <!--底部view的高度-->
+    <dimen name="load_more_footer_height_google">72dp</dimen>
+    <!--上拉的高度-->
+    <dimen name="load_more_trigger_offset_google">72dp</dimen>
+    <!--上拉的最大高度-->
+    <dimen name="load_more_final_offset_google">120dp</dimen>
+    <!--上拉圆的大小-->
+    <dimen name="load_more_drawable_size_google">36dp</dimen>
+
+    <dimen name="sobot_DIMEN_5PX">1dp</dimen>
+    <dimen name="sobot_DIMEN_10PX">2dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <!--banner图的高度-->
+    <dimen name="banner_height">160dp</dimen>
+    <!--register banner图的高度-->
+    <dimen name="register_banner_height">100dp</dimen>
+    <!--tabfragment默认高度-->
+    <dimen name="tab_weight">50dp</dimen>
+
+    <!-- slidingmenu -->
+    <dimen name="slidingmenu_offset">150dp</dimen>
+    <dimen name="list_padding">10dp</dimen>
+    <dimen name="shadow_width">5dp</dimen>
+    <!-- default margin -->
+    <dimen name="default_margin">12dp</dimen>
+    <dimen name="default_buttom_margin">14dp</dimen>
+    <dimen name="default_left_margin">14dp</dimen>
+    <dimen name="default_top_margin">14dp</dimen>
+    <dimen name="default_right_margin">14dp</dimen>
+    <dimen name="text_size_10">10sp</dimen>
+    <dimen name="mall_margin_about">17dp</dimen>
+
+    <!-- 直线 -->
+    <dimen name="divide_line_height">0.5dp</dimen>
+    <dimen name="line_height">1dp</dimen>
+    <!-- button height -->
+    <dimen name="button_height">40dp</dimen>
+    <!-- edit height -->
+    <dimen name="layout_height">45dp</dimen>
+    <!-- edit height -->
+    <dimen name="edit_height">44dp</dimen>
+    <!-- home height navigation -->
+    <dimen name="navigation_height">30dp</dimen>
+    <dimen name="bank_icon_width">20dp</dimen>
+    <dimen name="bank_icon_height">20dp</dimen>
+
+    <dimen name="size_sp_min_micro">10dp</dimen>
+    <dimen name="size_sp_micro">12dp</dimen>
+    <dimen name="size_sp_small">14dp</dimen>
+    <dimen name="size_sp_medium">18dp</dimen>
+    <dimen name="size_sp_large">22dp</dimen>
+
+    <dimen name="size_sp_8">8dp</dimen>
+    <dimen name="size_sp_ten">10dp</dimen>
+    <dimen name="size_sp_10">11dp</dimen>
+
+    <dimen name="size_sp_12">14dp</dimen>
+    <dimen name="size_sp_13">13dp</dimen>
+    <dimen name="size_sp_14">14dp</dimen>
+    <dimen name="size_sp_15">15dp</dimen>
+    <dimen name="size_sp_16">16dp</dimen>
+    <dimen name="size_sp_17">17dp</dimen>
+    <dimen name="size_sp_18">18dp</dimen>
+    <dimen name="size_sp_20">20dp</dimen>
+    <dimen name="size_sp_24">24dp</dimen>
+    <dimen name="size_sp_30">30dp</dimen>
+    <dimen name="size_sp_36">36dp</dimen>
+    <dimen name="size_sp_50">45sp</dimen>
+    <dimen name="dp_line">0.8dp</dimen>
+    <dimen name="dp_1">1dp</dimen>
+    <dimen name="dp_2">2dp</dimen>
+    <dimen name="dp_3">3dp</dimen>
+    <dimen name="dp_4">4dp</dimen>
+    <dimen name="dp_6">6dp</dimen>
+    <dimen name="dp_7">7dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_12">12dp</dimen>
+    <dimen name="dp_13">13dp</dimen>
+    <dimen name="dp_14">14dp</dimen>
+    <dimen name="dp_15">15dp</dimen>
+    <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_18">18dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_24">24dp</dimen>
+    <dimen name="dp_27">27dp</dimen>
+
+    <!-- 布局中的高度和距离配置 -->
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_3">3dp</dimen>
+    <dimen name="margin_7.5">7.5dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_left_right_12">12dp</dimen>
+    <dimen name="margin_12">12dp</dimen>
+    <dimen name="margin_13">13dp</dimen>
+    <dimen name="margin_14">14dp</dimen>
+    <dimen name="margin_15">15dp</dimen>
+    <dimen name="margin_17">17dp</dimen>
+    <dimen name="margin_18">18dp</dimen>
+    <dimen name="margin_19">19dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_24">24dp</dimen>
+    <dimen name="margin_25">25dp</dimen>
+    <dimen name="margin_30">30dp</dimen>
+    <dimen name="margin_32">32dp</dimen>
+    <dimen name="margin_35">35dp</dimen>
+    <dimen name="margin_38">38dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
+    <dimen name="margin_45">45dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
+    <dimen name="margin_60">60dp</dimen>
+    <dimen name="margin_65">65dp</dimen>
+    <dimen name="margin_70">70dp</dimen>
+    <dimen name="margin_80">80dp</dimen>
+    <dimen name="margin_90">90dp</dimen>
+    <dimen name="margin_95">95dp</dimen>
+    <dimen name="margin_100">100dp</dimen>
+    <dimen name="margin_105">105dp</dimen>
+    <dimen name="margin_110">110dp</dimen>
+    <dimen name="margin_120">120dp</dimen>
+    <dimen name="margin_160">160dp</dimen>
+    <dimen name="margin_180">180dp</dimen>
+    <dimen name="margin_200">200dp</dimen>
+    <dimen name="margin_230">230dp</dimen>
+
+    <dimen name="padding_4">4dp</dimen>
+    <dimen name="padding_6">6dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
+    <dimen name="padding_15">15dp</dimen>
+    <dimen name="padding_20">20dp</dimen>
+    <dimen name="padding_25">25dp</dimen>
+    <dimen name="main_tab_height">25dp</dimen>
+</resources>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rt.zgloan">
+
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- 读写日历需要的权限设置 -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <!-- 自定义相册权限 -->
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- 这个权限用于拨打电话 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- SD卡读取权限，用户写入离线定位数据 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 读取短信 -->
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <!-- Bugly -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <!-- 添加发送短信权限 -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!--  写入消息-->
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <!-- 接收消息 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- ###################友盟统计###################### -->
+    <uses-sdk android:minSdkVersion="8"></uses-sdk>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:name="com.rt.zgloan.app.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon_logo"
+        android:label="@string/app_name"
+        android:persistent="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Launcher">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="59af58d51c5dd036c2000d75" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="ZGLOAN" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="@string/fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- ###################注册SDK使用的Activity###################### -->
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+            <intent-filter>
+                <data android:scheme="tencent1106331387" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- 调用新浪原生SDK，需要注册的回调activity -->
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!--集成line客户端登录授权，需要添如下格式的过滤器-->
+            <!--<intent-filter>-->
+            <!--<data android:scheme="line.1477692153" />-->
+            <!--<action android:name="android.intent.action.VIEW" />-->
+
+            <!--<category android:name="android.intent.category.BROWSABLE" />-->
+            <!--<category android:name="android.intent.category.DEFAULT" />-->
+            <!--</intent-filter>-->
+
+        </activity>
+        <!-- 微信分享回调 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="Mob-AppKey"
+            android:value="2084b5e0f03a9" />
+        <meta-data
+            android:name="Mob-AppSecret"
+            android:value="eedd7b7fac57c3afe10b581f15a4401d" />
+        <!--alwaysRetainTaskState标记应用的task是否保持原来的状态， “true”表示总是保持，“false”表示不能够保证  exported 是否支持其它应用调用当前组件  -->
+        <activity
+            android:name=".activity.MainActivity"
+            android:alwaysRetainTaskState="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <!--贷款详情页面-->
+        <activity
+            android:name=".activity.LoanDetailActivity"
+            android:screenOrientation="portrait" />
+        <!--个人资料-->
+        <activity
+            android:name=".activity.PersonalDataActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <!--登录-->
+        <activity
+            android:name=".activity.LoginActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <!--注册-->
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <!--忘记密码-->
+        <activity
+            android:name=".activity.ForgotPasswordActivity"
+            android:screenOrientation="portrait" />
+        <!--设置-->
+        <activity
+            android:name=".activity.SetAtivity"
+            android:screenOrientation="portrait" />
+        <!--修改登录密码-->
+        <activity
+            android:name=".activity.ChangeLoginPasswordActivity"
+
+            android:screenOrientation="portrait" />
+        <!--修改密码成功-->
+        <activity
+            android:name=".activity.ChangePasswordSuccessActivity"
+            android:screenOrientation="portrait" />
+        <!--修改手机号码-->
+        <activity
+            android:name=".activity.ChangePhoneActivity"
+            android:screenOrientation="portrait" />
+        <!--修改手机号码成功-->
+        <activity
+            android:name=".activity.ChangePhoneSuccessActivity"
+            android:screenOrientation="portrait" />
+        <!--邀请好友-->
+        <activity
+            android:name=".activity.InvitingFriendsActivity"
+            android:screenOrientation="portrait" />
+        <!--我的邀请记录-->
+        <activity
+            android:name=".activity.InviteFriendsRecordActivity"
+            android:screenOrientation="portrait" />
+        <!--关于我们-->
+        <activity
+            android:name=".activity.myActivity.AboutOurActivity"
+            android:screenOrientation="portrait" />
+        <!--修改号码的下一步-->
+        <activity
+            android:name=".activity.myActivity.ChangePhoneNextActivity"
+            android:screenOrientation="portrait" />
+        <!--获得省-->
+        <activity
+            android:name=".activity.myActivity.GetProvinceActivity"
+            android:screenOrientation="portrait" />
+        <!--获得市-->
+        <activity
+            android:name=".activity.myActivity.GetCityActivity"
+            android:screenOrientation="portrait" />
+        <!--引导页-->
+        <activity
+            android:name=".activity.GuideActivity"
+            android:screenOrientation="portrait" />
+        <!--WebViewActivity-->
+        <activity
+            android:name=".activity.WebViewActivity"
+            android:screenOrientation="portrait" />
+
+        <!--关于我们的子页面-->
+        <activity
+            android:name=".activity.myActivity.AbourOurSonActivity"
+            android:screenOrientation="portrait" />
+        <!--注册成功页面-->
+        <activity
+            android:name=".activity.RegisterSuccessActivity"
+            android:screenOrientation="portrait" />
+        <!--忘记密码成功页面-->
+        <activity
+            android:name=".activity.FrogotPasswordSuccessActivity"
+            android:screenOrientation="portrait" />
+    </application>
+
+</manifest>

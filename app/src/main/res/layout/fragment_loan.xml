@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f4f2f0"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/layout_height_top"
+        layout="@layout/layout_height_top"
+        android:visibility="visible"></include>
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_toolbar" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.rt.zgloan.pullView.AbPullToRefreshView
+            android:id="@+id/pull"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v4.widget.NestedScrollView
+                android:id="@+id/scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/linear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv_loan_product_class"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="18dp"
+                            android:layout_marginTop="18dp"></android.support.v7.widget.RecyclerView>
+
+
+                    </LinearLayout>
+
+
+                    <include layout="@layout/loading_layout"></include>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycleView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/linear"
+                        android:layout_marginTop="10dp"></android.support.v7.widget.RecyclerView>
+                </RelativeLayout>
+            </android.support.v4.widget.NestedScrollView>
+        </com.rt.zgloan.pullView.AbPullToRefreshView>
+
+
+        <include layout="@layout/loading_layout"></include>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,138 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/all_layout_backgroud"></FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/tab_first_page"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <yicheng.android.ui.materialdesignlibrary.views.LayoutRipple
+                android:id="@+id/first_page"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="4dp"
+                android:paddingTop="@dimen/dp_6">
+
+                <ImageView
+                    android:id="@+id/tab_first_page_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/selector_first_page" />
+
+                <TextView
+                    android:id="@+id/tab_first_page_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tab_first_page_icon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="2dp"
+                    android:text="首页"
+                    android:textColor="@drawable/selector_invest_tv"
+                    android:textSize="@dimen/size_sp_micro" />
+            </yicheng.android.ui.materialdesignlibrary.views.LayoutRipple>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_loan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <yicheng.android.ui.materialdesignlibrary.views.LayoutRipple
+                android:id="@+id/loan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="4dp"
+                android:paddingTop="@dimen/dp_6">
+
+                <ImageView
+                    android:id="@+id/tab_loan_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/selector_loan" />
+
+                <TextView
+                    android:id="@+id/tab_loan_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tab_loan_icon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="2dp"
+                    android:text="借款"
+                    android:textColor="@drawable/selector_invest_tv"
+                    android:textSize="@dimen/size_sp_micro" />
+            </yicheng.android.ui.materialdesignlibrary.views.LayoutRipple>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_my"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <yicheng.android.ui.materialdesignlibrary.views.LayoutRipple
+                android:id="@+id/my"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="4dp"
+                android:paddingTop="@dimen/dp_6">
+
+                <ImageView
+                    android:id="@+id/tab_my_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/selector_my" />
+
+                <TextView
+                    android:id="@+id/tab_my_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tab_my_icon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="2dp"
+                    android:text="我的"
+                    android:textColor="@drawable/selector_invest_tv"
+                    android:textSize="@dimen/size_sp_micro" />
+            </yicheng.android.ui.materialdesignlibrary.views.LayoutRipple>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

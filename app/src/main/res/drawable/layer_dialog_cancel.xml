@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <bitmap android:src="@mipmap/icon_cancel_btn"/>
+    </item>
+    <item>
+        <selector>
+            <item android:state_pressed="true" >
+                <shape>
+                    <!-- 圆角 -->
+                    <corners
+                        android:radius="4dp"/><!-- 设置圆角半径 -->
+                    <solid android:color="#22000000"/>
+                </shape>
+            </item>
+        </selector>
+    </item>
+</layer-list>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rel_choose"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height"
+        android:background="@drawable/all_layout_backgroud">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:text="上海市"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_sp_14" />
+
+        <ImageView
+            android:id="@+id/imgs_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_15"
+            android:src="@mipmap/right" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divide_line_height"
+        android:layout_below="@+id/tv_name"
+        android:background="@color/gray_line_default"></View>
+</LinearLayout>

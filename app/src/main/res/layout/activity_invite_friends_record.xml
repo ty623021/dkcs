@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_background"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/layout_height_top"
+        layout="@layout/layout_height_top"
+        android:visibility="visible"></include>
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_toolbar" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.rt.zgloan.pullView.AbPullToRefreshView
+            android:id="@+id/pull"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v4.widget.NestedScrollView
+                android:id="@+id/scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/linear"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:background="@mipmap/bj"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_invite_people"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin_30"
+                            android:text="--"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_sp_20" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/margin_45"
+                            android:layout_marginTop="@dimen/margin_10"
+                            android:text="累计邀请人数"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_sp_13" />
+
+
+                    </LinearLayout>
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/linear">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                    <include layout="@layout/loading_layout"></include>
+                </RelativeLayout>
+            </android.support.v4.widget.NestedScrollView>
+        </com.rt.zgloan.pullView.AbPullToRefreshView>
+
+
+    </RelativeLayout>
+</LinearLayout>

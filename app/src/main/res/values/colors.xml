@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="color_ff8d3c">#ff8d3c</color>
+    <color name="subject_color">#ff7139</color>
+    <color name="global_black_color">#333333</color>
+    <color name="dialog_cancel">#f0f0f0</color>
+    <!-- 标题字体颜色 -->
+    <color name="textColorPrimary">#ffffff</color>
+    <!--主页按钮字体颜色-->
+    <color name="color_9a9b9b">#9a9b9b</color>
+    <color name="color_ff5454">#ff5454</color>
+    <!--登录页颜色-->
+    <color name="color_99ffffff">#99ffffff</color>
+    <color name="color_ffffff">#ffffff</color>
+    <!--空白背景色-->
+    <color name="color_f4f2f0">#f4f2f0</color>
+    <!--修改成功状态字体颜色-->
+    <color name="color_575656">#575656</color>
+    <!--个人资料界面字体颜色-->
+    <color name="color_acacac">#acacac</color>
+    <!--rollview字体颜色-->
+    <color name="rollview">#6c6c6c</color>
+    <!--产品分类字体颜色-->
+    <color name="color_767676">#767676</color>
+    <color name="color_8f8f8f">#8f8f8f</color>
+    <color name="color_d8ffffff">#21ffffff</color>
+    <!--主色调-->
+    <color name="colorPrimary">#ff4a4a</color>
+    <color name="color_febc49">#febc49</color>
+    <color name="global_grey_bth_color">#b7b7b7</color>
+    <!--主色调 暗-->
+    <color name="colorPrimaryDark">#0b8ff1</color>
+    <color name="colorAccent">#ff5454</color>
+    <color name="chart_blue">#79aef1</color>
+    <color name="color_5eb1f0">#5eb1f0</color>
+    <!--老版本 主色调-->
+    <color name="main_color">#FF7F00</color>
+    <!--辅色调-->
+    <color name="auxiliary_color">#FFC947</color>
+    <!--主色调 按下-->
+    <color name="main_press_color">#d76f07</color>
+    <!--主色调 不能按下-->
+    <color name="main_notpress_color">#e6af78</color>
+    <!--标题文字颜色-->
+    <color name="title_color">#1B1B1B</color>
+    <!--正文-->
+    <color name="text_color">#5E5E5E</color>
+    <!--提示文字颜色-->
+    <color name="text_tip_color">#BCBCBC</color>
+    <!--灰色 分割线-->
+    <color name="gray_line_default">#ededed</color>
+
+    <!-- 数字颜色 -->
+    <color name="number_color">#F26261</color>
+    <!-- 深红色 -->
+    <color name="red_color">#FD030A</color>
+
+    <!--蓝色按钮  没按下的时候-->
+    <color name="blue_nopressed_button">#27A2FE</color>
+    <!--蓝色按钮  按下时候-->
+    <color name="blue_pressed_button">#0a7bda</color>
+    <!--蓝色按钮  不能按下时候-->
+    <color name="blue_not_pressed_button">#9DCEF7</color>
+
+    <!--蓝 按钮颜色-->
+    <color name="button_color">#27A2FE</color>
+    <!--蓝 文字颜色-->
+    <color name="blue_text_color">#27A2FE</color>
+    <!--半透明-->
+    <color name="transparent">#9000</color>
+    <!--白色-->
+    <color name="white">#ffffff</color>
+    <!--白色-->
+    <color name="white_pressed">#f9f2f2</color>
+    <!--黑色-->
+    <color name="black">#3d3d3d</color>
+    <!--黑色-->
+    <color name="color_8d8b8a">#8D8B8A</color>
+    <!--粉红色-->
+    <color name="red_all_color">#f6787a</color>
+    <!--Activity背景色-->
+    <color name="activity_bg">#F2F2F2</color>
+
+    <!--灰色-->
+    <color name="gray">#cccccc</color>
+    <color name="gray_no_pressed">#A3A2A0</color>
+    <color name="gray_pressed">#b6afaf</color>
+    <!-- 浅黑色 标题文字 -->
+    <color name="black_text">#3d3d3d</color>
+    <!-- 红色 按钮可用 -->
+    <color name="red">#fa4242</color>
+    <color name="red_enabled_false">#E68181</color>
+
+    <color name="color_b7cf34">#b7cf34</color>
+    <!-- 灰 -->
+    <color name="gray_background">#efefef</color>
+    <color name="gray_mall">#fafafa</color>
+
+    <color name="gray_line_DCDBDA">#DCDBDA</color>
+
+    <!-- 蓝色 按钮按下时颜色 -->
+    <color name="pink">#ff4a4a</color>
+    <!-- 浅黑色 标题文字 -->
+    <color name="gray_time_word">#666666</color>
+    <!-- 灰色 按钮不可用颜色 -->
+    <color name="gray_enable">#f5f0f0</color>
+
+
+    <!-- 灰白色 手势密码连接颜色-->
+    <color name="gray_white">#e2e2e2</color>
+    <!--圆弧默认颜色-->
+
+    <color name="yellow_f0d94d">#F0D94D</color>
+    <color name="yellow">#FEBF7F</color>
+    <color name="child_item">#FADEBF</color>
+    <!--黑灰色-->
+    <color name="color_666666">#666666</color>
+    <!--黑色-->
+    <color name="color_374457">#374457</color>
+    <color name="color_e6e6e6">#e6e6e6</color>
+    <!--红色-->
+    <color name="color_FF595F">#FF595F</color>
+    <!--绿色 -->
+    <color name="color_30d9b3">#30d9b3</color>
+    <!--浅灰色-->
+    <color name="color_999999">#999999</color>
+    <color name="color_4c4c4c">#4c4c4c</color>
+    <!--输入框 提示颜色-->
+    <color name="text_color_hint">#9ca4ae</color>
+    <!--弹框提示文字的颜色-->
+    <color name="color_4e4c4c">#4e4c4c</color>
+    <!--弹框提示文字的颜色-->
+    <color name="color_a3a3a0">#a3a3a0</color>
+    <!--弹框提示文字的颜色-->
+    <color name="color_ca6740">#ca6740</color>
+    <!--体验标专享文字的颜色-->
+    <color name="color_4cadfe">#4cadfe</color>
+    <color name="color_gesture">#808080</color>
+    <color name="color_a7a6a6">#a7a6a6</color>
+    <color name="color_3d3d3d">#3d3d3d</color>
+    <color name="color_432201">#432201</color>
+    <color name="color_000000">#000000</color>
+    <color name="color_b2b2b2">#b2b2b2</color>
+    <color name="color_FDFAE8">#FDFAE8</color>
+    <color name="color_cee3f1">#cee3f1</color>
+    <color name="color_4d4d4d">#4d4d4d</color>
+    <color name="color_green">#45d396</color>
+    <color name="color_808080">#808080</color>
+    <color name="color_595959">#595959</color>
+    <color name="color_949494">#949494</color>
+    <color name="color_cccccc">#cccccc</color>
+    <color name="color_f2f2f2">#f2f2f2</color>
+    <color name="color_b6b6b6">#b6b6b6</color>
+    <color name="red_festival">#FE1818</color>
+    <color name="red_range">#ff0000</color>
+    <color name="yellow_festival">#FFB84E</color>
+    <color name="color_ff7f00">#ff7f00</color>
+    <color name="purple_festival">#DD36FC</color>
+    <color name="blue_festival">#4CADFF</color>
+    <color name="blue_sky">#00FFFF</color>
+    <color name="btn_gray">#d9d9d9</color>
+
+    <color name="global_back_black_color">#f2f2f2</color>
+    <!-- 通用线条颜色-->
+    <color name="global_line_color">#ededed</color>
+
+    <color name="global_white_color">#ffffff</color>
+    <color name="global_hint_color">#cccccc</color>
+    <color name="global_grey_divider_color">#e6e6e6</color>
+
+    <color name="progressbar_horizontal">#ffffff</color>
+
+</resources>

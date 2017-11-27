@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="62dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/iv_product"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="12dp"
+        android:src="@mipmap/speed_loan" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="9dp"
+        android:layout_toRightOf="@+id/iv_product"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="急速贷款"
+            android:textColor="@color/color_575656"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_product_introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="最快只三分钟贷款"
+            android:textColor="@color/color_767676"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="1px"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@color/global_line_color"></View>
+</RelativeLayout>

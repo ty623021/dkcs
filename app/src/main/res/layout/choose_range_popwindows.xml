@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/gray_background"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height"
+        android:background="@color/color_f2f2f2">
+
+        <RelativeLayout
+            android:id="@+id/rel_btn_cancel"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:background="@drawable/shape_small_radius_white_background_gray_line"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="取消"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/size_sp_13" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rel_btn_sure"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_15"
+            android:background="@drawable/shape_small_radius_white_background_blue_line"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="确定"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/size_sp_13" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <com.wx.wheelview.widget.WheelView
+        android:id="@+id/wheelview"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="@color/color_e6e6e6" />
+
+</LinearLayout>

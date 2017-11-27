@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="errorColor" format="color" />
+    <attr name="maxCharacters" format="integer" />
+
+    <declare-styleable name="materialEditText">
+        <!-- Highlight color of floating label text and underline. -->
+        <attr name="backgroundColor" format="color" />
+        <!-- Error color of under line text and underline. -->
+        <attr name="errorColor" />
+        <!-- Enable floating label text. -->
+        <attr name="floatingLabel" format="boolean" />
+        <!-- Max characters count limit. 0 means no max. -->
+        <attr name="maxCharacters" />
+        <!-- Icon (ImageView) associated to this EditText. -->
+        <attr name="withIcon" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="fullwidthEditText">
+        <!-- Error color of under line text and underline. -->
+        <attr name="errorColor" />
+        <!-- Max characters count limit. 0 means no max. -->
+        <attr name="maxCharacters" />
+    </declare-styleable>
+
+    <declare-styleable name="clearEditText">
+        <attr name="isshow" format="boolean" />
+        <attr name="isHint" format="boolean" />
+        <attr name="paddingleft" format="dimension" />
+        <attr name="paddingright" format="dimension" />
+        <attr name="hintColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="HoloCircularProgressBar">
+        <attr name="stroke_width" format="dimension" />
+        <attr name="progress" format="float" />
+        <attr name="marker_progress" format="float" />
+        <attr name="progress_color" format="color" />
+        <attr name="progress_background_color" format="color" />
+        <attr name="thumb_visible" format="boolean" />
+        <attr name="marker_visible" format="boolean" />
+        <attr name="android:gravity" />
+    </declare-styleable>
+    <declare-styleable name="RotateTextView">
+        <attr name="degree" format="dimension" />
+    </declare-styleable>
+    <attr name="circularProgressBarStyle" format="reference" />
+
+    <!--自定义上下翻滚的textView-->
+    <declare-styleable name="auto">
+        <attr name="autoTextSize" format="dimension"></attr>
+    </declare-styleable>
+
+
+
+
+    <!--水波纹圆形进度条-->
+    <declare-styleable name="RoundWaveProgress">
+        <attr name="RoundWaveProgressColor" format="color" />
+        <attr name="RoundWaveRoundColor" format="color" />
+        <attr name="RoundWaveMaxProgress" format="float" />
+        <attr name="RoundWaveRoundWidth" format="integer"></attr>
+        <attr name="RoundWaveTextColor" format="color" />
+        <attr name="RoundWaveTextSize" format="dimension" />
+        <attr name="RoundWaveMax" format="integer"></attr>
+    </declare-styleable>
+    <!--地区选择-->
+    <declare-styleable name="NumberPicker">
+        <attr name="normalTextColor" format="color" />
+        <attr name="normalTextSize" format="dimension" />
+        <attr name="selecredTextColor" format="color" />
+        <attr name="selecredTextSize" format="dimension" />
+        <attr name="unitHight" format="dimension" />
+        <attr name="itemNumber" format="integer" />
+        <attr name="lineColor" format="color" />
+        <attr name="maskHight" format="dimension" />
+        <attr name="noEmpty" format="boolean" />
+        <attr name="isEnable" format="boolean" />
+    </declare-styleable>
+
+
+</resources>

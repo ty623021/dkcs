@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/all_layout_backgroud"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="102dp"
+            android:src="@mipmap/icon_change_success" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="31dp"
+            android:text="注册成功"
+            android:textColor="@color/color_575656"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/tv_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="你成为诸葛贷款王的第1125位用户"
+            android:textColor="@color/color_575656"
+            android:textSize="@dimen/size_sp_14" />
+
+
+        <Button
+            android:id="@+id/btn_see"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/global_btn_height"
+            android:layout_marginLeft="@dimen/global_btn_margin_left_right"
+            android:layout_marginRight="@dimen/global_btn_margin_left_right"
+            android:layout_marginTop="91dp"
+            android:background="@mipmap/icon_bg_btn"
+            android:text="去登录"
+            android:textSize="@dimen/size_sp_15" />
+    </LinearLayout>
+</LinearLayout>
+

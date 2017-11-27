@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f4f2f0"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/layout_height_top"
+        layout="@layout/layout_height_top"
+        android:visibility="visible"></include>
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_toolbar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="30dp"
+                    android:text="复制您的专属邀请码给您的好友"
+                    android:textColor="@color/color_666666"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/copy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:src="@mipmap/icon_copy"></ImageView>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="26dp"
+                android:background="@color/global_line_color"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="21dp"
+                    android:src="@mipmap/icon_my_invitation_code" />
+
+                <TextView
+                    android:id="@+id/tv_invite_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="40dp"
+                    android:background="@mipmap/icon_bg_invitation_code"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="------"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="21sp" />
+
+                <Button
+                    android:id="@+id/btn_share"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/global_btn_height"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginLeft="@dimen/global_btn_margin_left_right"
+                    android:layout_marginRight="@dimen/global_btn_margin_left_right"
+                    android:background="@mipmap/icon_bg_btn"
+                    android:text="分享我的邀请码"
+                    android:textSize="@dimen/size_sp_15" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="累计邀请人数:"
+                        android:textColor="@color/color_575656"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_inivte_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="---人"
+                        android:textColor="@color/color_575656"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/global_line_color"></View>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="15dp"
+                    android:text="邀请记录"
+                    android:textColor="@color/color_666666"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/global_line_color"></View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="11dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="58dp"
+                    android:layout_marginTop="11dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="账号"
+                        android:textColor="@color/color_575656"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="注册时间"
+                        android:textColor="@color/color_575656"
+                        android:textSize="13sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:background="@color/global_line_color"></View>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_invite_record"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

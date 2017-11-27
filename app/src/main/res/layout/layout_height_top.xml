@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_height_top"
+    android:layout_width="match_parent"
+    android:background="@mipmap/icon_height_top"
+    android:layout_height="25dp">
+
+</RelativeLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_white_circle_side"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="温馨提示"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:background="@drawable/shape_red_top_circle"/>
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="28dp"
+        android:layout_marginTop="28dp"
+        android:textColor="@color/global_black_color"
+        android:textSize="16sp"
+        android:lineSpacingExtra="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:divider="@drawable/shape_dialog_divider"
+        android:showDividers="middle"
+        android:layout_marginBottom="22dp">
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/view_horizontal"
+            android:layout_toLeftOf="@+id/view_vertical"
+            android:background="@drawable/layer_dialog_cancel"
+            android:gravity="center"
+            android:text="取消"
+            android:textSize="19sp"
+            android:textColor="@color/dialog_cancel"/>
+
+        <TextView
+            android:id="@+id/tv_accomplish"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/view_horizontal"
+            android:layout_toRightOf="@+id/view_vertical"
+            android:background="@drawable/layer_dialog_enter"
+            android:gravity="center"
+            android:text="完成"
+            android:textColor="@color/white"
+            android:textSize="17sp"/>
+    </LinearLayout>
+</LinearLayout>

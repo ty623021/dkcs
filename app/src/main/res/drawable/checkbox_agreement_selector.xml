@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 点击之后的图标 -->
+    <item android:drawable="@mipmap/icon_checkbox_agreement_checked" android:state_checked="true" />
+    <!-- 点击之前的图标 -->
+    <item android:drawable="@mipmap/icon_checkbox_agreement_normal" android:state_checked="false" />
+</selector>

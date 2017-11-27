@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_background">
+
+
+    <RelativeLayout
+        android:layout_width="280dp"
+        android:layout_height="180dp"
+        android:background="@drawable/all_layout_backgroud">
+
+        <ImageView
+            android:id="@+id/clear_dialog_imgs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/margin_5"
+            android:layout_marginTop="@dimen/margin_5"
+            android:src="@mipmap/ahn" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_30"
+                android:text="请输入右侧图形验证码"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_sp_14" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_25"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.rt.zgloan.weight.EditTextWithDel
+                        android:id="@+id/edit_graphic_verification_code"
+                        android:layout_width="110dp"
+                        android:layout_height="@dimen/layout_height"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:hint="请输入验证码"
+                        android:maxLength="6"
+                        android:paddingLeft="@dimen/margin_10"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/color_cccccc"
+                        android:textSize="@dimen/size_sp_14" />
+
+                    <View
+                        android:layout_width="110dp"
+                        android:layout_height="1dp"
+                        android:background="@color/global_line_color"></View>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="@dimen/margin_5"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/graphic_verification_code_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_sure"
+            android:layout_width="140dp"
+            android:layout_height="28dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_10"
+            android:background="@drawable/shape_btn_radius_blue"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_sp_14" />
+    </RelativeLayout>
+</LinearLayout>
