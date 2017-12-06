@@ -131,7 +131,7 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);
         }
-        mTitle.setTitle(false, "优贷汇");
+        mTitle.setTitle(false, "汇生财");
         activity = getActivity();
         pull.clearFooter();
 

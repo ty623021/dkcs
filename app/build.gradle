@@ -22,10 +22,14 @@ android {
 
     signingConfigs {
         release {
-            storeFile file(properties.getProperty("keystroe_storeFile"))
-            storePassword properties.getProperty("keystroe_storePassword")
-            keyAlias properties.getProperty("keystroe_keyAlias")
-            keyPassword properties.getProperty("keystroe_keyPassword")
+//            storeFile file(properties.getProperty("keystroe_storeFile"))
+//            storePassword properties.getProperty("keystroe_storePassword")
+//            keyAlias properties.getProperty("keystroe_keyAlias")
+//            keyPassword properties.getProperty("keystroe_keyPassword")
+            storeFile file("xjcs.jks")
+            storePassword "123456"
+            keyAlias "key"
+            keyPassword "123456"
         }
 
     }
@@ -66,7 +70,7 @@ android {
     productFlavors {
         zgloan {
             applicationId 'com.rt.zgloan'
-            resValue("string", "app_name", "优贷汇")
+            resValue("string", "app_name", "汇生财")
             //每生成一个渠道com.rt.zgloan.fileprovider值必须更改  值是唯一的
             resValue("string", "fileprovider", "com.rt.zgloan.fileprovider")
             resValue("string", "trayAuthority", "com.rt.zgloan.tray")
@@ -75,7 +79,7 @@ android {
         }
         zgloanTest {
             applicationId 'com.rt.zgloan.test'
-            resValue("string", "app_name", "优贷汇测试版")
+            resValue("string", "app_name", "汇生财测试版")
             //每生成一个渠道com.rt.zgloan.fileprovider值必须更改  值是唯一的
             resValue("string", "fileprovider", "com.rt.zgloan.fileprovider.test")
             resValue("string", "trayAuthority", "com.rt.zgloan.tray.test")
