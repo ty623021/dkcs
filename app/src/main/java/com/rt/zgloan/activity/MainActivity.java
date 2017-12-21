@@ -2,6 +2,7 @@ package com.rt.zgloan.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
@@ -17,6 +18,7 @@ import com.rt.zgloan.bean.BaseResponse;
 import com.rt.zgloan.db.UserActionDao;
 import com.rt.zgloan.dbentity.UserAction;
 import com.rt.zgloan.dbentity.UserActionList;
+import com.rt.zgloan.fragment.FragmentCreditCard;
 import com.rt.zgloan.fragment.FragmentFirstPage;
 import com.rt.zgloan.fragment.FragmentLoan;
 import com.rt.zgloan.fragment.FragmentMy;
@@ -30,6 +32,7 @@ import com.rt.zgloan.util.UpdateVersionUtil;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Observable;
 
@@ -47,21 +50,39 @@ public class MainActivity extends BaseActivity {
     ImageView loanImageView;
     @BindView(R.id.tab_my_icon)
     ImageView myImageView;
+    @BindView(R.id.tab_credit_card_icon)
+    ImageView tabCreditCardIcon;
+    @BindView(R.id.tab_credit_card_text)
+    TextView tabCreditCardText;
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
     private FragmentFirstPage fragmentFirstPage;
     private FragmentLoan fragmentLoan;
     private FragmentMy fragmentMy;
+    private FragmentCreditCard fragmentCreditCard;
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void initView() {
+        fragmentManager = getSupportFragmentManager();
+        switchTab(0);
+        UpdateVersionUtil updateVersionUtil = new UpdateVersionUtil(this);
+        updateVersionUtil.checkVersion(false);
+    }
 
     private void initTab() {
         firstPageTextView.setSelected(false);
         loanTextView.setSelected(false);
         myTextView.setSelected(false);
-
+        tabCreditCardText.setSelected(false);
         firstPageImageView.setSelected(false);
         loanImageView.setSelected(false);
         myImageView.setSelected(false);
-
+        tabCreditCardIcon.setSelected(false);
     }
 
     private void hideFragment(FragmentTransaction transaction) {
@@ -71,11 +92,12 @@ public class MainActivity extends BaseActivity {
         if (fragmentLoan != null) {
             transaction.hide(fragmentLoan);
         }
+        if (fragmentCreditCard != null) {
+            transaction.hide(fragmentCreditCard);
+        }
         if (fragmentMy != null) {
             transaction.hide(fragmentMy);
         }
-
-
     }
 
     public void switchTab(int index) {
@@ -96,7 +118,6 @@ public class MainActivity extends BaseActivity {
             case 1:
                 if (fragmentLoan == null) {
                     fragmentLoan = new FragmentLoan();
-
                     transaction.add(R.id.container, fragmentLoan);
                 } else {
                     transaction.show(fragmentLoan);
@@ -105,9 +126,18 @@ public class MainActivity extends BaseActivity {
                 loanImageView.setSelected(true);
                 break;
             case 2:
+                if (fragmentCreditCard == null) {
+                    fragmentCreditCard = new FragmentCreditCard();
+                    transaction.add(R.id.container, fragmentCreditCard);
+                } else {
+                    transaction.show(fragmentCreditCard);
+                }
+                tabCreditCardText.setSelected(true);
+                tabCreditCardIcon.setSelected(true);
+                break;
+            case 3:
                 if (fragmentMy == null) {
                     fragmentMy = new FragmentMy();
-
                     transaction.add(R.id.container, fragmentMy);
                 } else {
                     transaction.show(fragmentMy);
@@ -136,7 +166,7 @@ public class MainActivity extends BaseActivity {
         return false;
     }
 
-    @OnClick({R.id.first_page, R.id.loan, R.id.my,})
+    @OnClick({R.id.first_page, R.id.loan, R.id.credit_card, R.id.my})
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -146,26 +176,16 @@ public class MainActivity extends BaseActivity {
             case R.id.loan:
                 switchTab(1);
                 break;
-            case R.id.my:
+            case R.id.credit_card:
                 switchTab(2);
+                break;
+            case R.id.my:
+                switchTab(3);
                 break;
         }
 
     }
 
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.activity_main;
-    }
-
-    @Override
-    public void initView() {
-        fragmentManager = getSupportFragmentManager();
-        switchTab(0);
-        UpdateVersionUtil updateVersionUtil = new UpdateVersionUtil(this);
-        updateVersionUtil.checkVersion(false);
-    }
 
     @Override
     public void showLoading(String content) {
@@ -180,17 +200,6 @@ public class MainActivity extends BaseActivity {
     @Override
     public void recordSuccess(Object o) {
     }
-
-//    @Override
-//    public void recordSuccess(TestBean testBean) {
-//        if (testBean==null){
-//            LogUtils.loge("null.......");
-//        }else {
-//            LogUtils.loge("testBean  "+JSON.toJSONString(testBean));
-//        }
-//
-//        Log.e("tag", "响应:  "+ JSON.toJSONString(testBean));
-//    }
 
 
     // 再次点击返回键退出
@@ -278,5 +287,12 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

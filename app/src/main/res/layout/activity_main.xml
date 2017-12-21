@@ -97,6 +97,42 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/tab_credit_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <yicheng.android.ui.materialdesignlibrary.views.LayoutRipple
+                android:id="@+id/credit_card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="4dp"
+                android:paddingTop="@dimen/dp_6">
+
+                <ImageView
+                    android:id="@+id/tab_credit_card_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/selector_my" />
+
+                <TextView
+                    android:id="@+id/tab_credit_card_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tab_credit_card_icon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="2dp"
+                    android:text="信用卡"
+                    android:textColor="@drawable/selector_invest_tv"
+                    android:textSize="@dimen/size_sp_micro" />
+            </yicheng.android.ui.materialdesignlibrary.views.LayoutRipple>
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/tab_my"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -131,7 +167,6 @@
                     android:textSize="@dimen/size_sp_micro" />
             </yicheng.android.ui.materialdesignlibrary.views.LayoutRipple>
         </LinearLayout>
-
 
     </LinearLayout>
 

@@ -1,7 +1,6 @@
 package com.rt.zgloan.presenter;
 
 
-
 import com.rt.zgloan.base.BaseView;
 import com.rt.zgloan.bean.BaseResponse;
 import com.rt.zgloan.http.ActivityLifeCycleEvent;
@@ -21,19 +20,24 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * des:基类presenter
  */
-public  class BasePresenter{
+public class BasePresenter {
     private static BasePresenter basePresenter;
     public BaseView mView;
     //销毁时退出异步任务
     protected CompositeSubscription mSubscriptions;
     public final PublishSubject<ActivityLifeCycleEvent> lifecycleSubject = PublishSubject.create();
-public void init(BaseView v) {
-    this.mView = v;
-    this.onStart();
-}
-    public void onStart(){
+
+    public void init(BaseView v) {
+        this.mView = v;
+        this.onStart();
+    }
+
+    public void onStart() {
         lifecycleSubject.onNext(ActivityLifeCycleEvent.CREATE);
-    };
+    }
+
+    ;
+
     public void onDestroy() {
         lifecycleSubject.onNext(ActivityLifeCycleEvent.DESTROY);
         if (mSubscriptions != null && mSubscriptions.hasSubscriptions()) {
@@ -43,6 +47,7 @@ public void init(BaseView v) {
 
     /**
      * 添加线程管理并订阅
+     *
      * @param ob
      * @param subscriber
      */
@@ -58,11 +63,12 @@ public void init(BaseView v) {
 
     /**
      * 上传图片封装
+     *
      * @param key
      * @param fileName
      * @return
      */
-    public  MultipartBody.Part putFile(String key, String fileName) {
+    public MultipartBody.Part putFile(String key, String fileName) {
         //构建要上传的文件
         File file = new File(fileName);
         RequestBody requestFile = RequestBody.create(
@@ -70,9 +76,10 @@ public void init(BaseView v) {
         MultipartBody.Part body = MultipartBody.Part.createFormData(key, file.getName(), requestFile);
         return body;
     }
-    public static BasePresenter getInstence(){
-        if (basePresenter==null){
-            basePresenter =new BasePresenter();
+
+    public static BasePresenter getInstence() {
+        if (basePresenter == null) {
+            basePresenter = new BasePresenter();
         }
         return basePresenter;
     }
