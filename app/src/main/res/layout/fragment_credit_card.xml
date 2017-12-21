@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/Ll_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_f4f2f0"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="信用卡模块"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/size_sp_20" />
+    <include
+        android:id="@+id/layout_height_top"
+        layout="@layout/layout_height_top"
+        android:visibility="visible"></include>
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_toolbar" />
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner_guide_content"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@color/white"
+        app:indicator_drawable_selected="@drawable/point_focused"
+        app:indicator_drawable_unselected="@drawable/point_unfocused"
+        app:indicator_height="7dp"
+        app:indicator_margin="3dp"
+        app:indicator_width="7dp">
+
+    </com.youth.banner.Banner>
+
+    <com.youth.banner.view.BannerViewPager
+        android:layout_width="match_parent"
+        android:layout_height="100dp"></com.youth.banner.view.BannerViewPager>
+
 
 </LinearLayout>

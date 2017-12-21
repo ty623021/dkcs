@@ -1,8 +1,8 @@
 package com.rt.zgloan.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -138,11 +138,9 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
 
         AbRefreshUtil.initRefresh(pull, this);
 
-
         getMessageList();
         getLoanClassList();
         getLabelList();
-
     }
 
 
@@ -168,16 +166,9 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
 
     @Override
     public void recordSuccess(final BannerListBean bannerListBean) {
-        Logger.e("bannerListBean.getBanner().size()=" + bannerListBean.getBanner().size());
         if (bannerListBean.getBanner() != null && bannerListBean.getBanner().size() > 0) {
-//            setHomeBanner(bannerListBean.getBanner());
-
             bannerGuideContent.setVisibility(View.VISIBLE);
-            Logger.e("bannerSuccess--->>>");
-
             mActivityListBean = bannerListBean.getBanner();
-
-
             //设置banner样式
             bannerGuideContent.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);//设置不显示指示器   BannerConfig.CIRCLE_INDICATOR//圆点指示器
             //设置图片加载器
@@ -195,16 +186,12 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
             bannerGuideContent.setOnBannerListener(new OnBannerListener() {
                 @Override
                 public void OnBannerClick(int position) {
-
-//                    HomeIndexResponseBean.IndexImagesBean dto = mActivityListBean.get(position);
-//                    //jumpType 1 不跳转 2跳转成分类 3跳转页面 productType 分类ID pageLink页面链接
-//                    Intent intent = new Intent(mActivity, WebViewActivity.class);
-//                    intent.putExtra("url", dto.getReUrl());
-//                    startActivity(intent);
-//                    Intent intent = new Intent(mActivity, WebViewActivity.class);
-//                    intent.putExtra("url", bannerListBean.getBanner().get(position).getSlide_url());
-//                    startActivity(intent);
-
+                    BannerListBean.BannerBean bannerBean = mActivityListBean.get(position);
+                    if (!AbStringUtil.isEmpty(bannerBean.getSlide_url())) {
+                        Intent intent = new Intent(mActivity, WebViewActivity.class);
+                        intent.putExtra("url", bannerBean.getSlide_url());
+                        startActivity(intent);
+                    }
                 }
             });
             //banner设置方法全部调用完毕时最后调用
@@ -243,21 +230,6 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
         }
     }
 
-    private CycleViewPager.ImageCycleViewListener mAdCycleViewListener = new CycleViewPager.ImageCycleViewListener() {
-
-        @Override
-        public void onImageClick(BannerItemInfo info, int position, View imageView) {
-            if (cycleViewPager != null && cycleViewPager.isCycle()) {
-                if (!AbStringUtil.isEmpty(info.getUrl())) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("url", info.getUrl());
-                    mActivity.startActivity(WebViewActivity.class, bundle);
-                }
-            }
-        }
-
-    };
-
 
     @Override
     public void onHeaderRefresh(AbPullToRefreshView view) {
@@ -274,21 +246,18 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
                         getLoanClassList();
                         getLabelList();
                         pull.onHeaderRefreshFinish();
-
                     }
 
                     @Override
                     protected void _onError(String message) {
                         ToastUtil.showToast(message);
                         pull.onHeaderRefreshFinish();
-
                     }
 
                     @Override
                     protected void _onCompleted() {
                         LoadingFragment.getInstends().dismiss();
                         pull.onHeaderRefreshFinish();
-
                     }
                 }
         );

@@ -1,11 +1,14 @@
 package com.rt.zgloan.fragment;
 
+import android.os.Build;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.rt.zgloan.R;
 import com.rt.zgloan.base.BaseFragment;
 import com.rt.zgloan.bean.BaseResponse;
 
+import butterknife.BindView;
 import rx.Observable;
 
 /**
@@ -15,6 +18,8 @@ import rx.Observable;
 
 public class FragmentCreditCard extends BaseFragment {
     private static final String TAG = "FragmentCreditCard";
+    @BindView(R.id.layout_height_top)
+    RelativeLayout mLayoutHeightTop;
 
 
     @Override
@@ -39,7 +44,12 @@ public class FragmentCreditCard extends BaseFragment {
 
     @Override
     public void initView() {
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mLayoutHeightTop.setVisibility(View.VISIBLE);
+        } else {
+            mLayoutHeightTop.setVisibility(View.GONE);
+        }
+        mTitle.setTitle(false, "信用卡");
     }
 
     @Override

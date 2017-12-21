@@ -51,6 +51,15 @@ public class BannerListBean {
         public void setSlide_url(String slide_url) {
             this.slide_url = slide_url;
         }
+
+        @Override
+        public String toString() {
+            return "BannerBean{" +
+                    "slide_id='" + slide_id + '\'' +
+                    ", slide_pic='" + slide_pic + '\'' +
+                    ", slide_url='" + slide_url + '\'' +
+                    '}';
+        }
     }
 
 }
