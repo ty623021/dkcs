@@ -101,6 +101,7 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
     private LabelLoansAdapter mLabelLoansAdapter;//标签和对应产品
 
 
+
     @Override
     public int getLayoutId() {
         return R.layout.fragment_first_page;
