@@ -39,7 +39,6 @@ import rx.Observable;
 
 public class LoginActivity extends BaseActivity {
 
-
     @BindView(R.id.edit_input_phone)
     EditTextWithDel editInputPhone;
     @BindView(R.id.edit_input_login_password)
@@ -177,7 +176,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (Build.VERSION.SDK_INT >Build.VERSION_CODES.KITKAT) {
             mLayoutHeightTop.setVisibility(View.VISIBLE);
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);
