@@ -264,7 +264,7 @@ public class LoanDetailActivity extends BaseActivity<LoanDetailBean> implements 
 
     @Override
     public void initView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (AppUtil.isVersionKitkat()) {
             mLayoutHeightTop.setVisibility(View.VISIBLE);
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);

@@ -2,7 +2,6 @@ package com.rt.zgloan.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -21,6 +20,7 @@ import com.rt.zgloan.fragment.PasswordLoginFragment;
 import com.rt.zgloan.http.HttpManager;
 import com.rt.zgloan.http.HttpSubscriber;
 import com.rt.zgloan.util.AbStringUtil;
+import com.rt.zgloan.util.AppUtil;
 import com.rt.zgloan.util.SpUtil;
 import com.rt.zgloan.util.StringUtil;
 import com.rt.zgloan.util.ToastUtil;
@@ -38,6 +38,7 @@ import rx.Observable;
  */
 
 public class LoginActivity extends BaseActivity {
+
 
     @BindView(R.id.edit_input_phone)
     EditTextWithDel editInputPhone;
@@ -176,7 +177,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        if (Build.VERSION.SDK_INT >Build.VERSION_CODES.KITKAT) {
+        if (AppUtil.isVersionKitkat()) {
             mLayoutHeightTop.setVisibility(View.VISIBLE);
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);

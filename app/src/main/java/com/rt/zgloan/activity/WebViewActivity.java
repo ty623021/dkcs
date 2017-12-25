@@ -21,6 +21,7 @@ import android.widget.RelativeLayout;
 import com.rt.zgloan.R;
 import com.rt.zgloan.base.BaseActivity;
 import com.rt.zgloan.bean.BaseResponse;
+import com.rt.zgloan.util.AppUtil;
 import com.rt.zgloan.util.LogUtils;
 
 import butterknife.BindView;
@@ -62,7 +63,7 @@ public class WebViewActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (AppUtil.isVersionKitkat()) {
             mLayoutHeightTop.setVisibility(View.VISIBLE);
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);

@@ -2,7 +2,6 @@ package com.rt.zgloan.activity.myActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.CountDownTimer;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -21,6 +20,7 @@ import com.rt.zgloan.http.HttpManager;
 import com.rt.zgloan.http.HttpSubscriber;
 import com.rt.zgloan.util.AbImageUtil;
 import com.rt.zgloan.util.AbStringUtil;
+import com.rt.zgloan.util.AppUtil;
 import com.rt.zgloan.util.DialogUtil;
 import com.rt.zgloan.util.SpUtil;
 import com.rt.zgloan.util.StringUtil;
@@ -113,7 +113,7 @@ public class ChangePhoneNextActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (AppUtil.isVersionKitkat()) {
             mLayoutHeightTop.setVisibility(View.VISIBLE);
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);

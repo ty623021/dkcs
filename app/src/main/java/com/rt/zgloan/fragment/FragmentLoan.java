@@ -1,6 +1,5 @@
 package com.rt.zgloan.fragment;
 
-import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,6 +24,7 @@ import com.rt.zgloan.http.HttpSubscriber;
 import com.rt.zgloan.pullView.AbPullToRefreshView;
 import com.rt.zgloan.recyclerview.BaseRecyclerAdapter;
 import com.rt.zgloan.util.AbRefreshUtil;
+import com.rt.zgloan.util.AppUtil;
 import com.rt.zgloan.util.SpUtil;
 import com.rt.zgloan.util.ToastUtil;
 import com.rt.zgloan.weight.LoadingFragment;
@@ -96,7 +96,7 @@ public class FragmentLoan extends BaseFragment<LoanClassListBean> implements AbP
 
     @Override
     public void initView() {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+        if (AppUtil.isVersionKitkat()) {
             mLayoutHeightTop.setVisibility(View.VISIBLE);
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);

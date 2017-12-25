@@ -483,7 +483,7 @@ public class ConvertUtil {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 	public static String getPath(final Context context, final Uri uri) {
  
-        final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
+        final boolean isKitKat = AppUtil.isVersionKitkat();
  
         // DocumentProvider
         if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {

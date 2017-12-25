@@ -2,7 +2,6 @@ package com.rt.zgloan.activity.myActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -14,6 +13,7 @@ import com.rt.zgloan.base.BaseActivity;
 import com.rt.zgloan.bean.BaseResponse;
 import com.rt.zgloan.bean.CitiesBean;
 import com.rt.zgloan.http.HttpManager;
+import com.rt.zgloan.util.AppUtil;
 
 import butterknife.BindView;
 import rx.Observable;
@@ -62,7 +62,7 @@ public class GetCityActivity extends BaseActivity<CitiesBean> {
 
     @Override
     public void initView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (AppUtil.isVersionKitkat()) {
             mLayoutHeightTop.setVisibility(View.VISIBLE);
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);

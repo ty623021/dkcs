@@ -1,6 +1,5 @@
 package com.rt.zgloan.activity;
 
-import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +18,7 @@ import com.rt.zgloan.http.HttpManager;
 import com.rt.zgloan.http.HttpSubscriber;
 import com.rt.zgloan.pullView.AbPullToRefreshView;
 import com.rt.zgloan.util.AbRefreshUtil;
+import com.rt.zgloan.util.AppUtil;
 import com.rt.zgloan.util.SpUtil;
 import com.rt.zgloan.util.ToastUtil;
 import com.rt.zgloan.weight.LoadingFragment;
@@ -82,7 +82,7 @@ public class InviteFriendsRecordActivity extends BaseActivity<InviteFriendsRecor
 
     @Override
     public void initView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (AppUtil.isVersionKitkat()) {
             mLayoutHeightTop.setVisibility(View.VISIBLE);
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);

@@ -1,6 +1,5 @@
 package com.rt.zgloan.activity;
 
-import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
@@ -15,6 +14,7 @@ import com.rt.zgloan.base.BaseActivity;
 import com.rt.zgloan.bean.BaseResponse;
 import com.rt.zgloan.http.HttpManager;
 import com.rt.zgloan.http.HttpSubscriber;
+import com.rt.zgloan.util.AppUtil;
 import com.rt.zgloan.util.DialogUtil;
 import com.rt.zgloan.util.SpUtil;
 import com.rt.zgloan.util.StringUtil;
@@ -134,7 +134,7 @@ public class ChangeLoginPasswordActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (AppUtil.isVersionKitkat()) {
             mLayoutHeightTop.setVisibility(View.VISIBLE);
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);

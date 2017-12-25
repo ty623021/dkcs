@@ -50,7 +50,7 @@ public class SystemBarTintManager {
         // Android allows a system property to override the presence of the navigation bar.
         // Used by the emulator.
         // See https://github.com/android/platform_frameworks_base/blob/master/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java#L1076
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (AppUtil.isVersionKitkat()) {
             try {
                 Class c = Class.forName("android.os.SystemProperties");
                 Method m = c.getDeclaredMethod("get", String.class);
@@ -91,7 +91,7 @@ public class SystemBarTintManager {
         Window win = activity.getWindow();
         ViewGroup decorViewGroup = (ViewGroup) win.getDecorView();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (AppUtil.isVersionKitkat()) {
             // check theme attrs
             int[] attrs = {android.R.attr.windowTranslucentStatus,
                     android.R.attr.windowTranslucentNavigation};

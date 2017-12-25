@@ -1,6 +1,5 @@
 package com.rt.zgloan.activity.myActivity;
 
-import android.os.Build;
 import android.text.Html;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -11,6 +10,7 @@ import com.rt.zgloan.base.BaseActivity;
 import com.rt.zgloan.bean.AboutMeBean;
 import com.rt.zgloan.bean.BaseResponse;
 import com.rt.zgloan.http.HttpManager;
+import com.rt.zgloan.util.AppUtil;
 import com.rt.zgloan.util.ToastUtil;
 import com.rt.zgloan.util.UpdateVersionUtil;
 import com.rt.zgloan.util.ViewUtil;
@@ -71,7 +71,7 @@ public class AboutOurActivity extends BaseActivity<AboutMeBean> {
 
     @Override
     public void initView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (AppUtil.isVersionKitkat()) {
             mLayoutHeightTop.setVisibility(View.VISIBLE);
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);

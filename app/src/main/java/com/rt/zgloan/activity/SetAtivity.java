@@ -26,6 +26,7 @@ import com.rt.zgloan.base.BaseActivity;
 import com.rt.zgloan.bean.BaseResponse;
 import com.rt.zgloan.bean.VersionBean;
 import com.rt.zgloan.http.HttpManager;
+import com.rt.zgloan.util.AppUtil;
 import com.rt.zgloan.util.SpUtil;
 import com.rt.zgloan.util.ToastUtil;
 import com.rt.zgloan.util.ViewUtil;
@@ -132,7 +133,7 @@ public class SetAtivity extends BaseActivity<VersionBean> {
 
     @Override
     public void initView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (AppUtil.isVersionKitkat()) {
             mLayoutHeightTop.setVisibility(View.VISIBLE);
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);

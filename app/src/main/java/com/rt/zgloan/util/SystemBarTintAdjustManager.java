@@ -49,7 +49,7 @@ public class SystemBarTintAdjustManager
 	public synchronized void setStatusBar(int color, boolean useResourceColor, View rootView, boolean isPadding)
 	{
 		SystemBarTintManager tintManager = new SystemBarTintManager(mActivity);
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+		if (AppUtil.isVersionKitkat()) {
 			View v = null;
 			if(rootView != null)
 				v = rootView;

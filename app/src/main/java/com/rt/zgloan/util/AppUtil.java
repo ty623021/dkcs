@@ -28,6 +28,16 @@ import java.util.List;
  */
 public class AppUtil {
 
+
+    /**
+     * 判断是否是大于19（5.0以上的系统）
+     *
+     * @return
+     */
+    public static boolean isVersionKitkat() {
+        return Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT;
+    }
+
     public static void getAppDetailSettingIntent() {
         Intent localIntent = new Intent();
         localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

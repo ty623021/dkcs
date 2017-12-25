@@ -33,7 +33,7 @@ public class StatusBarUtil {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
 
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        } else if (AppUtil.isVersionKitkat()) {
             Window window =activity.getWindow();
             ((ViewGroup)window.getDecorView().findViewById(android.R.id.content)).getChildAt(0).setFitsSystemWindows(true);
             window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
@@ -52,7 +52,7 @@ public class StatusBarUtil {
             Window window = activity.getWindow();
 //      window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(ContextCompat.getColor(activity,colorId));
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        } else if (AppUtil.isVersionKitkat()) {
             //使用SystemBarTint库使4.4版本状态栏变色，需要先将状态栏设置为透明
             transparencyBar(activity);
             SystemBarTintManager tintManager = new SystemBarTintManager(activity);
@@ -69,7 +69,7 @@ public class StatusBarUtil {
      */
     public static int StatusBarLightMode(Activity activity){
         int result=0;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (AppUtil.isVersionKitkat()) {
             if(MIUISetStatusBarLightMode(activity.getWindow(), true)){
                 result=1;
             }else if(FlymeSetStatusBarLightMode(activity.getWindow(), true)){
