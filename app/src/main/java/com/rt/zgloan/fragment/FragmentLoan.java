@@ -96,7 +96,7 @@ public class FragmentLoan extends BaseFragment<LoanClassListBean> implements AbP
 
     @Override
     public void initView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
             mLayoutHeightTop.setVisibility(View.VISIBLE);
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);

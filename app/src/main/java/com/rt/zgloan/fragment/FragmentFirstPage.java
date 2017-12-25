@@ -90,7 +90,6 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
     private static final int LONGTIME = 5000;
     //公告轮播条数
     private static final int NOTICE_NUM = 3;
-
     private FragmentHomeListAdapter adapter;
     private List<HomeListInfo> home_list = new ArrayList<>();
     private List<BannerListBean.BannerBean> mActivityListBean = new ArrayList<>();
