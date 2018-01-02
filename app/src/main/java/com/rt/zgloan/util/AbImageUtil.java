@@ -44,6 +44,7 @@ import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.rt.zgloan.app.App;
+import com.rt.zgloan.glide.GlideCircleTransform;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -1356,6 +1357,22 @@ public class AbImageUtil {
     public static void glideImageList(String imgUrl, final ImageView imageView, final int resId) {
         Glide.with(App.getContext())
                 .load(imgUrl)
+                .error(resId)//加载失败显示的图片
+                .into(imageView);
+    }
+
+    /**
+     * 加载成圆形图片
+     * 使用glide 加载图片
+     *
+     * @param imgUrl
+     * @param imageView
+     * @param resId
+     */
+    public static void glideCircleImage(String imgUrl, final ImageView imageView, final int resId) {
+        Glide.with(App.getContext())
+                .load(imgUrl)
+                .transform(new GlideCircleTransform(App.getContext()))
                 .error(resId)//加载失败显示的图片
                 .into(imageView);
     }

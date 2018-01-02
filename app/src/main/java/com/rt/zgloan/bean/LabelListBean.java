@@ -1,12 +1,11 @@
 package com.rt.zgloan.bean;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
  * Created by zcy on 2017/11/6 0006.
+ * 首页列表
  */
-
 public class LabelListBean {
     public List<LabelBean> getLabel() {
         return label;
@@ -16,20 +15,19 @@ public class LabelListBean {
         this.label = label;
     }
 
-    List<LabelBean> label;
+    private List<LabelBean> label;
 
     public static class LabelBean {
-
         /**
          * id : 1
          * image_url : 标签图标
          * name : 极速借款
          */
-
         private int id;
         private String image_url;
         private String name;
-        List<LabelLoansBean> loans;
+        private List<LabelLoansBean> loans;//借款标的列表
+        private List<CreditCardBean> cards;//信用卡推荐列表
 
         public int getId() {
             return id;
@@ -63,6 +61,14 @@ public class LabelListBean {
             this.loans = loans;
         }
 
+        public List<CreditCardBean> getCards() {
+            return cards;
+        }
+
+        public void setCards(List<CreditCardBean> cards) {
+            this.cards = cards;
+        }
+
         /**
          * id : 35
          * name : null
@@ -83,7 +89,7 @@ public class LabelListBean {
             private int deadline_sml;
             private int deadline_big;
             private String image_url;
-            private BigDecimal rate;
+            private String rate;
             private String propaganda_language;
             private int rate_type;
 
@@ -143,11 +149,11 @@ public class LabelListBean {
                 this.image_url = image_url;
             }
 
-            public BigDecimal getRate() {
+            public String getRate() {
                 return rate;
             }
 
-            public void setRate(BigDecimal rate) {
+            public void setRate(String rate) {
                 this.rate = rate;
             }
 
@@ -167,5 +173,6 @@ public class LabelListBean {
                 this.rate_type = rate_type;
             }
         }
+
     }
 }

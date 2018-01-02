@@ -8,16 +8,21 @@ import android.widget.RelativeLayout;
 
 import com.rt.zgloan.R;
 import com.rt.zgloan.activity.WebViewActivity;
+import com.rt.zgloan.activity.cityActivity.UnifiedActivity;
+import com.rt.zgloan.activity.cityActivity.UnifiedBase;
 import com.rt.zgloan.adapter.CreditCardAdapter;
 import com.rt.zgloan.base.BaseFragment;
-import com.rt.zgloan.bean.BannerListBean;
 import com.rt.zgloan.bean.BaseResponse;
-import com.rt.zgloan.bean.CreditCardBean;
+import com.rt.zgloan.bean.CreditCardHomeBean;
+import com.rt.zgloan.bean.CreditCardHomeListBean;
+import com.rt.zgloan.http.HttpManager;
+import com.rt.zgloan.http.HttpSubscriber;
 import com.rt.zgloan.pullView.AbPullToRefreshView;
 import com.rt.zgloan.util.AbRefreshUtil;
 import com.rt.zgloan.util.AbStringUtil;
 import com.rt.zgloan.util.AppUtil;
 import com.rt.zgloan.util.GlideImageLoader;
+import com.rt.zgloan.util.ToastUtil;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -29,12 +34,15 @@ import java.util.List;
 import butterknife.BindView;
 import rx.Observable;
 
+import static android.app.Activity.RESULT_OK;
+
+
 /**
  * 信用卡模块
  * Created by Administrator on 2017/8/24.
  */
 
-public class FragmentCreditCard extends BaseFragment implements AbPullToRefreshView.OnHeaderRefreshListener, AbPullToRefreshView.OnFooterLoadListener {
+public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> implements AbPullToRefreshView.OnHeaderRefreshListener {
     private static final String TAG = "FragmentCreditCard";
     @BindView(R.id.layout_height_top)
     RelativeLayout mLayoutHeightTop;
@@ -45,7 +53,9 @@ public class FragmentCreditCard extends BaseFragment implements AbPullToRefreshV
     @BindView(R.id.pull)
     AbPullToRefreshView pull;
     private CreditCardAdapter adapter;
-    private List<BannerListBean.BannerBean> mActivityListBean = new ArrayList<>();
+    private List<CreditCardHomeBean.CreditBannerBean> mActivityListBean = new ArrayList<>();
+    private List list = new ArrayList();
+    private int cityId;//被选中的城市ID
 
     @Override
     public int getLayoutId() {
@@ -53,7 +63,7 @@ public class FragmentCreditCard extends BaseFragment implements AbPullToRefreshV
     }
 
     @Override
-    public Observable<BaseResponse> initObservable() {
+    public Observable<BaseResponse<CreditCardHomeBean>> initObservable() {
         return null;
     }
 
@@ -67,7 +77,6 @@ public class FragmentCreditCard extends BaseFragment implements AbPullToRefreshV
         return false;
     }
 
-    private List list = new ArrayList();
 
     @Override
     public void initView() {
@@ -76,107 +85,60 @@ public class FragmentCreditCard extends BaseFragment implements AbPullToRefreshV
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);
         }
-        mTitle.setTitle(false, "信用卡");
+        mTitle.setTitle("信用卡", R.mipmap.credit_icon_local, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(UnifiedActivity.class, 100);
+            }
+        });
+
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setFocusable(false);
-        AbRefreshUtil.initRefresh(pull, this, this);
-        for (int i = 1; i < 6; i++) {
-            if (i == 1) {
-                ArrayList data = new ArrayList();
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                this.list.add(new CreditCardBean(i, data));
-            } else if (i == 2) {
-                ArrayList data = new ArrayList();
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                this.list.add(new CreditCardBean(i, data));
-            } else if (i == 3) {
-                ArrayList data = new ArrayList();
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                this.list.add(new CreditCardBean(i, data));
-            } else if (i == 4) {
-                ArrayList data = new ArrayList();
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                this.list.add(new CreditCardBean(i, data));
-            } else if (i == 5) {
-                ArrayList data = new ArrayList();
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                data.add("i=" + i);
-                this.list.add(new CreditCardBean(i, data));
-            }
-        }
-
+        AbRefreshUtil.initRefresh(pull, this);
         adapter = new CreditCardAdapter(mContext, list);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setAdapter(adapter);
-
-        initBanner();
+        getCreditCardList();
     }
 
-    private void initBanner() {
-        BannerListBean.BannerBean bannerBean = new BannerListBean.BannerBean();
-        bannerBean.setSlide_id("1");
-        bannerBean.setSlide_pic("3000");
-        bannerBean.setSlide_url("http://rtjt.udaihui.com/data/upload/admin/20171222/5a3cac6ca22a4.png");
-
-        BannerListBean.BannerBean bannerBean1 = new BannerListBean.BannerBean();
-        bannerBean1.setSlide_id("2");
-        bannerBean1.setSlide_pic("3000");
-        bannerBean1.setSlide_url("http://rtjt.udaihui.com/data/upload/admin/20171222/5a3cac6ca22a4.png");
-
-        mActivityListBean.add(bannerBean);
-        mActivityListBean.add(bannerBean1);
-        if (!AbStringUtil.isListEmpty(mActivityListBean)) {
-            return;
-        }
-        bannerGuideContent.setVisibility(View.VISIBLE);
-        //设置banner样式
-        bannerGuideContent.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);//设置不显示指示器   BannerConfig.CIRCLE_INDICATOR//圆点指示器
-        //设置图片加载器
-        bannerGuideContent.setImageLoader(new GlideImageLoader(R.mipmap.banner));
-        //设置图片集合
-        bannerGuideContent.setImages(mActivityListBean);
-        //设置banner动画效果
-        bannerGuideContent.setBannerAnimation(Transformer.DepthPage);
-        //设置自动轮播，默认为true
-        bannerGuideContent.isAutoPlay(true);
-        //设置轮播时间
-        bannerGuideContent.setDelayTime(5000);
-        //设置指示器位置（当banner模式中有指示器时）
-        bannerGuideContent.setIndicatorGravity(BannerConfig.CENTER);//修改小圆点位置
-        bannerGuideContent.setOnBannerListener(new OnBannerListener() {
-            @Override
-            public void OnBannerClick(int position) {
-                BannerListBean.BannerBean bannerBean = mActivityListBean.get(position);
-                if (!AbStringUtil.isEmpty(bannerBean.getSlide_url())) {
-                    Intent intent = new Intent(mActivity, WebViewActivity.class);
-                    intent.putExtra("url", bannerBean.getSlide_url());
-                    startActivity(intent);
-                }
+    /**
+     * 设置banner
+     *
+     * @param slideList
+     */
+    private void initBanner(List<CreditCardHomeBean.CreditBannerBean> slideList) {
+        if (AbStringUtil.isListEmpty(slideList)) {
+            if (mActivityListBean.size() > 0) {
+                mActivityListBean.clear();
             }
-        });
-        //banner设置方法全部调用完毕时最后调用
-        bannerGuideContent.start();
+            mActivityListBean.addAll(slideList);
+            bannerGuideContent.setVisibility(View.VISIBLE);
+            //设置banner样式
+            bannerGuideContent.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);//设置不显示指示器   BannerConfig.CIRCLE_INDICATOR//圆点指示器
+            //设置图片加载器
+            bannerGuideContent.setImageLoader(new GlideImageLoader(R.mipmap.banner));
+            //设置图片集合
+            bannerGuideContent.setImages(mActivityListBean);
+            //设置banner动画效果
+            bannerGuideContent.setBannerAnimation(Transformer.DepthPage);
+            //设置自动轮播，默认为true
+            bannerGuideContent.isAutoPlay(true);
+            //设置轮播时间
+            bannerGuideContent.setDelayTime(5000);
+            //设置指示器位置（当banner模式中有指示器时）
+            bannerGuideContent.setIndicatorGravity(BannerConfig.CENTER);//修改小圆点位置
+            bannerGuideContent.setOnBannerListener(new OnBannerListener() {
+                @Override
+                public void OnBannerClick(int position) {
+                    CreditCardHomeBean.CreditBannerBean bannerBean = mActivityListBean.get(position);
+                    if (!AbStringUtil.isEmpty(bannerBean.slideUrl)) {
+                        WebViewActivity.startActivity(mContext, bannerBean.slideUrl);
+                    }
+                }
+            });
+            //banner设置方法全部调用完毕时最后调用
+            bannerGuideContent.start();
+        }
     }
 
     @Override
@@ -184,6 +146,15 @@ public class FragmentCreditCard extends BaseFragment implements AbPullToRefreshV
 
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && resultCode == RESULT_OK) {
+            UnifiedBase base = (UnifiedBase) data.getExtras().get("UnifiedBase");
+            cityId = base.id;
+            getCreditCardList();
+        }
+    }
 
     @Override
     public void onResume() {
@@ -196,17 +167,72 @@ public class FragmentCreditCard extends BaseFragment implements AbPullToRefreshV
     }
 
     @Override
-    public void recordSuccess(Object o) {
+    public void recordSuccess(CreditCardHomeBean cardBean) {
 
-    }
-
-    @Override
-    public void onFooterLoad(AbPullToRefreshView view) {
-        pull.onFooterLoadFinish();
     }
 
     @Override
     public void onHeaderRefresh(AbPullToRefreshView view) {
-        pull.onHeaderRefreshFinish();
+        getCreditCardList();
+    }
+
+    //获取产品分类
+    private void getCreditCardList() {
+        if (cityId > 0) {
+            mapParams.put("cityId", cityId + "");
+        }
+        mPresenter.toSubscribe(HttpManager.getApi().getCreditCardHome(mapParams), new HttpSubscriber<CreditCardHomeBean>() {
+                    @Override
+                    protected void _onStart() {
+                    }
+
+                    @Override
+                    protected void _onNext(CreditCardHomeBean cardBean) {
+                        pull.onHeaderRefreshFinish();
+                        setCreditCardBean(cardBean);
+                    }
+
+                    @Override
+                    protected void _onError(String message) {
+                        pull.onHeaderRefreshFinish();
+                        ToastUtil.showToast(message);
+                    }
+
+                    @Override
+                    protected void _onCompleted() {
+
+                    }
+                }
+        );
+    }
+
+    public void setCreditCardBean(CreditCardHomeBean creditCardBean) {
+        if (list.size() > 0) {
+            list.clear();
+        }
+        initBanner(creditCardBean.getSlideList());
+        if (AbStringUtil.isListEmpty(creditCardBean.getRecomList())) {
+            CreditCardHomeListBean cardBean = new CreditCardHomeListBean(CreditCardAdapter.TYPE_TYPE1, creditCardBean.getRecomList());
+            list.add(cardBean);
+        }
+        if (AbStringUtil.isListEmpty(creditCardBean.getBankList())) {
+            List<CreditCardHomeBean.BankBean> bankList = creditCardBean.getBankList();
+            bankList.add(new CreditCardHomeBean.BankBean());
+            CreditCardHomeListBean cardBean = new CreditCardHomeListBean(CreditCardAdapter.TYPE_TYPE2, creditCardBean.getBankList());
+            list.add(cardBean);
+        }
+        if (AbStringUtil.isListEmpty(creditCardBean.getPurposeList())) {
+            CreditCardHomeListBean cardBean = new CreditCardHomeListBean(CreditCardAdapter.TYPE_TYPE3, creditCardBean.getPurposeList());
+            list.add(cardBean);
+        }
+        if (AbStringUtil.isListEmpty(creditCardBean.getSubjectList())) {
+            CreditCardHomeListBean cardBean = new CreditCardHomeListBean(CreditCardAdapter.TYPE_TYPE4, creditCardBean.getSubjectList());
+            list.add(cardBean);
+        }
+        if (AbStringUtil.isListEmpty(creditCardBean.getHotCardList())) {
+            CreditCardHomeListBean cardBean = new CreditCardHomeListBean(CreditCardAdapter.TYPE_TYPE5, creditCardBean.getHotCardList());
+            list.add(cardBean);
+        }
+        adapter.notifyDataSetChanged();
     }
 }

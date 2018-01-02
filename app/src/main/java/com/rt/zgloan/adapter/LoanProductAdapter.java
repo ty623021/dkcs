@@ -51,7 +51,7 @@ public class LoanProductAdapter extends BaseRecyclerAdapter<LoanProductAdapter.V
         holder.mTvMoneyBig.setText(data.get(position).getMoney_big() + "");
         holder.mTvDeadlineSml.setText(data.get(position).getDeadline_sml() + "");
         holder.mTvDeadlineBig.setText(data.get(position).getDeadline_big() + "");
-        holder.mTvRate.setText(data.get(position).getRate() + "%");
+        holder.mTvRate.setText(data.get(position).getRate());
         holder.mTvPropagandaLanguage.setText(Html.fromHtml(data.get(position).getPropaganda_language()));
 
         Glide.with(mContext)

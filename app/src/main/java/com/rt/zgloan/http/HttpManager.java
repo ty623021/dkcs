@@ -44,10 +44,11 @@ import rx.schedulers.Schedulers;
 public class HttpManager {
     private HttpApi mHttpApi;
     public static String baseUrl = BuildConfig.SERVER_URL;
-//    public static String baseUrl = "http://chaoshi.rohao.cn/";
-//    public static String baseUrl = "http://192.168.1.123/";
-
     private static HttpManager instance = null;
+
+    public static void setBaseUrl(String baseUrl) {
+        HttpManager.baseUrl = baseUrl;
+    }
 
     /**
      * 获取单例
@@ -90,9 +91,6 @@ public class HttpManager {
                 .setDateFormat("yyyy-MM-dd HH:mm:ss")
                 .create();
         Retrofit retrofit = new Retrofit.Builder()
-                // .baseUrl(App.getConfig().getBaseUrl())
-                // .baseUrl("http://cf.xzgjf.com/")
-                // .baseUrl("http://192.168.1.123/index.php?g=Api&m=Mobileverify&a=send")
                 .baseUrl(baseUrl)
                 .client(createOkHttpClient())
                 //.addConverterFactory(ScalarsConverterFactory.create()) 返回类型转成String

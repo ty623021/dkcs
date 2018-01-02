@@ -118,7 +118,7 @@ public class InviteFriendsRecordActivity extends BaseActivity<InviteFriendsRecor
     @Override
     public void recordSuccess(InviteFriendsRecordInfo recordInfo) {
         setHttpData(recordInfo);
-        AbRefreshUtil.hintView(adapter, false, linear_no_net, no_record);
+        AbRefreshUtil.hintView(pull,adapter, false, linear_no_net, no_record);
 
     }
 
@@ -162,13 +162,13 @@ public class InviteFriendsRecordActivity extends BaseActivity<InviteFriendsRecor
                     protected void _onNext(InviteFriendsRecordInfo recordInfo) {
                         setHttpData(recordInfo);
 //                        Log.e("loanListHttp", JSON.toJSONString(recordInfo.getRelute()));
-                        AbRefreshUtil.hintView(adapter, false, linear_no_net, no_record);
+                        AbRefreshUtil.hintView(pull,adapter, false, linear_no_net, no_record);
                     }
 
                     @Override
                     protected void _onError(String message) {
                         ToastUtil.showToast(message);
-                        AbRefreshUtil.hintView(adapter, true, linear_no_net, no_record);
+                        AbRefreshUtil.hintView(pull,adapter, true, linear_no_net, no_record);
                     }
 
                     @Override

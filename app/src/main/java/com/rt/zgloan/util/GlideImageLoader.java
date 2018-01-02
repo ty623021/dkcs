@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.rt.zgloan.app.App;
 import com.rt.zgloan.bean.BannerListBean;
+import com.rt.zgloan.bean.CreditCardHomeBean;
 import com.youth.banner.loader.ImageLoader;
 
 /**
@@ -15,6 +16,7 @@ import com.youth.banner.loader.ImageLoader;
 public class GlideImageLoader extends ImageLoader {
 
     private int errorImg;
+    private String url;
 
     private GlideImageLoader() {
     }
@@ -32,8 +34,12 @@ public class GlideImageLoader extends ImageLoader {
          传输的到的是什么格式，那么这种就使用Object接收和返回，你只需要强转成你传输的类型就行，
          切记不要胡乱强转！
          */
-        BannerListBean.BannerBean dto = (BannerListBean.BannerBean) path;
-        Glide.with(App.mApp).load(dto.getSlide_pic())
+        if (path instanceof BannerListBean.BannerBean) {
+            url = ((BannerListBean.BannerBean) path).getSlide_url();
+        } else if (path instanceof CreditCardHomeBean.CreditBannerBean) {
+            url = ((CreditCardHomeBean.CreditBannerBean) path).slideUrl;
+        }
+        Glide.with(App.mApp).load(url)
                 .placeholder(errorImg)
                 .error(errorImg)
                 .centerCrop()

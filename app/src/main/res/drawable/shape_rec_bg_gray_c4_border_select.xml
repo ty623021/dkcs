@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <solid android:color="@color/item_click" />
+    
+	<stroke
+		android:width="0.5dp"
+		android:color="@color/color_c7c9ca" />
+
+	<corners
+	    android:radius="4dp" />
+	
+</shape>

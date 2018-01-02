@@ -116,7 +116,7 @@ public class FragmentLoan extends BaseFragment<LoanClassListBean> implements AbP
     @Override
     public void showErrorMsg(String msg, String type) {
         ToastUtil.showToast(msg);
-        AbRefreshUtil.hintView(mLoanProductAdapter, true, linearNoNet, noRecord);
+        AbRefreshUtil.hintView(pull,mLoanProductAdapter, true, linearNoNet, noRecord);
     }
 
     @Override
@@ -178,14 +178,14 @@ public class FragmentLoan extends BaseFragment<LoanClassListBean> implements AbP
                 if (loansListByLoanTypeBean != null) {
                     Logger.e("loansListByLoanTypeBeanSuccess");
                     setProductData(loansListByLoanTypeBean);
-                    AbRefreshUtil.hintView(mLoanProductAdapter, false, linearNoNet, noRecord);
+                    AbRefreshUtil.hintView(pull,mLoanProductAdapter, false, linearNoNet, noRecord);
                 }
             }
 
 
             @Override
             protected void _onError(String message) {
-                AbRefreshUtil.hintView(mLoanProductAdapter, true, linearNoNet, noRecord);
+                AbRefreshUtil.hintView(pull,mLoanProductAdapter, true, linearNoNet, noRecord);
                 ToastUtil.showToast(message);
             }
 
@@ -220,7 +220,7 @@ public class FragmentLoan extends BaseFragment<LoanClassListBean> implements AbP
 //        setHttpData(loanListInfo);
 ////        Log.e("loanListHttp", JSON.toJSONString(loanListInfo.getRelute()));
 ////        Log.e("totalPages", totalPages + "");
-//        AbRefreshUtil.hintView(adapter, false, linearNoNet, noRecord);
+//        AbRefreshUtil.hintView(pull,adapter, false, linearNoNet, noRecord);
 //
 //
 //    }
@@ -265,15 +265,13 @@ public class FragmentLoan extends BaseFragment<LoanClassListBean> implements AbP
                         if (loanClassListBean != null) {
                             setLoanClassData(loanClassListBean);
                         }
-                        AbRefreshUtil.hintView(mLoanProductAdapter, false, linearNoNet, noRecord);
-                        pull.onHeaderRefreshFinish();
+                        AbRefreshUtil.hintView(pull,mLoanProductAdapter, false, linearNoNet, noRecord);
                     }
 
                     @Override
                     protected void _onError(String message) {
                         ToastUtil.showToast(message);
-                        AbRefreshUtil.hintView(mLoanProductAdapter, true, linearNoNet, noRecord);
-                        pull.onHeaderRefreshFinish();
+                        AbRefreshUtil.hintView(pull,mLoanProductAdapter, true, linearNoNet, noRecord);
                     }
 
                     @Override

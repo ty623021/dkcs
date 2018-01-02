@@ -55,20 +55,26 @@
     <color name="number_color">#F26261</color>
     <!-- 深红色 -->
     <color name="red_color">#FD030A</color>
-
+    <!-- 深红色 -->
+    <color name="red_city_color">#FF4A4A</color>
     <!--蓝色按钮  没按下的时候-->
     <color name="blue_nopressed_button">#27A2FE</color>
     <!--蓝色按钮  按下时候-->
     <color name="blue_pressed_button">#0a7bda</color>
     <!--蓝色按钮  不能按下时候-->
     <color name="blue_not_pressed_button">#9DCEF7</color>
-
+    <!-- 分割线颜色 -->
+    <color name="divide_gary">#dbdbdb</color>
+    <!--条目点击颜色-->
+    <color name="item_click">#e4e4e4</color>
     <!--蓝 按钮颜色-->
     <color name="button_color">#27A2FE</color>
     <!--蓝 文字颜色-->
     <color name="blue_text_color">#27A2FE</color>
     <!--半透明-->
     <color name="transparent">#9000</color>
+    <!--全透明-->
+    <color name="transparent1">#00000000</color>
     <!--白色-->
     <color name="white">#ffffff</color>
     <!--白色-->
@@ -91,7 +97,7 @@
     <!-- 红色 按钮可用 -->
     <color name="red">#fa4242</color>
     <color name="red_enabled_false">#E68181</color>
-
+    <!-- 红色 按钮可用 -->
     <color name="color_b7cf34">#b7cf34</color>
     <!-- 灰 -->
     <color name="gray_background">#efefef</color>
@@ -121,6 +127,8 @@
     <color name="color_e6e6e6">#e6e6e6</color>
     <!--红色-->
     <color name="color_FF595F">#FF595F</color>
+    <!--红色-->
+    <color name="color_FF5454">#FF5454</color>
     <!--绿色 -->
     <color name="color_30d9b3">#30d9b3</color>
     <!--浅灰色-->
@@ -148,6 +156,7 @@
     <color name="color_green">#45d396</color>
     <color name="color_808080">#808080</color>
     <color name="color_595959">#595959</color>
+    <color name="color_c7c9ca">#c7c9ca</color>
     <color name="color_949494">#949494</color>
     <color name="color_cccccc">#cccccc</color>
     <color name="color_f2f2f2">#f2f2f2</color>

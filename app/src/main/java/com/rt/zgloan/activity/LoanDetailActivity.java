@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
-import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,7 +29,6 @@ import com.rt.zgloan.base.BaseActivity;
 import com.rt.zgloan.bean.ApplyMaterialsInfo;
 import com.rt.zgloan.bean.BaseResponse;
 import com.rt.zgloan.bean.LoanDetailBean;
-import com.rt.zgloan.glide.GlideImgManager;
 import com.rt.zgloan.http.HttpManager;
 import com.rt.zgloan.http.HttpSubscriber;
 import com.rt.zgloan.pullView.AbPullToRefreshView;
@@ -178,7 +175,6 @@ public class LoanDetailActivity extends BaseActivity<LoanDetailBean> implements 
 
     private List<ApplyMaterialsInfo> applyMaterialsInfo = new ArrayList<>();
     private ActivityLoanDetailAdapter adapter;
-    private GlideImgManager glideImgManager;
     private PopupWindow window;
     private int id;//标的id
     private String money_sml;//最小金额
@@ -270,8 +266,6 @@ public class LoanDetailActivity extends BaseActivity<LoanDetailBean> implements 
             mLayoutHeightTop.setVisibility(View.GONE);
         }
 
-
-        glideImgManager = new GlideImgManager();
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setNestedScrollingEnabled(false);
@@ -1033,9 +1027,7 @@ public class LoanDetailActivity extends BaseActivity<LoanDetailBean> implements 
                     @Override
                     protected void _onNext(Object o) {
                         if (!StringUtil.isBlank(urlLoan)) {
-                            Bundle bundle = new Bundle();
-                            bundle.putString("url", urlLoan);
-                            mActivity.startActivity(WebViewActivity.class, bundle);
+                            WebViewActivity.startActivity(mContext,urlLoan);
                         }
                     }
 
@@ -1044,8 +1036,6 @@ public class LoanDetailActivity extends BaseActivity<LoanDetailBean> implements 
                     protected void _onError(String message) {
                         Log.e("tag", "_onError" + message);
                         ToastUtil.showToast(message);
-
-
                     }
 
                     @Override

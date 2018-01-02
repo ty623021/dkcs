@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Ll_product_introduce"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_left_right_12"
+            android:layout_marginTop="@dimen/margin_15"
+            android:text="标题"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/size_sp_small" />
+
+
+        <TextView
+            android:id="@+id/tv_loan_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_15"
+            android:layout_toLeftOf="@+id/tv_success"
+            android:text="12226人"
+            android:textColor="@color/color_FF5454"
+            android:textSize="@dimen/size_sp_small" />
+
+        <TextView
+            android:id="@+id/tv_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/margin_left_right_12"
+            android:layout_marginTop="@dimen/margin_15"
+            android:text="申请成功"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/size_sp_small" />
+
+        <TextView
+            android:id="@+id/tv_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginLeft="@dimen/margin_left_right_12"
+            android:layout_marginTop="@dimen/dp_6"
+            android:text="会生活"
+            android:textColor="@color/color_FF5454"
+            android:textSize="@dimen/size_sp_16" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_pointsOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginLeft="@dimen/margin_left_right_12"
+            android:drawableLeft="@mipmap/home_item_bank_img"
+            android:drawablePadding="@dimen/margin_5"
+            android:text="金卡消费免年费"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/size_sp_micro" />
+
+        <TextView
+            android:id="@+id/tv_pointsTow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginLeft="@dimen/margin_25"
+            android:drawableLeft="@mipmap/home_item_bank_img"
+            android:drawablePadding="@dimen/margin_5"
+            android:text="金卡消费免年费"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/size_sp_micro" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <FrameLayout
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/margin_12"
+            android:background="@drawable/shape_home_item_bank_bg">
+
+            <ImageView
+                android:id="@+id/iv_img"
+                android:layout_width="185dp"
+                android:layout_height="70dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/default_banner" />
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/margin_14"
+            android:layout_marginRight="@dimen/margin_left_right_12"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_labels1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_6"
+                android:text="超市必备"
+                android:textColor="@color/color_ff7f00"
+                android:textSize="@dimen/size_sp_16" />
+
+            <TextView
+                android:id="@+id/tv_labels2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_6"
+                android:text="双倍积分"
+                android:textColor="@color/color_green"
+                android:textSize="@dimen/size_sp_16" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -14,7 +14,12 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.rt.zgloan.R;
 import com.rt.zgloan.activity.LoanDetailActivity;
+import com.rt.zgloan.activity.WebViewActivity;
+import com.rt.zgloan.activity.creditCardActivity.CreditCardDetailsActivity;
+import com.rt.zgloan.bean.CreditCardBean;
 import com.rt.zgloan.bean.LabelListBean;
+import com.rt.zgloan.util.AbImageUtil;
+import com.rt.zgloan.util.AbStringUtil;
 
 import java.util.List;
 
@@ -28,7 +33,8 @@ import butterknife.ButterKnife;
 public class LabelLoansAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
     private List<LabelListBean.LabelBean> list;
-
+    public static final int TYPE_TYPE1 = 2;//借款热门推荐
+    public static final int TYPE_TYPE2 = 3;//信用卡热门推荐
 
     public LabelLoansAdapter(Context mContext, List<LabelListBean.LabelBean> list) {
         this.mContext = mContext;
@@ -49,16 +55,17 @@ public class LabelLoansAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     private void bindType(HolderType holder, int position) {
-
+        LabelListBean.LabelBean labelBean = list.get(position);
         holder.item_recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        holder.mTvLabel.setText(list.get(position).getName() + "");
-        Glide.with(mContext)
-                .load(list.get(position).getImage_url())
-                .placeholder(R.drawable.image_default)
-                .error(R.drawable.image_default)
-                .centerCrop()
-                .into(holder.mIvLabel);//设置图片
-        holder.item_recyclerView.setAdapter(new ItemRecycleAdapter(list.get(position).getLoans()));
+        holder.mTvLabel.setText(labelBean.getName() + "");
+        AbImageUtil.glideImageList(labelBean.getImage_url(), holder.mIvLabel, R.drawable.image_default, R.drawable.image_default);
+        if (TYPE_TYPE1 == labelBean.getId()) {
+            holder.item_recyclerView.setAdapter(new ItemRecycleAdapter(labelBean.getId(), labelBean.getLoans()));
+        } else if (TYPE_TYPE2 == labelBean.getId()) {
+            holder.item_recyclerView.setAdapter(new ItemRecycleAdapter(labelBean.getId(), labelBean.getCards()));
+        } else {
+            holder.item_recyclerView.setAdapter(new ItemRecycleAdapter(labelBean.getId(), labelBean.getLoans()));
+        }
     }
 
     @Override
@@ -82,45 +89,60 @@ public class LabelLoansAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public class ItemRecycleAdapter extends RecyclerView.Adapter {
-        private List<LabelListBean.LabelBean.LabelLoansBean> data;
+        private int type;
+        private List data;
 
-        public ItemRecycleAdapter(List<LabelListBean.LabelBean.LabelLoansBean> data) {
+        public ItemRecycleAdapter(int type, List data) {
             this.data = data;
+            this.type = type;
         }
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ItemHolderType(LayoutInflater.from(mContext).inflate(R.layout.item_product_introduce, parent, false));
+            if (TYPE_TYPE1 == type) {
+                return new ItemHolderType(LayoutInflater.from(mContext).inflate(R.layout.item_product_introduce, parent, false));
+            } else if (TYPE_TYPE2 == type) {
+                return new ItemHolderType1(LayoutInflater.from(mContext).inflate(R.layout.item_credit_card_home, parent, false));
+            } else {
+                return new ItemHolderType(LayoutInflater.from(mContext).inflate(R.layout.item_product_introduce, parent, false));
+            }
         }
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             if (holder instanceof ItemHolderType) {
                 bindType((ItemHolderType) holder, position);
+            } else if (holder instanceof ItemHolderType1) {
+                bindType1((ItemHolderType1) holder, position);
             }
         }
 
         private void bindType(ItemHolderType holder, final int position) {
-            if (data.get(position).getRate_type() == 1) {
+            final LabelListBean.LabelBean.LabelLoansBean info = (LabelListBean.LabelBean.LabelLoansBean) data.get(position);
+            if (info.getRate_type() == 1) {
                 holder.mTvDayRate.setText("日利率");
                 holder.mTvLoanDay.setText("借款期限(天):");
-            } else if (data.get(position).getRate_type() == 2) {
+            } else if (info.getRate_type() == 2) {
                 holder.mTvDayRate.setText("月利率");
                 holder.mTvLoanDay.setText("借款期限(月):");
             } else {
                 holder.mTvDayRate.setText("年利率");
                 holder.mTvLoanDay.setText("借款期限(年):");
             }
-            holder.mTvProductTitle.setText(data.get(position).getName() + "");
-            holder.mTvMoneySml.setText(data.get(position).getMoney_sml() + "");
-            holder.mTvMoneyBig.setText(data.get(position).getMoney_big() + "");
-            holder.mTvDeadlineSml.setText(data.get(position).getDeadline_sml() + "");
-            holder.mTvDeadlineBig.setText(data.get(position).getDeadline_big() + "");
-            holder.mTvRate.setText(data.get(position).getRate() + "%");
-            holder.mTvPropagandaLanguage.setText(Html.fromHtml(data.get(position).getPropaganda_language()));
+            holder.mTvProductTitle.setText(info.getName() + "");
+            holder.mTvMoneySml.setText(info.getMoney_sml() + "");
+            holder.mTvMoneyBig.setText(info.getMoney_big() + "");
+            holder.mTvDeadlineSml.setText(info.getDeadline_sml() + "");
+            holder.mTvDeadlineBig.setText(info.getDeadline_big() + "");
+            holder.mTvRate.setText(info.getRate());
+            if (!AbStringUtil.isEmpty(info.getPropaganda_language())) {
+                holder.mTvPropagandaLanguage.setText(Html.fromHtml(info.getPropaganda_language()));
+            } else {
+                holder.mTvPropagandaLanguage.setText("");
+            }
 
             Glide.with(mContext)
-                    .load(data.get(position).getImage_url())
+                    .load(info.getImage_url())
                     .placeholder(R.drawable.image_default)
                     .error(R.drawable.image_default)
                     .centerCrop()
@@ -129,14 +151,51 @@ public class LabelLoansAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                     ToastUtil.showToast("clickSuccess");
-                    LoanDetailActivity.startActivity(mContext, data.get(position).getId());
+                    LoanDetailActivity.startActivity(mContext, info.getId());
+                }
+            });
+        }
+
+        private void bindType1(ItemHolderType1 holder, final int position) {
+            final CreditCardBean info = (CreditCardBean) data.get(position);
+            holder.tv_title.setText(info.getName());
+            holder.tv_loan_number.setText(info.getApplicants() + "人");
+            holder.tv_des.setText(info.getSummary());
+            holder.tv_pointsOne.setText(info.getPointsOne());
+            holder.tv_pointsTow.setText(info.getPointsTwo());
+            if (AbStringUtil.isEmpty(info.getLabelsOne())) {
+                holder.tv_labels1.setVisibility(View.GONE);
+            } else {
+                holder.tv_labels1.setVisibility(View.VISIBLE);
+                holder.tv_labels1.setText(info.getLabelsOne());
+            }
+            if (AbStringUtil.isEmpty(info.getLabelsTow())) {
+                holder.tv_labels2.setVisibility(View.GONE);
+            } else {
+                holder.tv_labels1.setVisibility(View.VISIBLE);
+                holder.tv_labels2.setText(info.getLabelsTow());
+            }
+            AbImageUtil.glideImageList(info.getImg(), holder.ivImg, R.mipmap.credit_card_default);
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if ("0".equals(info.getShowType())) {
+                        CreditCardDetailsActivity.startActivity(mContext, info.getId() + "");
+                    } else if ("1".equals(info.getShowType())) {
+                        if (!AbStringUtil.isEmpty(info.getLinkUrl())) {
+                            WebViewActivity.startActivity(mContext,info.getLinkUrl());
+                        }
+                    }
                 }
             });
         }
 
         @Override
         public int getItemCount() {
+            if (data == null) {
+                return 0;
+            }
             return data.size();
         }
 
@@ -162,10 +221,8 @@ public class LabelLoansAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             TextView mTvDayRate;
             @BindView(R.id.tv_loan_day)
             TextView mTvLoanDay;
-
             LinearLayout mLlProductIntroduce;
             View itemView;
-
 
             public ItemHolderType(View itemView) {
                 super(itemView);
@@ -174,5 +231,26 @@ public class LabelLoansAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 this.mLlProductIntroduce = (LinearLayout) itemView.findViewById(R.id.Ll_product_introduce);
             }
         }
+
+        class ItemHolderType1 extends RecyclerView.ViewHolder {
+            TextView tv_title, tv_loan_number, tv_des, tv_pointsOne, tv_pointsTow, tv_labels1, tv_labels2;
+            ImageView ivImg;
+            View itemView;
+
+            public ItemHolderType1(View itemView) {
+                super(itemView);
+                this.itemView = itemView;
+                this.ivImg = (ImageView) itemView.findViewById(R.id.iv_img);
+                this.tv_title = (TextView) itemView.findViewById(R.id.tv_title);
+                this.tv_loan_number = (TextView) itemView.findViewById(R.id.tv_loan_number);
+                this.tv_des = (TextView) itemView.findViewById(R.id.tv_des);
+                this.tv_pointsOne = (TextView) itemView.findViewById(R.id.tv_pointsOne);
+                this.tv_pointsTow = (TextView) itemView.findViewById(R.id.tv_pointsTow);
+                this.tv_labels1 = (TextView) itemView.findViewById(R.id.tv_labels1);
+                this.tv_labels2 = (TextView) itemView.findViewById(R.id.tv_labels2);
+            }
+        }
     }
+
+
 }

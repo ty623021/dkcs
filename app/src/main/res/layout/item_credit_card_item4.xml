@@ -1,37 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/all_layout_backgroud"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/iv_img"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/margin_20"
-        android:layout_marginRight="@dimen/margin_20"
-        android:layout_marginTop="@dimen/margin_10"
-        android:src="@mipmap/icon_default" />
-
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/margin_12"
+        android:layout_marginRight="@dimen/margin_5"
         android:layout_marginTop="@dimen/margin_5"
-        android:text="交通银行"
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/size_sp_small" />
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/margin_10"
-        android:layout_marginTop="@dimen/dp_2"
-        android:text="快速审批精选"
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/size_sp_small" />
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/all_layout_backgroud"
+            app:cardCornerRadius="@dimen/margin_5"
+            app:cardElevation="@dimen/margin_5"
+            app:cardPreventCornerOverlap="false">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/all_layout_backgroud"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_img"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/icon_default" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/margin_5"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:text="交通银行"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/size_sp_small" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_10"
+            android:text="快速审批精选"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/size_sp_micro" />
+    </LinearLayout>
+
 
 </LinearLayout>

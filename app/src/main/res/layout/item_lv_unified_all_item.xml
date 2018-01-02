@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/all_layout_backgroud"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/unified_all_tv_flag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_background"
+        android:paddingBottom="5dp"
+        android:paddingLeft="@dimen/margin_left_right_12"
+        android:paddingTop="10dp"
+        android:text="A"
+        android:textColor="@color/text_color"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/unified_all_tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:paddingLeft="@dimen/margin_25"
+        android:text="站点名称"
+        android:textColor="@color/text_color"
+        android:textSize="16sp" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/margin_25"
+        android:background="@color/gray_line_default"></View>
+
+</LinearLayout>

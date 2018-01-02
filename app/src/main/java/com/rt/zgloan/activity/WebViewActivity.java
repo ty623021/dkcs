@@ -1,5 +1,6 @@
 package com.rt.zgloan.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -9,6 +10,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 import android.webkit.DownloadListener;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
@@ -19,10 +22,12 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.rt.zgloan.R;
+import com.rt.zgloan.app.App;
 import com.rt.zgloan.base.BaseActivity;
 import com.rt.zgloan.bean.BaseResponse;
 import com.rt.zgloan.util.AppUtil;
-import com.rt.zgloan.util.LogUtils;
+
+import java.util.Map;
 
 import butterknife.BindView;
 import rx.Observable;
@@ -68,6 +73,9 @@ public class WebViewActivity extends BaseActivity {
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);
         }
+
+        mTitle.setTitle(App.getAPPName());
+
         Bundle bundle = getIntent().getExtras();
         mUrl = bundle.getString("url");
         mWebView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
@@ -93,7 +101,35 @@ public class WebViewActivity extends BaseActivity {
         mWebView.setWebViewClient(new MyWebViewClient());
         mWebView.setWebChromeClient(new MyWebChromeClient());
         mWebView.loadUrl(mUrl);
+    }
 
+    /**
+     * 将cookie同步到WebView
+     *
+     * @param url WebView要加载的url
+     * @param map 要同步的cookie
+     * @return true 同步cookie成功，false同步cookie失败
+     * @Author JPH
+     */
+    public boolean syncCookie(String url, Map<String, String> map) {
+        String newCookie;
+        try {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                CookieSyncManager.createInstance(mContext);
+            }
+            CookieManager cookieManager = CookieManager.getInstance();
+            cookieManager.setAcceptCookie(true);
+            cookieManager.removeSessionCookie();//移除
+            for (String key : map.keySet()) {
+                String value = key + "=" + map.get(key);
+                cookieManager.setCookie(url, value);
+            }
+            newCookie = cookieManager.getCookie(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+            newCookie = "";
+        }
+        return TextUtils.isEmpty(newCookie) ? false : true;
     }
 
     private class MyWebViewDownLoadListener implements DownloadListener {
@@ -112,7 +148,6 @@ public class WebViewActivity extends BaseActivity {
 
         @Override
         public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-            //handler.cancel(); // Android默认的处理方式
             handler.proceed();  // 接受所有网站的证书  解决https拦截问题
         }
 
@@ -126,7 +161,6 @@ public class WebViewActivity extends BaseActivity {
         public void onPageFinished(final WebView view, String url) {
             super.onPageFinished(view, url);
             mUrl = url;
-            LogUtils.loge(mUrl);
             mProgressBar.setVisibility(View.GONE);
             if (view.canGoBack()) { //如果当前不是初始页面则显示关闭按钮
                 mTitle.showClose(new View.OnClickListener() {
@@ -138,8 +172,6 @@ public class WebViewActivity extends BaseActivity {
             } else {
                 mTitle.hintClose();
             }
-
-
         }
     }
 
@@ -205,5 +237,13 @@ public class WebViewActivity extends BaseActivity {
     @Override
     public void recordSuccess(Object o) {
 
+    }
+
+    public static void startActivity(Context context, String mUrl) {
+        Bundle bundle = new Bundle();
+        bundle.putString("url", mUrl);
+        Intent intent = new Intent(context, WebViewActivity.class);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
     }
 }

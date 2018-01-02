@@ -15,32 +15,25 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/iv_label"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginBottom="6dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="6dp"
-            android:src="@mipmap/icon_fire" />
-
         <TextView
             android:id="@+id/tv_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="15dp"
             android:text="热门推荐"
             android:textColor="@color/color_575656"
-            android:textSize="14sp" />
+            android:textSize="@dimen/size_sp_medium" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/global_line_color"></View>
+        android:layout_marginLeft="12dp"
+        android:background="@color/global_line_color"
+        android:visibility="gone"></View>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/item_recyclerView"

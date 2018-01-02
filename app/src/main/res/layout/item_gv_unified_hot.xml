@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@drawable/selector_bg_gray_c4_border"
+    android:gravity="center"
+    android:minHeight="40dp">
+
+    <ImageView
+        android:id="@+id/unified_hot_iv_local"
+        android:layout_width="18sp"
+        android:layout_height="18sp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_10"
+        android:gravity="center"
+        android:src="@mipmap/unified_icon_local"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/unified_hot_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/margin_5"
+        android:layout_toRightOf="@+id/unified_hot_iv_local"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/text_color"
+        android:textSize="14sp"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/unified_hot_iv_arrow"
+        android:layout_width="18sp"
+        android:layout_height="18sp"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/icon_arrow_down_gray"
+        android:visibility="gone" />
+
+</RelativeLayout>

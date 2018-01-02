@@ -1,30 +1,23 @@
 package com.rt.zgloan.fragment;
 
-import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.orhanobut.logger.Logger;
 import com.rt.zgloan.R;
 import com.rt.zgloan.activity.MainActivity;
 import com.rt.zgloan.activity.WebViewActivity;
-import com.rt.zgloan.adapter.FragmentHomeListAdapter;
 import com.rt.zgloan.adapter.LabelLoansAdapter;
 import com.rt.zgloan.adapter.ProductCategoryAdapter;
 import com.rt.zgloan.base.BaseFragment;
-import com.rt.zgloan.bean.ArticleInfo;
-import com.rt.zgloan.bean.BannerItemInfo;
 import com.rt.zgloan.bean.BannerListBean;
 import com.rt.zgloan.bean.BaseResponse;
 import com.rt.zgloan.bean.CommentListBean;
-import com.rt.zgloan.bean.HomeListInfo;
 import com.rt.zgloan.bean.LabelListBean;
-import com.rt.zgloan.bean.LabelLoansListBean;
 import com.rt.zgloan.bean.LoanClassListBean;
 import com.rt.zgloan.http.HttpManager;
 import com.rt.zgloan.http.HttpSubscriber;
@@ -37,7 +30,6 @@ import com.rt.zgloan.util.AppUtil;
 import com.rt.zgloan.util.GlideImageLoader;
 import com.rt.zgloan.util.SpUtil;
 import com.rt.zgloan.util.ToastUtil;
-import com.rt.zgloan.viewPager.CycleViewPager;
 import com.rt.zgloan.weight.LoadingFragment;
 import com.rt.zgloan.weight.RollView;
 import com.youth.banner.Banner;
@@ -46,9 +38,7 @@ import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Timer;
 
 import butterknife.BindView;
 import rx.Observable;
@@ -59,7 +49,6 @@ import rx.Observable;
  */
 
 public class FragmentFirstPage extends BaseFragment<BannerListBean> implements AbPullToRefreshView.OnHeaderRefreshListener {
-
 
     @BindView(R.id.pull)
     AbPullToRefreshView pull;
@@ -74,30 +63,11 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
     @BindView(R.id.banner_guide_content)
     Banner bannerGuideContent;//banner图
 
-    private List<BannerItemInfo> banner_list;
-    private List<ArticleInfo> article_list;
-    private CycleViewPager cycleViewPager;
-    // 轮播圆点
-    private List<ImageView> views = new ArrayList<>();
     private FragmentActivity activity;
-    //公告当前位置
-    private int position = 1;
-    private Timer timer;
-    private boolean isTimer = true;
-    //公告轮播间隔时间
-    private static final int LONGTIME = 5000;
-    //公告轮播条数
-    private static final int NOTICE_NUM = 3;
-    private FragmentHomeListAdapter adapter;
-    private List<HomeListInfo> home_list = new ArrayList<>();
     private List<BannerListBean.BannerBean> mActivityListBean = new ArrayList<>();
-    private List<LoanClassListBean.LoanClassBean> mListLoanClass;
     private List<LabelListBean.LabelBean> mListLabel = new ArrayList<>();
-    private List<LabelLoansListBean> mListLabelLoansList;
-
     private ProductCategoryAdapter mProductCategoryAdapter;//产品分类
     private LabelLoansAdapter mLabelLoansAdapter;//标签和对应产品
-
 
 
     @Override
@@ -107,8 +77,7 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
 
     @Override
     public Observable<BaseResponse<BannerListBean>> initObservable() {
-
-        return HttpManager.getApi().banner(new HashMap<String, String>());
+        return null;
     }
 
     @Override
@@ -119,7 +88,7 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
 
     @Override
     public boolean isFirstLoad() {
-        return true;
+        return false;
     }
 
     @Override
@@ -131,11 +100,10 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
         }
         mTitle.setTitle(false, "汇生财");
         activity = getActivity();
-        pull.clearFooter();
-
 
         AbRefreshUtil.initRefresh(pull, this);
 
+        getBannerList();
         getMessageList();
         getLoanClassList();
         getLabelList();
@@ -164,78 +132,46 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
 
     @Override
     public void recordSuccess(final BannerListBean bannerListBean) {
-        if (bannerListBean.getBanner() != null && bannerListBean.getBanner().size() > 0) {
-            bannerGuideContent.setVisibility(View.VISIBLE);
-            mActivityListBean = bannerListBean.getBanner();
-            //设置banner样式
-            bannerGuideContent.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);//设置不显示指示器   BannerConfig.CIRCLE_INDICATOR//圆点指示器
-            //设置图片加载器
-            bannerGuideContent.setImageLoader(new GlideImageLoader(R.mipmap.banner));
-            //设置图片集合
-            bannerGuideContent.setImages(mActivityListBean);
-            //设置banner动画效果
-            bannerGuideContent.setBannerAnimation(Transformer.DepthPage);
-            //设置自动轮播，默认为true
-            bannerGuideContent.isAutoPlay(true);
-            //设置轮播时间
-            bannerGuideContent.setDelayTime(5000);
-            //设置指示器位置（当banner模式中有指示器时）
-            bannerGuideContent.setIndicatorGravity(BannerConfig.CENTER);//修改小圆点位置
-            bannerGuideContent.setOnBannerListener(new OnBannerListener() {
-                @Override
-                public void OnBannerClick(int position) {
-                    BannerListBean.BannerBean bannerBean = mActivityListBean.get(position);
-                    if (!AbStringUtil.isEmpty(bannerBean.getSlide_url())) {
-                        Intent intent = new Intent(mActivity, WebViewActivity.class);
-                        intent.putExtra("url", bannerBean.getSlide_url());
-                        startActivity(intent);
-                    }
-                }
-            });
-            //banner设置方法全部调用完毕时最后调用
-            bannerGuideContent.start();
-        } else {
-            bannerGuideContent.setVisibility(View.GONE);
-            Logger.e("banner--->>>");
-        }
+
     }
 
 
     @Override
     public void onHeaderRefresh(AbPullToRefreshView view) {
+        getBannerList();
+        getMessageList();
+        getLoanClassList();
+        getLabelList();
+    }
+
+    private void getBannerList() {
         mPresenter.toSubscribe(
                 HttpManager.getApi().banner(mapParams), new HttpSubscriber<BannerListBean>() {
                     @Override
                     protected void _onStart() {
-                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在刷新...");
+
                     }
 
                     @Override
                     protected void _onNext(BannerListBean bannerListBean) {
-                        getMessageList();
-                        getLoanClassList();
-                        getLabelList();
-                        pull.onHeaderRefreshFinish();
+                        setBanner(bannerListBean);
                     }
 
                     @Override
                     protected void _onError(String message) {
-                        ToastUtil.showToast(message);
-                        pull.onHeaderRefreshFinish();
+
                     }
 
                     @Override
                     protected void _onCompleted() {
-                        LoadingFragment.getInstends().dismiss();
-                        pull.onHeaderRefreshFinish();
                     }
                 }
         );
+
     }
 
     //获取消息内容
     private void getMessageList() {
-        Logger.e("SUCCESS");
         mPresenter.toSubscribe(
                 HttpManager.getApi().getMessageList(mapParams), new HttpSubscriber<CommentListBean>() {
                     @Override
@@ -244,7 +180,6 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
 
                     @Override
                     protected void _onNext(CommentListBean commentListBean) {
-                        Logger.e("commentListBean.getCommentBeans().size()=" + commentListBean.getCommentBeans().size());
                         if (commentListBean != null) {
                             List<String> strings = new ArrayList<>();
                             for (int i = 0; i < commentListBean.getCommentBeans().size(); i++) {
@@ -257,8 +192,6 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
 
                     @Override
                     protected void _onError(String message) {
-                        ToastUtil.showToast(message);
-
                     }
 
                     @Override
@@ -271,7 +204,6 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
 
     //获取产品分类
     private void getLoanClassList() {
-        Logger.e("SUCCESS");
         mPresenter.toSubscribe(
                 HttpManager.getApi().getLoanClassList(mapParams), new HttpSubscriber<LoanClassListBean>() {
                     @Override
@@ -285,8 +217,6 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
 
                     @Override
                     protected void _onError(String message) {
-                        ToastUtil.showToast(message);
-
                     }
 
                     @Override
@@ -303,23 +233,30 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
                 HttpManager.getApi().getLabelList(mapParams), new HttpSubscriber<LabelListBean>() {
                     @Override
                     protected void _onStart() {
-
+                        if (progressTitle != null)
+                            LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), progressTitle);
                     }
 
                     @Override
                     protected void _onNext(LabelListBean labelListBean) {
                         mListLabel = labelListBean.getLabel();
                         setProduct(mListLabel);
+                        pull.onHeaderRefreshFinish();
+                        progressTitle = null;
+                        LoadingFragment.getInstends().dismiss();
                     }
 
                     @Override
                     protected void _onError(String message) {
                         ToastUtil.showToast(message);
+                        pull.onHeaderRefreshFinish();
+                        LoadingFragment.getInstends().dismiss();
                     }
 
                     @Override
                     protected void _onCompleted() {
-
+                        pull.onHeaderRefreshFinish();
+                        LoadingFragment.getInstends().dismiss();
                     }
                 }
         );
@@ -357,18 +294,51 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
             recycleView.setLayoutManager(layoutManager);
             recycleView.setNestedScrollingEnabled(false);
             recycleView.setFocusable(false);
-
             mLabelLoansAdapter = new LabelLoansAdapter(mContext, labelBeans);
             recycleView.setAdapter(mLabelLoansAdapter);
             mLabelLoansAdapter.notifyDataSetChanged();
-
         }
     }
 
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-
+    /**
+     * 设置轮播banner
+     *
+     * @param bannerListBean
+     */
+    private void setBanner(final BannerListBean bannerListBean) {
+        if (bannerListBean.getBanner() != null && bannerListBean.getBanner().size() > 0) {
+            bannerGuideContent.setVisibility(View.VISIBLE);
+            mActivityListBean = bannerListBean.getBanner();
+            //设置banner样式
+            bannerGuideContent.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);//设置不显示指示器   BannerConfig.CIRCLE_INDICATOR//圆点指示器
+            //设置图片加载器
+            bannerGuideContent.setImageLoader(new GlideImageLoader(R.mipmap.banner));
+            //设置图片集合
+            bannerGuideContent.setImages(mActivityListBean);
+            //设置banner动画效果
+            bannerGuideContent.setBannerAnimation(Transformer.DepthPage);
+            //设置自动轮播，默认为true
+            bannerGuideContent.isAutoPlay(true);
+            //设置轮播时间
+            bannerGuideContent.setDelayTime(5000);
+            //设置指示器位置（当banner模式中有指示器时）
+            bannerGuideContent.setIndicatorGravity(BannerConfig.CENTER);//修改小圆点位置
+            bannerGuideContent.setOnBannerListener(new OnBannerListener() {
+                @Override
+                public void OnBannerClick(int position) {
+                    BannerListBean.BannerBean bannerBean = mActivityListBean.get(position);
+                    if (!AbStringUtil.isEmpty(bannerBean.getSlide_url())) {
+                        WebViewActivity.startActivity(mActivity,bannerBean.getSlide_url());
+                    }
+                }
+            });
+            //banner设置方法全部调用完毕时最后调用
+            bannerGuideContent.start();
+        } else {
+            bannerGuideContent.setVisibility(View.GONE);
+            Logger.e("banner--->>>");
+        }
     }
+
 }
 

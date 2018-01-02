@@ -83,7 +83,6 @@
         </activity>
 
 
-
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="59af58d51c5dd036c2000d75" />
@@ -242,6 +241,22 @@
         <!--忘记密码成功页面-->
         <activity
             android:name=".activity.FrogotPasswordSuccessActivity"
+            android:screenOrientation="portrait" />
+        <!--选择城市-->
+        <activity
+            android:name=".activity.cityActivity.UnifiedActivity"
+            android:screenOrientation="portrait" />
+        <!--银行列表-->
+        <activity
+            android:name=".activity.creditCardActivity.BankListActivity"
+            android:screenOrientation="portrait" />
+        <!--信用卡列表-->
+        <activity
+            android:name=".activity.creditCardActivity.CreditCardListActivity"
+            android:screenOrientation="portrait" />
+        <!--信用卡详情-->
+        <activity
+            android:name=".activity.creditCardActivity.CreditCardDetailsActivity"
             android:screenOrientation="portrait" />
     </application>
 

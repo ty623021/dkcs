@@ -1,11 +1,16 @@
 package com.rt.zgloan.http;
 
 
+import com.rt.zgloan.activity.cityActivity.CityBean;
 import com.rt.zgloan.bean.AboutMeBean;
+import com.rt.zgloan.bean.BankBean;
 import com.rt.zgloan.bean.BannerListBean;
 import com.rt.zgloan.bean.BaseResponse;
 import com.rt.zgloan.bean.CitiesBean;
 import com.rt.zgloan.bean.CommentListBean;
+import com.rt.zgloan.bean.CreditCardDetailsBean;
+import com.rt.zgloan.bean.CreditCardHomeBean;
+import com.rt.zgloan.bean.CreditCardListBean;
 import com.rt.zgloan.bean.DataBean;
 import com.rt.zgloan.bean.GetCityInfo;
 import com.rt.zgloan.bean.GetProvinceInfo;
@@ -259,5 +264,39 @@ public interface HttpApi {
     @POST("index/aboutMe")
     Observable<BaseResponse<AboutMeBean>> aboutMe(@FieldMap Map<String, String> paramsMap);
 
+    //获取信用卡首页数据
+    @FormUrlEncoded
+    @POST("creditcards/initData")
+    Observable<BaseResponse<CreditCardHomeBean>> getCreditCardHome(@FieldMap Map<String, String> paramsMap);
+
+    //获取银行列表
+    @FormUrlEncoded
+    @POST("bank/getBanks")
+    Observable<BaseResponse<BankBean>> getBankCardList(@FieldMap Map<String, String> paramsMap);
+
+    //获取城市列表
+    @FormUrlEncoded
+    @POST("city/getCity")
+    Observable<BaseResponse<CityBean>> getCityList(@FieldMap Map<String, String> paramsMap);
+
+    //获取信用卡详情
+    @FormUrlEncoded
+    @POST("creditcards/detail")
+    Observable<BaseResponse<CreditCardDetailsBean>> getCreditCardDetails(@FieldMap Map<String, String> paramsMap);
+
+    //按用途获取行用卡
+    @FormUrlEncoded
+    @POST("creditcards/getCreditCardsByPurpose")
+    Observable<BaseResponse<CreditCardListBean>> getCreditCardsByPurpose(@FieldMap Map<String, String> paramsMap);
+
+    //按银行获取行用卡
+    @FormUrlEncoded
+    @POST("creditcards/getCreditCardsByBank")
+    Observable<BaseResponse<CreditCardListBean>> getCreditCardsByBank(@FieldMap Map<String, String> paramsMap);
+
+    //按主题获取行用卡
+    @FormUrlEncoded
+    @POST("creditcards/getCreditCardsBySubject")
+    Observable<BaseResponse<CreditCardListBean>> getCreditCardsBySubject(@FieldMap Map<String, String> paramsMap);
 
 }

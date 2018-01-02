@@ -27,6 +27,9 @@ public class SpUtil {
     public static final String PROVINCE = "province";//省份名称
     public static final String PROVINCE_ID = "province_id";//省份id
 
+    public static final String CITY_NAME = "city_name";//城市名称
+    public static final String CITY_ID = "city_id";//城市id
+
 
     private static AppPreferences appPreferences;
 

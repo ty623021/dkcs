@@ -3,6 +3,7 @@ package com.rt.zgloan.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
@@ -60,6 +61,11 @@ public class MainActivity extends BaseActivity {
     private FragmentLoan fragmentLoan;
     private FragmentMy fragmentMy;
     private FragmentCreditCard fragmentCreditCard;
+    private String curFragmentTag;//当前选中的fragment
+    private static final String FRAGMENT_TAG_FIRSTPAGE = "firstPage";
+    private static final String FRAGMENT_TAG_LOAN = "loan";
+    private static final String FRAGMENT_TAG_CREDITCARD = "creditCard";
+    private static final String FRAGMENT_TAG_MY = "my";
 
     @Override
     public int getLayoutId() {
@@ -108,40 +114,44 @@ public class MainActivity extends BaseActivity {
             case 0:
                 if (fragmentFirstPage == null) {
                     fragmentFirstPage = new FragmentFirstPage();
-                    transaction.add(R.id.container, fragmentFirstPage);
+                    transaction.add(R.id.container, fragmentFirstPage, FRAGMENT_TAG_FIRSTPAGE);
                 } else {
                     transaction.show(fragmentFirstPage);
                 }
+                curFragmentTag = FRAGMENT_TAG_FIRSTPAGE;
                 firstPageTextView.setSelected(true);
                 firstPageImageView.setSelected(true);
                 break;
             case 1:
                 if (fragmentLoan == null) {
                     fragmentLoan = new FragmentLoan();
-                    transaction.add(R.id.container, fragmentLoan);
+                    transaction.add(R.id.container, fragmentLoan, FRAGMENT_TAG_LOAN);
                 } else {
                     transaction.show(fragmentLoan);
                 }
+                curFragmentTag = FRAGMENT_TAG_LOAN;
                 loanTextView.setSelected(true);
                 loanImageView.setSelected(true);
                 break;
             case 2:
                 if (fragmentCreditCard == null) {
                     fragmentCreditCard = new FragmentCreditCard();
-                    transaction.add(R.id.container, fragmentCreditCard);
+                    transaction.add(R.id.container, fragmentCreditCard, FRAGMENT_TAG_CREDITCARD);
                 } else {
                     transaction.show(fragmentCreditCard);
                 }
+                curFragmentTag = FRAGMENT_TAG_CREDITCARD;
                 tabCreditCardText.setSelected(true);
                 tabCreditCardIcon.setSelected(true);
                 break;
             case 3:
                 if (fragmentMy == null) {
                     fragmentMy = new FragmentMy();
-                    transaction.add(R.id.container, fragmentMy);
+                    transaction.add(R.id.container, fragmentMy, FRAGMENT_TAG_MY);
                 } else {
                     transaction.show(fragmentMy);
                 }
+                curFragmentTag = FRAGMENT_TAG_MY;
                 myTextView.setSelected(true);
                 myImageView.setSelected(true);
                 break;
@@ -294,5 +304,16 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            Fragment f = fragmentManager.findFragmentByTag(curFragmentTag);
+            f.onActivityResult(requestCode, resultCode, data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

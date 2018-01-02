@@ -1,0 +1,113 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/all_layout_backgroud"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/layout_height_top"
+        layout="@layout/layout_height_top"></include>
+
+    <RelativeLayout
+        android:id="@+id/select_city_rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/select_city_ic_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@null"
+            android:padding="12.5dp"
+            android:src="@mipmap/city_icon_back" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="25dp"
+            android:padding="7dp">
+
+            <EditText
+                android:id="@+id/select_city_et_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_rec_bg_gray_c8_border"
+                android:drawableLeft="@mipmap/search_icon"
+                android:drawablePadding="@dimen/margin_5"
+                android:gravity="center_vertical"
+                android:hint="城市名/拼音"
+                android:paddingLeft="25dp"
+                android:paddingRight="40dp"
+                android:singleLine="true"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_tip_color"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/select_city_ic_clean"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:contentDescription="@null"
+                android:padding="3dp"
+                android:src="@mipmap/icon_clear"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray_line_default" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/select_city_lv_city_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null" />
+
+        <ListView
+            android:id="@+id/select_city_lv_search_result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:visibility="gone" />
+
+        <ListView
+            android:id="@+id/select_city_lv_flag"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent1"
+            android:divider="@color/transparent1"
+            android:dividerHeight="1dp">
+
+        </ListView>
+
+        <TextView
+            android:id="@+id/select_city_tv_search_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            android:paddingTop="50dp"
+            android:text="没有搜索结果~"
+            android:textColor="@color/text_tip_color"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</LinearLayout>

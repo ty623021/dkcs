@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:minHeight="40dp"
+    android:gravity="center"
+    android:background="@drawable/selector_bg_gray_c4_border">
+
+    <ImageView
+        android:id="@+id/unified_history_iv_clear"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:padding="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:src="@mipmap/icon_clear"/>
+
+    <TextView
+        android:layout_toLeftOf="@+id/unified_history_iv_clear"
+        android:id="@+id/unified_history_tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="visible"
+        android:lines="1"
+        android:ellipsize="end"
+        android:textSize="14sp"
+        android:textColor="@color/text_color"/>
+
+</RelativeLayout>

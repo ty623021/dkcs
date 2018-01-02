@@ -152,9 +152,7 @@ public class RegisterActivity extends BaseActivity {
 //                showGraphicalCodeDialog();
                 break;
             case R.id.Ll_register_agreement:
-                Bundle bundle = new Bundle();
-                bundle.putString("url", Constant.REGISTER_AGREEMENT);
-                mActivity.startActivity(WebViewActivity.class, bundle);
+                WebViewActivity.startActivity(mContext, Constant.REGISTER_AGREEMENT);
                 break;
         }
     }

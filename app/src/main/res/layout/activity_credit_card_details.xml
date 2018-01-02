@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/layout_height_top"
+            layout="@layout/layout_height_top"
+            android:visibility="visible"></include>
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/layout_toolbar" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:background="@drawable/all_layout_backgroud"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/credit_card_details" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5"
+                android:background="@drawable/all_layout_backgroud"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_12"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:text="标题"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/size_sp_small" />
+
+                <TextView
+                    android:id="@+id/tv_summary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_12"
+                    android:layout_marginTop="6dp"
+                    android:text="年轻人的黑卡"
+                    android:textColor="@color/color_ff5454"
+                    android:textSize="@dimen/size_sp_16" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/rel_loan_tag1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="@dimen/margin_15"
+                        android:background="@drawable/shape_yellow_label">
+
+                        <TextView
+                            android:id="@+id/tv_loan_tag1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="@dimen/margin_8"
+                            android:layout_marginRight="@dimen/margin_8"
+                            android:lines="1"
+                            android:text="信用卡"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_sp_10" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rel_loan_tag2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="@dimen/margin_15"
+                        android:background="@drawable/shape_green_label">
+
+                        <TextView
+                            android:id="@+id/tv_loan_tag2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="@dimen/margin_8"
+                            android:layout_marginRight="@dimen/margin_8"
+                            android:lines="1"
+                            android:text="信用卡"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_sp_10" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5"
+                android:background="@drawable/all_layout_backgroud"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_10"
+                    android:layout_marginLeft="@dimen/margin_12"
+                    android:layout_marginTop="@dimen/margin_12"
+                    android:drawableLeft="@mipmap/creddit_card_details_img1"
+                    android:drawablePadding="8dp"
+                    android:text="专享特权"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/size_sp_small" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_line"
+                    android:background="@color/gray_line_default" />
+
+                <TextView
+                    android:id="@+id/tv_specialPrivilege"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_20"
+                    android:layout_marginLeft="@dimen/margin_35"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:text="网络交易享双倍积分"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/size_sp_13" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5"
+                android:background="@drawable/all_layout_backgroud"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_10"
+                    android:layout_marginLeft="@dimen/margin_12"
+                    android:layout_marginTop="@dimen/margin_12"
+                    android:drawableLeft="@mipmap/creddit_card_details_img2"
+                    android:drawablePadding="8dp"
+                    android:text="基本信息"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/size_sp_small" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_line"
+                    android:background="@color/gray_line_default" />
+
+                <TextView
+                    android:id="@+id/tv_baseInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_20"
+                    android:layout_marginLeft="@dimen/margin_35"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:text="等级"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/size_sp_13" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5"
+                android:background="@drawable/all_layout_backgroud"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_10"
+                    android:layout_marginLeft="@dimen/margin_12"
+                    android:layout_marginTop="@dimen/margin_12"
+                    android:drawableLeft="@mipmap/creddit_card_details_img3"
+                    android:drawablePadding="8dp"
+                    android:text="费用"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/size_sp_small" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_line"
+                    android:background="@color/gray_line_default" />
+
+                <TextView
+                    android:id="@+id/tv_relateExpense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_20"
+                    android:layout_marginLeft="@dimen/margin_35"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:text="年费"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/size_sp_13" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_apply"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="立即申请"
+        android:textColor="@color/white"
+        android:textSize="@dimen/size_sp_16" />
+
+</LinearLayout>

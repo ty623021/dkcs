@@ -117,7 +117,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/selector_my" />
+                    android:background="@drawable/selector_credit_card" />
 
                 <TextView
                     android:id="@+id/tab_credit_card_text"
