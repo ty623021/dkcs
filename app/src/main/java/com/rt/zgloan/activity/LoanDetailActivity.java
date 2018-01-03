@@ -338,8 +338,12 @@ public class LoanDetailActivity extends BaseActivity<LoanDetailBean> implements 
         }
         if (loanDetailBean.getRate() != null) {
             rate = loanDetailBean.getRate();
-            mTvDayRateValue.setText(rate[0] + "%");
-            rateReality = rate[0];
+            if (rate[0].contains("%")) {
+                mTvDayRateValue.setText(rate[0]);
+            } else {
+                mTvDayRateValue.setText(rate[0] + "%");
+            }
+            rateReality = rate[0].replace("%", "");
         }
         if (!StringUtil.isBlank(amountSelector) && !StringUtil.isBlank(timeSelector)) {
             if (rateType.equals("3")) {
@@ -1027,7 +1031,7 @@ public class LoanDetailActivity extends BaseActivity<LoanDetailBean> implements 
                     @Override
                     protected void _onNext(Object o) {
                         if (!StringUtil.isBlank(urlLoan)) {
-                            WebViewActivity.startActivity(mContext,urlLoan);
+                            WebViewActivity.startActivity(mContext, urlLoan);
                         }
                     }
 

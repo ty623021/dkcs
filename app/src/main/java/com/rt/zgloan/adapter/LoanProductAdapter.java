@@ -9,11 +9,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.rt.zgloan.R;
 import com.rt.zgloan.activity.LoanDetailActivity;
 import com.rt.zgloan.bean.LoansListByLoanTypeBean;
 import com.rt.zgloan.recyclerview.BaseRecyclerAdapter;
+import com.rt.zgloan.util.AbImageUtil;
 import com.rt.zgloan.util.AbStringUtil;
 
 import butterknife.BindView;
@@ -58,16 +58,10 @@ public class LoanProductAdapter extends BaseRecyclerAdapter<LoanProductAdapter.V
         } else {
             holder.mTvPropagandaLanguage.setText("");
         }
-        Glide.with(mContext)
-                .load(data.get(position).getImage_url())
-                .placeholder(R.drawable.image_default)
-                .error(R.drawable.image_default)
-                .centerCrop()
-                .into(holder.mIvProductIntroduce);//设置图片
+        AbImageUtil.glideImageList(data.get(position).getImage_url(), holder.mIvProductIntroduce, R.drawable.image_default);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                     ToastUtil.showToast("clickSuccess");
                 LoanDetailActivity.startActivity(mContext, data.get(position).getId());
             }
         });

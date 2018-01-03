@@ -44,6 +44,7 @@ public class LoanDetailBean {
     private String[] deadline;
     private String[] rate;
     private String rate_type;
+    private List<MaterialBean> material;
 
     public String getRate_type() {
         return rate_type;
@@ -52,8 +53,6 @@ public class LoanDetailBean {
     public void setRate_type(String rate_type) {
         this.rate_type = rate_type;
     }
-
-    private List<MaterialBean> material;
 
     public String getId() {
         return id;
