@@ -14,6 +14,7 @@ import com.rt.zgloan.R;
 import com.rt.zgloan.activity.LoanDetailActivity;
 import com.rt.zgloan.bean.LoansListByLoanTypeBean;
 import com.rt.zgloan.recyclerview.BaseRecyclerAdapter;
+import com.rt.zgloan.util.AbStringUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,8 +53,11 @@ public class LoanProductAdapter extends BaseRecyclerAdapter<LoanProductAdapter.V
         holder.mTvDeadlineSml.setText(data.get(position).getDeadline_sml() + "");
         holder.mTvDeadlineBig.setText(data.get(position).getDeadline_big() + "");
         holder.mTvRate.setText(data.get(position).getRate());
-        holder.mTvPropagandaLanguage.setText(Html.fromHtml(data.get(position).getPropaganda_language()));
-
+        if (!AbStringUtil.isEmpty(data.get(position).getPropaganda_language())) {
+            holder.mTvPropagandaLanguage.setText(Html.fromHtml(data.get(position).getPropaganda_language()));
+        } else {
+            holder.mTvPropagandaLanguage.setText("");
+        }
         Glide.with(mContext)
                 .load(data.get(position).getImage_url())
                 .placeholder(R.drawable.image_default)

@@ -21,12 +21,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
+            <com.joooonho.SelectableRoundedImageView
                 android:id="@+id/iv_img"
                 android:layout_width="120dp"
                 android:layout_height="75dp"
                 android:scaleType="fitXY"
-                android:src="@mipmap/icon_default" />
+                android:src="@mipmap/icon_default"
+                app:sriv_left_top_corner_radius="@dimen/margin_10"
+                app:sriv_right_top_corner_radius="@dimen/margin_10" />
 
             <TextView
                 android:id="@+id/tv_name"

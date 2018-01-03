@@ -36,7 +36,7 @@
                     android:id="@+id/banner"
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
-                    android:background="@color/white"
+                    android:background="@color/gray_background"
                     app:indicator_drawable_selected="@drawable/point_focused"
                     app:indicator_drawable_unselected="@drawable/point_unfocused"
                     app:indicator_height="7dp"

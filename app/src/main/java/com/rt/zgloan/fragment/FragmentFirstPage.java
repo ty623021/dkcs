@@ -41,6 +41,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import rx.Observable;
 
 /**
@@ -49,6 +50,7 @@ import rx.Observable;
  */
 
 public class FragmentFirstPage extends BaseFragment<BannerListBean> implements AbPullToRefreshView.OnHeaderRefreshListener {
+
 
     @BindView(R.id.pull)
     AbPullToRefreshView pull;
@@ -62,6 +64,10 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
     RollView mRvContent;
     @BindView(R.id.banner_guide_content)
     Banner bannerGuideContent;//banner图
+    @BindView(R.id.loan_relative)
+    RelativeLayout loan_relative;
+    @BindView(R.id.credit_card_relative)
+    RelativeLayout credit_card_relative;
 
     private FragmentActivity activity;
     private List<BannerListBean.BannerBean> mActivityListBean = new ArrayList<>();
@@ -80,9 +86,19 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
         return null;
     }
 
+    @OnClick({R.id.loan_relative, R.id.credit_card_relative})
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()) {
+            case R.id.loan_relative:
+                ((MainActivity) activity).switchTab(1);
+                break;
+            case R.id.credit_card_relative:
+                ((MainActivity) activity).switchTab(2);
+                break;
+            default:
+                break;
+        }
     }
 
 
@@ -105,7 +121,7 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
 
         getBannerList();
         getMessageList();
-        getLoanClassList();
+//        getLoanClassList();//产品类别 隐藏
         getLabelList();
     }
 
@@ -140,7 +156,7 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
     public void onHeaderRefresh(AbPullToRefreshView view) {
         getBannerList();
         getMessageList();
-        getLoanClassList();
+//        getLoanClassList();
         getLabelList();
     }
 
@@ -328,7 +344,7 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
                 public void OnBannerClick(int position) {
                     BannerListBean.BannerBean bannerBean = mActivityListBean.get(position);
                     if (!AbStringUtil.isEmpty(bannerBean.getSlide_url())) {
-                        WebViewActivity.startActivity(mActivity,bannerBean.getSlide_url());
+                        WebViewActivity.startActivity(mActivity, bannerBean.getSlide_url());
                     }
                 }
             });

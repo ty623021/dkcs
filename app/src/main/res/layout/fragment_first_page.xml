@@ -43,7 +43,7 @@
                     android:id="@+id/banner_guide_content"
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
-                    android:background="@color/white"
+                    android:background="@color/gray_background"
                     app:indicator_drawable_selected="@drawable/point_focused"
                     app:indicator_drawable_unselected="@drawable/point_unfocused"
                     app:indicator_height="7dp"
@@ -103,7 +103,104 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_product_category"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"></android.support.v7.widget.RecyclerView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/loan_relative"
+                        android:layout_width="0dp"
+                        android:layout_height="62dp"
+                        android:layout_weight="1"
+                        android:background="@color/white">
+
+                        <ImageView
+                            android:id="@+id/iv_product"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginTop="12dp"
+                            android:src="@mipmap/speed_loan" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="9dp"
+                            android:layout_toRightOf="@+id/iv_product"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="我要贷款"
+                                android:textColor="@color/color_575656"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_5"
+                                android:text="最快只三分钟贷款"
+                                android:textColor="@color/color_767676"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1px"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:background="@color/global_line_color"></View>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/credit_card_relative"
+                        android:layout_width="0dp"
+                        android:layout_height="62dp"
+                        android:layout_weight="1"
+                        android:background="@color/white">
+
+                        <ImageView
+                            android:id="@+id/iv_product1"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginTop="12dp"
+                            android:src="@mipmap/home_credit_iocn" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="9dp"
+                            android:layout_toRightOf="@+id/iv_product1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="办信用卡"
+                                android:textColor="@color/color_575656"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_5"
+                                android:text="额度高，权益多"
+                                android:textColor="@color/color_767676"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
 
                 <View
                     android:layout_width="match_parent"

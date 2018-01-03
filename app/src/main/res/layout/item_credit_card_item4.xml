@@ -27,12 +27,14 @@
                 android:background="@drawable/all_layout_backgroud"
                 android:orientation="vertical">
 
-                <ImageView
+                <com.joooonho.SelectableRoundedImageView
                     android:id="@+id/iv_img"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
-                    android:src="@mipmap/icon_default" />
+                    android:src="@mipmap/icon_default"
+                    app:sriv_left_top_corner_radius="@dimen/margin_5"
+                    app:sriv_right_top_corner_radius="@dimen/margin_5" />
 
                 <TextView
                     android:id="@+id/tv_name"
