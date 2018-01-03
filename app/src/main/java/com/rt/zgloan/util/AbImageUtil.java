@@ -38,13 +38,10 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.rt.zgloan.app.App;
 import com.rt.zgloan.glide.GlideCircleTransform;
+import com.rt.zgloan.glide.GlideRoundTransform;
+import com.rt.zgloan.glide.RoundedCornersTransformation;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -1286,65 +1283,6 @@ public class AbImageUtil {
         }
     }
 
-    /**
-     * 获取银行图标
-     *
-     * @param imgUrl
-     * @param imageView
-     * @param resId
-     */
-    public static void getBankIcon(String imgUrl, ImageView imageView, int resId) {
-        DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(resId)// 设置图片在下载期间显示的图片
-                .showImageForEmptyUri(resId)// 设置图片Uri为空或是错误的时候显示的图片
-                .showImageOnFail(resId) // 设置图片加载/解码过程中错误时候显示的图片
-                .cacheInMemory(true)// 设置下载的图片是否缓存在内存中
-                .cacheOnDisc(true)// 设置下载的图片是否缓存在SD卡中
-                .displayer(new FadeInBitmapDisplayer(3))// 是否图片加载好后渐入的动画时间
-                .build();// 构建完成
-        ImageLoader imageLoader = ImageLoader.getInstance();
-        imageLoader.displayImage(imgUrl, imageView, options);
-    }
-
-    /**
-     * 在listView中获取图片
-     *
-     * @param imgUrl
-     * @param imageView
-     * @param resId
-     */
-    public static void getImageList(String imgUrl, final ImageView imageView, final int resId) {
-        DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(resId)// 设置图片在下载期间显示的图片
-                .showImageForEmptyUri(resId)// 设置图片Uri为空或是错误的时候显示的图片
-                .showImageOnFail(resId) // 设置图片加载/解码过程中错误时候显示的图片
-                .cacheInMemory(true)// 设置下载的图片是否缓存在内存中
-                .cacheOnDisc(true)// 设置下载的图片是否缓存在SD卡中
-                .displayer(new FadeInBitmapDisplayer(3))// 是否图片加载好后渐入的动画时间
-                .build();// 构建完成
-        ImageLoader imageLoader = ImageLoader.getInstance();
-        imageLoader.loadImage(imgUrl, options, new ImageLoadingListener() {
-            @Override
-            public void onLoadingStarted(String s, View view) {
-
-            }
-
-            @Override
-            public void onLoadingFailed(String s, View view, FailReason failReason) {
-                imageView.setImageResource(resId);
-            }
-
-            @Override
-            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-                imageView.setImageBitmap(bitmap);
-            }
-
-            @Override
-            public void onLoadingCancelled(String s, View view) {
-                imageView.setImageResource(resId);
-            }
-        });
-    }
 
     /**
      * 在listView中获取图片
@@ -1373,6 +1311,38 @@ public class AbImageUtil {
         Glide.with(App.getContext())
                 .load(imgUrl)
                 .transform(new GlideCircleTransform(App.getContext()))
+                .error(resId)//加载失败显示的图片
+                .into(imageView);
+    }
+
+    /**
+     * 加载成矩形倒角图片
+     * 使用glide 加载图片
+     *
+     * @param imgUrl
+     * @param imageView
+     * @param resId
+     */
+    public static void glideRoundImage(String imgUrl, final ImageView imageView, final int resId) {
+        Glide.with(App.getContext())
+                .load(imgUrl)
+                .transform(new GlideRoundTransform(App.getContext(), 8))
+                .error(resId)//加载失败显示的图片
+                .into(imageView);
+    }
+
+    /**
+     * 加载成圆形图片
+     * 使用glide 加载图片
+     *
+     * @param imgUrl
+     * @param imageView
+     * @param resId
+     */
+    public static void glideRoundImage2(String imgUrl, final ImageView imageView, final int resId) {
+        Glide.with(App.getContext())
+                .load(imgUrl)
+                .transform(new RoundedCornersTransformation(App.getContext(), 8, 0, RoundedCornersTransformation.CornerType.ALL))
                 .error(resId)//加载失败显示的图片
                 .into(imageView);
     }

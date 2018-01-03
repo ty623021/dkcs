@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.joooonho.SelectableRoundedImageView;
 import com.rt.zgloan.R;
 import com.rt.zgloan.activity.WebViewActivity;
 import com.rt.zgloan.activity.creditCardActivity.BankListActivity;
@@ -170,7 +171,7 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 this.itemView = itemView;
                 this.ivImg = (ImageView) itemView.findViewById(R.id.iv_img);
                 this.tvName = (TextView) itemView.findViewById(R.id.tv_name);
-                this.tvDes = (TextView) itemView.findViewById(R.id.tv_des);
+                this.tvDes = (TextView) itemView.findViewById(tv_des);
             }
         }
 
@@ -204,7 +205,7 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 this.itemView = itemView;
                 this.ivImg = (ImageView) itemView.findViewById(R.id.iv_img);
                 this.tvName = (TextView) itemView.findViewById(R.id.tv_name);
-                this.tvDes = (TextView) itemView.findViewById(tv_des);
+                this.tvDes = (TextView) itemView.findViewById(R.id.tv_des);
             }
         }
 
@@ -213,13 +214,13 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
          */
         class HolderType5 extends RecyclerView.ViewHolder {
             TextView tv_title, tv_loan_number, tv_des, tv_pointsOne, tv_pointsTow, tv_labels1, tv_labels2;
-            ImageView ivImg;
+            SelectableRoundedImageView ivImg;
             View itemView;
 
             HolderType5(View itemView) {
                 super(itemView);
                 this.itemView = itemView;
-                this.ivImg = (ImageView) itemView.findViewById(R.id.iv_img);
+                this.ivImg = (SelectableRoundedImageView) itemView.findViewById(R.id.iv_img);
                 this.tv_title = (TextView) itemView.findViewById(R.id.tv_title);
                 this.tv_loan_number = (TextView) itemView.findViewById(R.id.tv_loan_number);
                 this.tv_des = (TextView) itemView.findViewById(R.id.tv_des);
@@ -253,7 +254,13 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    if ("0".equals(info.getShowType())) {
+                        CreditCardDetailsActivity.startActivity(mContext, info.getId() + "");
+                    } else if ("1".equals(info.getShowType())) {
+                        if (!AbStringUtil.isEmpty(info.getLinkUrl())) {
+                            WebViewActivity.startActivity(mContext, info.getLinkUrl());
+                        }
+                    }
                 }
             });
         }

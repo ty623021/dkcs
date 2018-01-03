@@ -184,7 +184,7 @@ public class LabelLoansAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                         CreditCardDetailsActivity.startActivity(mContext, info.getId() + "");
                     } else if ("1".equals(info.getShowType())) {
                         if (!AbStringUtil.isEmpty(info.getLinkUrl())) {
-                            WebViewActivity.startActivity(mContext,info.getLinkUrl());
+                            WebViewActivity.startActivity(mContext, info.getLinkUrl());
                         }
                     }
                 }

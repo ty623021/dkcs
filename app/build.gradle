@@ -153,7 +153,7 @@ dependencies {
     compile files('libs/ormlite-android-4.48.jar')
     //banner
     compile 'com.youth.banner:banner:1.4.9'
-
+    compile 'com.joooonho:selectableroundedimageview:1.0.1'
 //    compile 'com.jakewharton:disklrucache:2.0.2'
 //    compile 'com.zzhoujay.richtext:richtext:3.0.0'
 

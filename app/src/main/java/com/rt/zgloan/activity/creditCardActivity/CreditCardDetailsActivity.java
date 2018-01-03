@@ -10,14 +10,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.rt.zgloan.R;
+import com.rt.zgloan.activity.LoginActivity;
 import com.rt.zgloan.activity.WebViewActivity;
 import com.rt.zgloan.base.BaseActivity;
 import com.rt.zgloan.bean.BaseResponse;
 import com.rt.zgloan.bean.CreditCardDetailsBean;
 import com.rt.zgloan.globe.Constant;
 import com.rt.zgloan.http.HttpManager;
+import com.rt.zgloan.util.AbImageUtil;
 import com.rt.zgloan.util.AbStringUtil;
 import com.rt.zgloan.util.AppUtil;
+import com.rt.zgloan.util.SpUtil;
 import com.rt.zgloan.util.ToastUtil;
 
 import butterknife.BindView;
@@ -76,8 +79,12 @@ public class CreditCardDetailsActivity extends BaseActivity<CreditCardDetailsBea
             return;
         }
         if (v.getId() == R.id.btn_apply) {
-            if (!AbStringUtil.isEmpty(info.getLinkUrl())) {
-                WebViewActivity.startActivity(mContext, info.getLinkUrl());
+            if (SpUtil.getBoolean(SpUtil.isLogin)) {
+                if (!AbStringUtil.isEmpty(info.getLinkUrl())) {
+                    WebViewActivity.startActivity(mContext, info.getLinkUrl());
+                }
+            } else {
+                this.startActivity(LoginActivity.class);
             }
         }
     }
@@ -111,7 +118,7 @@ public class CreditCardDetailsActivity extends BaseActivity<CreditCardDetailsBea
     @Override
     public void recordSuccess(CreditCardDetailsBean cardDetailsBean) {
         info = cardDetailsBean.getCreditCard();
-//        AbImageUtil.glideImageList(info.getImg(), ivImg, R.mipmap.credit_card_details);
+        AbImageUtil.glideRoundImage(info.getImg(), ivImg, R.mipmap.credit_card_details);
         tvName.setText(info.getName() + "");
         tvSummary.setText(info.getSummary() + "");
         tvLoanTag1.setText(info.getLabelsOne() + "");

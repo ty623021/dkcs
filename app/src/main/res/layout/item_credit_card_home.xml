@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/Ll_product_introduce"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -90,21 +91,20 @@
         android:layout_width="match_parent"
         android:layout_height="80dp">
 
-        <FrameLayout
+        <com.joooonho.SelectableRoundedImageView
+            android:id="@+id/iv_img"
             android:layout_width="185dp"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="@dimen/margin_12"
-            android:background="@drawable/shape_home_item_bank_bg">
-
-            <ImageView
-                android:id="@+id/iv_img"
-                android:layout_width="185dp"
-                android:layout_height="70dp"
-                android:scaleType="fitXY"
-                android:src="@mipmap/default_banner" />
-        </FrameLayout>
-
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_default"
+            app:cardBackgroundColor="@color/transparent1"
+            app:sriv_left_bottom_corner_radius="0dp"
+            app:sriv_left_top_corner_radius="10dp"
+            app:sriv_oval="false"
+            app:sriv_right_bottom_corner_radius="0dp"
+            app:sriv_right_top_corner_radius="10dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
