@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.joooonho.SelectableRoundedImageView;
 import com.rt.zgloan.R;
+import com.rt.zgloan.activity.LoginActivity;
+import com.rt.zgloan.activity.MainActivity;
 import com.rt.zgloan.activity.WebViewActivity;
 import com.rt.zgloan.activity.creditCardActivity.BankListActivity;
 import com.rt.zgloan.activity.creditCardActivity.CreditCardDetailsActivity;
@@ -21,6 +23,7 @@ import com.rt.zgloan.bean.CreditCardHomeBean;
 import com.rt.zgloan.bean.CreditCardHomeListBean;
 import com.rt.zgloan.util.AbImageUtil;
 import com.rt.zgloan.util.AbStringUtil;
+import com.rt.zgloan.util.SpUtil;
 
 import java.util.List;
 
@@ -257,8 +260,12 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     if ("0".equals(info.getShowType())) {
                         CreditCardDetailsActivity.startActivity(mContext, info.getId() + "");
                     } else if ("1".equals(info.getShowType())) {
-                        if (!AbStringUtil.isEmpty(info.getLinkUrl())) {
-                            WebViewActivity.startActivity(mContext, info.getLinkUrl());
+                        if (SpUtil.getBoolean(SpUtil.isLogin)) {
+                            if (!AbStringUtil.isEmpty(info.getLinkUrl())) {
+                                WebViewActivity.startActivity(mContext, info.getLinkUrl());
+                            }
+                        } else {
+                            ((MainActivity) mContext).startActivity(LoginActivity.class);
                         }
                     }
                 }
@@ -342,8 +349,12 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     if ("0".equals(info.getShowType())) {
                         CreditCardDetailsActivity.startActivity(mContext, info.getId() + "");
                     } else if ("1".equals(info.getShowType())) {
-                        if (!AbStringUtil.isEmpty(info.getLinkUrl())) {
-                            WebViewActivity.startActivity(mContext, info.getLinkUrl());
+                        if (SpUtil.getBoolean(SpUtil.isLogin)) {
+                            if (!AbStringUtil.isEmpty(info.getLinkUrl())) {
+                                WebViewActivity.startActivity(mContext, info.getLinkUrl());
+                            }
+                        } else {
+                            ((MainActivity) mContext).startActivity(LoginActivity.class);
                         }
                     }
                 }

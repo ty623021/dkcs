@@ -22,6 +22,7 @@ import com.rt.zgloan.util.AbRefreshUtil;
 import com.rt.zgloan.util.AbStringUtil;
 import com.rt.zgloan.util.AppUtil;
 import com.rt.zgloan.util.GlideImageLoader;
+import com.rt.zgloan.util.SpUtil;
 import com.rt.zgloan.util.ToastUtil;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -98,6 +99,7 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
         adapter = new CreditCardAdapter(mContext, list);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setAdapter(adapter);
+        cityId = SpUtil.getInt(SpUtil.CITY_ID);
         getCreditCardList();
     }
 

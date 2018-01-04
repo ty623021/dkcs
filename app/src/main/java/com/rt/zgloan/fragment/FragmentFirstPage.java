@@ -322,7 +322,7 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
      * @param bannerListBean
      */
     private void setBanner(final BannerListBean bannerListBean) {
-        if (bannerListBean.getBanner() != null && bannerListBean.getBanner().size() > 0) {
+        if (AbStringUtil.isListEmpty(bannerListBean.getBanner())) {
             bannerGuideContent.setVisibility(View.VISIBLE);
             mActivityListBean = bannerListBean.getBanner();
             //设置banner样式

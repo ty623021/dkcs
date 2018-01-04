@@ -41,7 +41,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.rt.zgloan.app.App;
 import com.rt.zgloan.glide.GlideCircleTransform;
 import com.rt.zgloan.glide.GlideRoundTransform;
-import com.rt.zgloan.glide.RoundedCornersTransformation;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -1331,21 +1330,6 @@ public class AbImageUtil {
                 .into(imageView);
     }
 
-    /**
-     * 加载成圆形图片
-     * 使用glide 加载图片
-     *
-     * @param imgUrl
-     * @param imageView
-     * @param resId
-     */
-    public static void glideRoundImage2(String imgUrl, final ImageView imageView, final int resId) {
-        Glide.with(App.getContext())
-                .load(imgUrl)
-                .transform(new RoundedCornersTransformation(App.getContext(), 8, 0, RoundedCornersTransformation.CornerType.ALL))
-                .error(resId)//加载失败显示的图片
-                .into(imageView);
-    }
 
     /**
      * 在listView中获取图片

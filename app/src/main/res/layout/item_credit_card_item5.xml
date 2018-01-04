@@ -140,9 +140,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_marginLeft="13dp"
-        android:layout_marginRight="13dp"
-        android:background="@color/global_line_color"></View>
+        android:layout_height="5dp"
+        android:background="@color/gray_background"></View>
 
 </LinearLayout>

@@ -14,12 +14,15 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.rt.zgloan.R;
 import com.rt.zgloan.activity.LoanDetailActivity;
+import com.rt.zgloan.activity.LoginActivity;
+import com.rt.zgloan.activity.MainActivity;
 import com.rt.zgloan.activity.WebViewActivity;
 import com.rt.zgloan.activity.creditCardActivity.CreditCardDetailsActivity;
 import com.rt.zgloan.bean.CreditCardBean;
 import com.rt.zgloan.bean.LabelListBean;
 import com.rt.zgloan.util.AbImageUtil;
 import com.rt.zgloan.util.AbStringUtil;
+import com.rt.zgloan.util.SpUtil;
 
 import java.util.List;
 
@@ -102,7 +105,7 @@ public class LabelLoansAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             if (TYPE_TYPE1 == type) {
                 return new ItemHolderType(LayoutInflater.from(mContext).inflate(R.layout.item_product_introduce, parent, false));
             } else if (TYPE_TYPE2 == type) {
-                return new ItemHolderType1(LayoutInflater.from(mContext).inflate(R.layout.item_credit_card_home, parent, false));
+                return new ItemHolderType1(LayoutInflater.from(mContext).inflate(R.layout.item_credit_card_item5, parent, false));
             } else {
                 return new ItemHolderType(LayoutInflater.from(mContext).inflate(R.layout.item_product_introduce, parent, false));
             }
@@ -183,8 +186,12 @@ public class LabelLoansAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     if ("0".equals(info.getShowType())) {
                         CreditCardDetailsActivity.startActivity(mContext, info.getId() + "");
                     } else if ("1".equals(info.getShowType())) {
-                        if (!AbStringUtil.isEmpty(info.getLinkUrl())) {
-                            WebViewActivity.startActivity(mContext, info.getLinkUrl());
+                        if (SpUtil.getBoolean(SpUtil.isLogin)) {
+                            if (!AbStringUtil.isEmpty(info.getLinkUrl())) {
+                                WebViewActivity.startActivity(mContext, info.getLinkUrl());
+                            }
+                        } else {
+                            ((MainActivity) mContext).startActivity(LoginActivity.class);
                         }
                     }
                 }

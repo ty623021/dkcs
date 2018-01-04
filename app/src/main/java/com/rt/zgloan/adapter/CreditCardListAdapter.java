@@ -33,7 +33,7 @@ public class CreditCardListAdapter extends RecyclerView.Adapter<CreditCardListAd
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(inflater.inflate(R.layout.item_credit_card_home, parent, false));
+        return new ViewHolder(inflater.inflate(R.layout.item_credit_card_item5, parent, false));
     }
 
     @Override

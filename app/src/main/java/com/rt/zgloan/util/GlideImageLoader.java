@@ -35,7 +35,7 @@ public class GlideImageLoader extends ImageLoader {
          切记不要胡乱强转！
          */
         if (path instanceof BannerListBean.BannerBean) {
-            url = ((BannerListBean.BannerBean) path).getSlide_url();
+            url = ((BannerListBean.BannerBean) path).getSlide_pic();
         } else if (path instanceof CreditCardHomeBean.CreditBannerBean) {
             url = ((CreditCardHomeBean.CreditBannerBean) path).slidePic;
         }
