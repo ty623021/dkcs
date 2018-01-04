@@ -11,15 +11,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_title"
+        <LinearLayout
+            android:id="@+id/linear_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_marginLeft="@dimen/margin_left_right_12"
+            android:layout_marginRight="@dimen/margin_10"
             android:layout_marginTop="@dimen/margin_15"
-            android:text="标题"
-            android:textColor="@color/text_color"
-            android:textSize="@dimen/size_sp_small" />
+            android:layout_toLeftOf="@+id/tv_loan_number">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="标题"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/size_sp_small" />
+        </LinearLayout>
 
 
         <TextView
@@ -47,9 +56,10 @@
             android:id="@+id/tv_des"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_title"
+            android:layout_below="@+id/linear_title"
             android:layout_marginLeft="@dimen/margin_left_right_12"
             android:layout_marginTop="@dimen/dp_6"
+            android:lines="1"
             android:text="会生活"
             android:textColor="@color/color_FF5454"
             android:textSize="@dimen/size_sp_16" />
@@ -70,6 +80,7 @@
             android:layout_marginLeft="@dimen/margin_left_right_12"
             android:drawableLeft="@mipmap/home_item_bank_img"
             android:drawablePadding="@dimen/margin_5"
+            android:lines="1"
             android:text="金卡消费免年费"
             android:textColor="@color/text_color"
             android:textSize="@dimen/size_sp_micro" />
@@ -82,6 +93,7 @@
             android:layout_marginLeft="@dimen/margin_25"
             android:drawableLeft="@mipmap/home_item_bank_img"
             android:drawablePadding="@dimen/margin_5"
+            android:lines="1"
             android:text="金卡消费免年费"
             android:textColor="@color/text_color"
             android:textSize="@dimen/size_sp_micro" />
@@ -121,6 +133,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_6"
+                android:lines="1"
                 android:text="超市必备"
                 android:textColor="@color/color_ff7f00"
                 android:textSize="@dimen/size_sp_16" />
@@ -130,6 +143,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_6"
+                android:lines="1"
                 android:text="双倍积分"
                 android:textColor="@color/color_green"
                 android:textSize="@dimen/size_sp_16" />

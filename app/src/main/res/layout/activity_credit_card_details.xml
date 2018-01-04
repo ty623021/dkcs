@@ -39,8 +39,7 @@
                 <ImageView
                     android:id="@+id/iv_img"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/credit_card_details" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
@@ -66,7 +65,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_12"
                     android:layout_marginTop="6dp"
-                    android:text="年轻人的黑卡"
                     android:textColor="@color/color_ff5454"
                     android:textSize="@dimen/size_sp_16" />
 
@@ -93,7 +91,6 @@
                             android:layout_marginLeft="@dimen/margin_8"
                             android:layout_marginRight="@dimen/margin_8"
                             android:lines="1"
-                            android:text="信用卡"
                             android:textColor="@color/white"
                             android:textSize="@dimen/size_sp_10" />
 
@@ -115,7 +112,6 @@
                             android:layout_marginLeft="@dimen/margin_8"
                             android:layout_marginRight="@dimen/margin_8"
                             android:lines="1"
-                            android:text="信用卡"
                             android:textColor="@color/white"
                             android:textSize="@dimen/size_sp_10" />
 

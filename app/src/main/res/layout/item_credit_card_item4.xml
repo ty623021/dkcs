@@ -32,6 +32,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
+                    android:scaleType="fitXY"
                     android:src="@mipmap/icon_default"
                     app:sriv_left_top_corner_radius="@dimen/margin_5"
                     app:sriv_right_top_corner_radius="@dimen/margin_5" />
@@ -43,6 +44,7 @@
                     android:layout_gravity="center"
                     android:layout_marginBottom="@dimen/margin_5"
                     android:layout_marginTop="@dimen/margin_5"
+                    android:maxLength="6"
                     android:text="交通银行"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/size_sp_small" />

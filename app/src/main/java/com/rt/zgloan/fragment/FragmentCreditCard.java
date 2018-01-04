@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.rt.zgloan.R;
@@ -45,6 +46,11 @@ import static android.app.Activity.RESULT_OK;
 
 public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> implements AbPullToRefreshView.OnHeaderRefreshListener {
     private static final String TAG = "FragmentCreditCard";
+
+    @BindView(R.id.no_record)
+    LinearLayout noRecord;
+    @BindView(R.id.linear_no_net)
+    LinearLayout linearNoNet;
     @BindView(R.id.layout_height_top)
     RelativeLayout mLayoutHeightTop;
     @BindView(R.id.recyclerView)
@@ -65,7 +71,10 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
 
     @Override
     public Observable<BaseResponse<CreditCardHomeBean>> initObservable() {
-        return null;
+        if (cityId > 0) {
+            mapParams.put("cityId", cityId + "");
+        }
+        return HttpManager.getApi().getCreditCardHome(mapParams);
     }
 
     @Override
@@ -75,7 +84,7 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
 
     @Override
     public boolean isFirstLoad() {
-        return false;
+        return true;
     }
 
 
@@ -92,15 +101,13 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
                 startActivityForResult(UnifiedActivity.class, 100);
             }
         });
-
+        cityId = SpUtil.getInt(SpUtil.CITY_ID);
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setFocusable(false);
         AbRefreshUtil.initRefresh(pull, this);
         adapter = new CreditCardAdapter(mContext, list);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setAdapter(adapter);
-        cityId = SpUtil.getInt(SpUtil.CITY_ID);
-        getCreditCardList();
     }
 
     /**
@@ -165,12 +172,14 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
 
     @Override
     public void showErrorMsg(String msg, String type) {
-
+        AbRefreshUtil.hintView(pull, adapter, true, linearNoNet, noRecord);
+        ToastUtil.showToast(msg);
     }
 
     @Override
     public void recordSuccess(CreditCardHomeBean cardBean) {
-
+        setCreditCardBean(cardBean);
+        AbRefreshUtil.hintView(pull, adapter, false, linearNoNet, noRecord);
     }
 
     @Override
@@ -190,13 +199,13 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
 
                     @Override
                     protected void _onNext(CreditCardHomeBean cardBean) {
-                        pull.onHeaderRefreshFinish();
                         setCreditCardBean(cardBean);
+                        AbRefreshUtil.hintView(pull, adapter, false, linearNoNet, noRecord);
                     }
 
                     @Override
                     protected void _onError(String message) {
-                        pull.onHeaderRefreshFinish();
+                        AbRefreshUtil.hintView(pull, adapter, true, linearNoNet, noRecord);
                         ToastUtil.showToast(message);
                     }
 

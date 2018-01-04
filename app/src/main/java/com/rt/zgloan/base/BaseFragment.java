@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.rt.zgloan.http.HttpSubscriber;
 import com.rt.zgloan.presenter.BasePresenter;
 import com.rt.zgloan.util.TitleUtil;
 import com.rt.zgloan.util.ToastUtil;
+import com.rt.zgloan.weight.LoadingFragment;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.HashMap;
@@ -82,7 +84,7 @@ public abstract class BaseFragment<T> extends Fragment implements BaseView<T> {
             @Override
             protected void _onStart() {
                 mPresenter.mView.showLoading("");
-//                LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "Loading");
+                LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "Loading");
             }
 
             @Override
@@ -103,7 +105,7 @@ public abstract class BaseFragment<T> extends Fragment implements BaseView<T> {
 
             @Override
             protected void _onCompleted() {
-//                LoadingFragment.getInstends().dismiss();
+                LoadingFragment.getInstends().dismiss();
             }
         });
 

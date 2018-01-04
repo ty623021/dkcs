@@ -137,7 +137,11 @@ public class LabelLoansAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             holder.mTvMoneyBig.setText(info.getMoney_big() + "");
             holder.mTvDeadlineSml.setText(info.getDeadline_sml() + "");
             holder.mTvDeadlineBig.setText(info.getDeadline_big() + "");
-            holder.mTvRate.setText(info.getRate());
+            if (info.getRate().contains("%")) {
+                holder.mTvRate.setText(info.getRate());
+            } else {
+                holder.mTvRate.setText(info.getRate() + "%");
+            }
             if (!AbStringUtil.isEmpty(info.getPropaganda_language())) {
                 holder.mTvPropagandaLanguage.setText(Html.fromHtml(info.getPropaganda_language()));
             } else {

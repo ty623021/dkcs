@@ -16,44 +16,52 @@
         android:id="@+id/toolbar"
         layout="@layout/layout_toolbar" />
 
-    <com.rt.zgloan.pullView.AbPullToRefreshView
-        android:id="@+id/pull"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <android.support.v4.widget.NestedScrollView
-            android:id="@+id/scroll"
+        <com.rt.zgloan.pullView.AbPullToRefreshView
+            android:id="@+id/pull"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fillViewport="true">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <android.support.v4.widget.NestedScrollView
+                android:id="@+id/scroll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:fillViewport="true">
 
-                <com.youth.banner.Banner
-                    android:id="@+id/banner"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:background="@color/gray_background"
-                    app:indicator_drawable_selected="@drawable/point_focused"
-                    app:indicator_drawable_unselected="@drawable/point_unfocused"
-                    app:indicator_height="7dp"
-                    app:indicator_margin="3dp"
-                    app:indicator_width="7dp">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                </com.youth.banner.Banner>
+                    <com.youth.banner.Banner
+                        android:id="@+id/banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:background="@color/gray_background"
+                        app:indicator_drawable_selected="@drawable/point_focused"
+                        app:indicator_drawable_unselected="@drawable/point_unfocused"
+                        app:indicator_height="7dp"
+                        app:indicator_margin="3dp"
+                        app:indicator_width="7dp">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    </com.youth.banner.Banner>
 
-                </android.support.v7.widget.RecyclerView>
-            </LinearLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-        </android.support.v4.widget.NestedScrollView>
+                    </android.support.v7.widget.RecyclerView>
+                </LinearLayout>
 
-    </com.rt.zgloan.pullView.AbPullToRefreshView>
+            </android.support.v4.widget.NestedScrollView>
+
+        </com.rt.zgloan.pullView.AbPullToRefreshView>
+
+        <include layout="@layout/loading_layout" />
+    </RelativeLayout>
+
 </LinearLayout>
