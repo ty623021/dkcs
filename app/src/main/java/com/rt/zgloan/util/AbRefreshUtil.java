@@ -99,6 +99,10 @@ public class AbRefreshUtil {
                 network.setVisibility(View.GONE);
                 nodata.setVisibility(View.VISIBLE);
             }
+        } else if (adapter.getItemCount() > 0 && adapter.getItemCount() < 10) {
+            pull.clearFooter();
+            network.setVisibility(View.GONE);
+            nodata.setVisibility(View.GONE);
         } else {
             network.setVisibility(View.GONE);
             nodata.setVisibility(View.GONE);

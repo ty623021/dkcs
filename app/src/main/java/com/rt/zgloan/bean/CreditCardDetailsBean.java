@@ -21,7 +21,7 @@ public class CreditCardDetailsBean {
         private String id;
         private String name;
         private String bankId;
-        private String level;
+        private String level;// 1普卡 2金卡,3白金卡 ,
         private String purposeId;
         private String subjectId;
         private boolean recom;
@@ -31,8 +31,8 @@ public class CreditCardDetailsBean {
         private String labelsOne;
         private String labelsTwo;
         private String applicants;
-        private String currency;
-        private String annualFee;
+        private String currency;// 币种 1:人民币单币卡,2:多币卡 ,
+        private String annualFee;// 年费 1免首年 2交易免年费 3终生免年费 ,
         private String img;
         private String baseInfo;//基本信息
         private String relateExpense;//费用

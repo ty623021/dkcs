@@ -48,6 +48,8 @@ public class CreditCardDetailsActivity extends BaseActivity<CreditCardDetailsBea
     TextView tvLoanTag1;
     @BindView(R.id.tv_loan_tag2)
     TextView tvLoanTag2;
+    @BindView(R.id.tv_loan_tag3)
+    TextView tvLoanTag3;
     @BindView(R.id.tv_specialPrivilege)
     TextView tvSpecialPrivilege;
     @BindView(R.id.tv_baseInfo)
@@ -121,8 +123,31 @@ public class CreditCardDetailsActivity extends BaseActivity<CreditCardDetailsBea
         AbImageUtil.glideRoundImage(info.getImg(), ivImg, R.mipmap.credit_card_details);
         tvName.setText(info.getName() + "");
         tvSummary.setText(info.getSummary() + "");
-        tvLoanTag1.setText(info.getLabelsOne() + "");
-        tvLoanTag2.setText(info.getLabelsTwo() + "");
+        if ("1".equals(info.getLevel())) {
+            tvLoanTag1.setText("普卡");
+        } else if ("2".equals(info.getLevel())) {
+            tvLoanTag1.setText("金卡");
+        } else if ("3".equals(info.getLevel())) {
+            tvLoanTag1.setText("白金卡");
+        } else {
+            tvLoanTag1.setText("普卡");
+        }
+        if ("1".equals(info.getCurrency())) {
+            tvLoanTag2.setText("人民币单币卡");
+        } else if ("2".equals(info.getCurrency())) {
+            tvLoanTag2.setText("多币卡");
+        } else {
+            tvLoanTag2.setText("人民币单币卡");
+        }
+        if ("1".equals(info.getAnnualFee())) {
+            tvLoanTag3.setText("免首年");
+        } else if ("2".equals(info.getAnnualFee())) {
+            tvLoanTag3.setText("交易免年费");
+        } else if ("3".equals(info.getAnnualFee())) {
+            tvLoanTag3.setText("终生免年费");
+        } else {
+            tvLoanTag3.setText("免首年");
+        }
         tvSpecialPrivilege.setText(Html.fromHtml(info.getSpecialPrivilege()) + "");
         tvBaseInfo.setText(Html.fromHtml(info.getBaseInfo()) + "");
         tvRelateExpense.setText(Html.fromHtml(info.getRelateExpense()) + "");

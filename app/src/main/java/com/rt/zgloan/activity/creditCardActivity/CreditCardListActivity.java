@@ -155,7 +155,6 @@ public class CreditCardListActivity extends BaseActivity<CreditCardListBean> imp
             observable = getApi().getCreditCardsByBank(mapParams);
         }
         mapParams.put("pageNo", pageNo + "");
-        ToastUtil.showToast(pageNo + "");
         mPresenter.toSubscribe(observable, new HttpSubscriber<CreditCardListBean>() {
             @Override
             protected void _onStart() {

@@ -75,7 +75,7 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             holder.mTvLabel.setText("今日推荐");
             holder.item_recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         } else if (itemViewType == TYPE_TYPE2) {
-            holder.mTvLabel.setText("按银行卡选择");
+            holder.mTvLabel.setText("按银行选卡");
             holder.item_recyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
         } else if (itemViewType == TYPE_TYPE3) {
             holder.mTvLabel.setText("按用途选择");
@@ -84,7 +84,7 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             holder.mTvLabel.setText("按主题选择");
             holder.item_recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         } else if (itemViewType == TYPE_TYPE5) {
-            holder.mTvLabel.setText("热门推荐");
+            holder.mTvLabel.setText("热门信用卡");
             holder.item_recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         }
         ItemRecycleAdapter itemRecycleAdapter = new ItemRecycleAdapter(itemViewType, creditCardBean.getList());
@@ -338,7 +338,7 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             if (AbStringUtil.isEmpty(info.getLabelsTow())) {
                 holder.tv_labels2.setVisibility(View.GONE);
             } else {
-                holder.tv_labels1.setVisibility(View.VISIBLE);
+                holder.tv_labels2.setVisibility(View.VISIBLE);
                 holder.tv_labels2.setText(info.getLabelsTow());
             }
             AbImageUtil.glideImageList(info.getImg(), holder.ivImg, R.mipmap.credit_card_default);

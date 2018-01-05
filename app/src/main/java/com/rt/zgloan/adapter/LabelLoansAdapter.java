@@ -179,7 +179,7 @@ public class LabelLoansAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             if (AbStringUtil.isEmpty(info.getLabelsTow())) {
                 holder.tv_labels2.setVisibility(View.GONE);
             } else {
-                holder.tv_labels1.setVisibility(View.VISIBLE);
+                holder.tv_labels2.setVisibility(View.VISIBLE);
                 holder.tv_labels2.setText(info.getLabelsTow());
             }
             AbImageUtil.glideImageList(info.getImg(), holder.ivImg, R.mipmap.credit_card_default);

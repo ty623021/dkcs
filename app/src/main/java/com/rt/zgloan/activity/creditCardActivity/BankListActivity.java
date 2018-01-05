@@ -79,7 +79,7 @@ public class BankListActivity extends BaseActivity<BankBean> implements AbPullTo
         } else {
             layoutHeightTop.setVisibility(View.GONE);
         }
-        mTitle.setTitle("信用卡办理");
+        mTitle.setTitle("全部银行");
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         adapter = new BankListAdapter(mContext, bankBeans);
