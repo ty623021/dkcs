@@ -3,7 +3,6 @@ package com.rt.zgloan.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
@@ -863,7 +862,7 @@ public class PersonalDataActivity extends BaseActivity<UserDataBean> {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 DialogUtil.dismiss();
-                MainActivity.startMainActivity(mActivity, 2);
+                MainActivity.startMainActivity(mActivity, 3);
             }
         }, 1000);
     }

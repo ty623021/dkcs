@@ -44,6 +44,7 @@
             android:layout_alignParentRight="true"
             android:layout_gravity="end"
             android:gravity="center"
+            android:visibility="gone"
             android:minWidth="@dimen/title_height"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"

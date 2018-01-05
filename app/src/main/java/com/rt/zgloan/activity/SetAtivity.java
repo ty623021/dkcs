@@ -104,7 +104,7 @@ public class SetAtivity extends BaseActivity<VersionBean> {
                 SpUtil.remove(SpUtil.userId);
                 SpUtil.remove(SpUtil.mobile);
                 SpUtil.remove(SpUtil.isLogin);
-                MainActivity.startMainActivity(mActivity, 2);
+                MainActivity.startMainActivity(mActivity, 3);
                 break;
             //检查更新
             case R.id.Rl_check_version:
@@ -141,7 +141,7 @@ public class SetAtivity extends BaseActivity<VersionBean> {
         mTitle.setTitle(true, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity.startMainActivity(mActivity, 2);
+                MainActivity.startMainActivity(mActivity, 3);
             }
         }, "设置");
 //        String phone = SpUtil.getString(SpUtil.mobile).replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2");

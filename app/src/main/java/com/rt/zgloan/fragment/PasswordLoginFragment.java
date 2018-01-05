@@ -113,7 +113,7 @@ public class PasswordLoginFragment extends BaseFragment {
                         SpUtil.putString(SpUtil.invite_code, loginByPaswdBean.getInvite_code());//邀请码
                         SpUtil.putString(SpUtil.is_state, loginByPaswdBean.getIs_state());//是否完善资料
 
-                        MainActivity.startMainActivity(mActivity, 2);
+                        MainActivity.startMainActivity(mActivity, 3);
                     }
 
 

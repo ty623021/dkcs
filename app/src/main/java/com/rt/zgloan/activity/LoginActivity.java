@@ -209,7 +209,7 @@ public class LoginActivity extends BaseActivity {
                         SpUtil.putString(SpUtil.mobile, registerInfo.getRelute().getMobile());
                         SpUtil.putString(SpUtil.invite_code, registerInfo.getRelute().getInvite_code());
                         SpUtil.putString(SpUtil.is_state, registerInfo.getRelute().getIs_state());
-                        MainActivity.startMainActivity(mActivity, 2);
+                        MainActivity.startMainActivity(mActivity, 3);
                     }
 
 
