@@ -9,10 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rt.zgloan.R;
+import com.rt.zgloan.activity.LoginActivity;
+import com.rt.zgloan.activity.MainActivity;
+import com.rt.zgloan.activity.WebViewActivity;
 import com.rt.zgloan.activity.creditCardActivity.CreditCardDetailsActivity;
 import com.rt.zgloan.bean.CreditCardBean;
 import com.rt.zgloan.util.AbImageUtil;
 import com.rt.zgloan.util.AbStringUtil;
+import com.rt.zgloan.util.SpUtil;
 
 import java.util.List;
 
@@ -61,7 +65,17 @@ public class CreditCardListAdapter extends RecyclerView.Adapter<CreditCardListAd
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CreditCardDetailsActivity.startActivity(mContext, info.getId() + "");
+                if ("0".equals(info.getShowType())) {
+                    CreditCardDetailsActivity.startActivity(mContext, info.getId() + "");
+                } else if ("1".equals(info.getShowType())) {
+                    if (SpUtil.getBoolean(SpUtil.isLogin)) {
+                        if (!AbStringUtil.isEmpty(info.getLinkUrl())) {
+                            WebViewActivity.startActivity(mContext, info.getLinkUrl());
+                        }
+                    } else {
+                        ((MainActivity) mContext).startActivity(LoginActivity.class);
+                    }
+                }
             }
         });
     }
