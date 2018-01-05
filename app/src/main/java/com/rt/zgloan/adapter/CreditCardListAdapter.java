@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import com.rt.zgloan.R;
 import com.rt.zgloan.activity.LoginActivity;
-import com.rt.zgloan.activity.MainActivity;
 import com.rt.zgloan.activity.WebViewActivity;
 import com.rt.zgloan.activity.creditCardActivity.CreditCardDetailsActivity;
+import com.rt.zgloan.activity.creditCardActivity.CreditCardListActivity;
 import com.rt.zgloan.bean.CreditCardBean;
 import com.rt.zgloan.util.AbImageUtil;
 import com.rt.zgloan.util.AbStringUtil;
@@ -73,7 +73,7 @@ public class CreditCardListAdapter extends RecyclerView.Adapter<CreditCardListAd
                             WebViewActivity.startActivity(mContext, info.getLinkUrl());
                         }
                     } else {
-                        ((MainActivity) mContext).startActivity(LoginActivity.class);
+                        ((CreditCardListActivity) mContext).startActivity(LoginActivity.class);
                     }
                 }
             }
