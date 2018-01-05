@@ -120,6 +120,7 @@ public class BankListActivity extends BaseActivity<BankBean> implements AbPullTo
         } else {
             ToastUtil.showToast(Constant.LOADED);
         }
+        AbRefreshUtil.hintView(pull, adapter, false, linearNoNet, noRecord);
     }
 
     @Override
