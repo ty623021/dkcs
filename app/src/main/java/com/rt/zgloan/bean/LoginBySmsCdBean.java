@@ -16,9 +16,8 @@ public class LoginBySmsCdBean {
 
     private String id;
     private String mobile;
-    private String invite_code;
-    private String is_state;
-    private String create_time;
+    private String inviteCode;
+    private String isState;
 
     public String getId() {
         return id;
@@ -36,27 +35,19 @@ public class LoginBySmsCdBean {
         this.mobile = mobile;
     }
 
-    public String getInvite_code() {
-        return invite_code;
+    public String getInviteCode() {
+        return inviteCode;
     }
 
-    public void setInvite_code(String invite_code) {
-        this.invite_code = invite_code;
+    public void setInviteCode(String inviteCode) {
+        this.inviteCode = inviteCode;
     }
 
-    public String getIs_state() {
-        return is_state;
+    public String getIsState() {
+        return isState;
     }
 
-    public void setIs_state(String is_state) {
-        this.is_state = is_state;
-    }
-
-    public String getCreate_time() {
-        return create_time;
-    }
-
-    public void setCreate_time(String create_time) {
-        this.create_time = create_time;
+    public void setIsState(String isState) {
+        this.isState = isState;
     }
 }

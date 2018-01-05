@@ -109,7 +109,7 @@ public interface HttpApi {
 
     //短信登录接口
     @FormUrlEncoded
-    @POST("user/loginBySmsCd")
+    @POST("userLogin/loginBySmsCd")
     Observable<BaseResponse<LoginBySmsCdBean>> loginBySmsCd(@FieldMap Map<String, String> paramsMap);
 
     //账号密码登录接口

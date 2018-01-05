@@ -133,12 +133,12 @@ public class DynamicLoginFragment extends BaseFragment {
     private void loginBySmsCd(String phoneNum, String verificationCode, String source) {
         mapParams.put("mobile", phoneNum);
         mapParams.put("mobileCode", verificationCode);
+        mapParams.put("clientType", "2");
         mapParams.put("source", source);
         mPresenter.toSubscribe(
                 HttpManager.getApi().loginBySmsCd(mapParams), new HttpSubscriber<LoginBySmsCdBean>() {
                     @Override
                     protected void _onStart() {
-                        //  Log.e("tag", "_onStart");
                         LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在登录...");
                     }
 
@@ -149,9 +149,8 @@ public class DynamicLoginFragment extends BaseFragment {
                         SpUtil.putBoolean(SpUtil.isLogin, true);
                         SpUtil.putString(SpUtil.userId, loginBySmsCdBean.getId());//useID
                         SpUtil.putString(SpUtil.mobile, loginBySmsCdBean.getMobile());//手机号码
-                        SpUtil.putString(SpUtil.invite_code, loginBySmsCdBean.getInvite_code());//邀请码
-                        SpUtil.putString(SpUtil.is_state, loginBySmsCdBean.getIs_state());//是否完善资料
-
+                        SpUtil.putString(SpUtil.invite_code, loginBySmsCdBean.getInviteCode());//邀请码
+                        SpUtil.putString(SpUtil.is_state, loginBySmsCdBean.getIsState());//是否完善资料
                         MainActivity.startMainActivity(mActivity, 3);
                     }
 
