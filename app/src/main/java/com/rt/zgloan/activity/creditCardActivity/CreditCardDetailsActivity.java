@@ -120,7 +120,7 @@ public class CreditCardDetailsActivity extends BaseActivity<CreditCardDetailsBea
     @Override
     public void recordSuccess(CreditCardDetailsBean cardDetailsBean) {
         info = cardDetailsBean.getCreditCard();
-        AbImageUtil.glideRoundImage(info.getImg(), ivImg, R.mipmap.credit_card_details);
+        AbImageUtil.glideImageList(info.getImg(), ivImg, R.mipmap.credit_card_details);
         tvName.setText(info.getName() + "");
         tvSummary.setText(info.getSummary() + "");
         if ("1".equals(info.getLevel())) {

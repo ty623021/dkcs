@@ -14,7 +14,7 @@ public class CreditCardBean {
     private String pointsOne;//百度钱包刷卡返现3%
     private String pointsTwo;//4小时1000元航班延误险
     private String labelsOne;//刷卡免年费
-    private String labelsTow;//刷卡免年费
+    private String labelsTwo;//刷卡免年费
     private String img;//http://192.168.8.44/data/upload/portal/20171225/5a40733ad61c8.png
     private String showType;
     private String linkUrl; //外链地址
@@ -91,12 +91,12 @@ public class CreditCardBean {
         this.labelsOne = labelsOne;
     }
 
-    public String getLabelsTow() {
-        return labelsTow;
+    public String getLabelsTwo() {
+        return labelsTwo;
     }
 
-    public void setLabelsTow(String labelsTow) {
-        this.labelsTow = labelsTow;
+    public void setLabelsTwo(String labelsTwo) {
+        this.labelsTwo = labelsTwo;
     }
 
     public String getImg() {

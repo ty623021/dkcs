@@ -22,6 +22,7 @@ import com.rt.zgloan.recyclerview.SpaceItemDecoration;
 import com.rt.zgloan.util.AbRefreshUtil;
 import com.rt.zgloan.util.AbStringUtil;
 import com.rt.zgloan.util.AppUtil;
+import com.rt.zgloan.util.SpUtil;
 import com.rt.zgloan.util.ToastUtil;
 
 import java.util.ArrayList;
@@ -60,10 +61,15 @@ public class CreditCardListActivity extends BaseActivity<CreditCardListBean> imp
     private CreditCardListAdapter adapter;
     private List<CreditCardBean> cardBeans = new ArrayList<>();
     private int totalPages;
+    private int cityId;
 
     @Override
     public Observable<BaseResponse<CreditCardListBean>> initObservable() {
+        cityId = SpUtil.getInt(SpUtil.CITY_ID);
         mapParams.put("pageNo", pageNo + "");
+        if (cityId > 0) {
+            mapParams.put("cityId", cityId + "");
+        }
         if (TYPE_PURPOSE.equals(type)) {
             mapParams.put("purposeId", id);
             return getApi().getCreditCardsByPurpose(mapParams);
@@ -100,6 +106,7 @@ public class CreditCardListActivity extends BaseActivity<CreditCardListBean> imp
         }
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
+
         type = intent.getStringExtra("type");
         mTitle.setTitle("信用卡办理");
         recyclerView.setNestedScrollingEnabled(false);
@@ -143,6 +150,9 @@ public class CreditCardListActivity extends BaseActivity<CreditCardListBean> imp
             pageNo = 1;
         } else {
             pageNo++;
+        }
+        if (cityId > 0) {
+            mapParams.put("cityId", cityId + "");
         }
         if (TYPE_PURPOSE.equals(type)) {
             mapParams.put("purposeId", id);

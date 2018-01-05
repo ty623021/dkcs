@@ -71,6 +71,7 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
 
     @Override
     public Observable<BaseResponse<CreditCardHomeBean>> initObservable() {
+        cityId = SpUtil.getInt(SpUtil.CITY_ID);
         if (cityId > 0) {
             mapParams.put("cityId", cityId + "");
         }
@@ -101,7 +102,7 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
                 startActivityForResult(UnifiedActivity.class, 100);
             }
         });
-        cityId = SpUtil.getInt(SpUtil.CITY_ID);
+
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setFocusable(false);
         AbRefreshUtil.initRefresh(pull, this);

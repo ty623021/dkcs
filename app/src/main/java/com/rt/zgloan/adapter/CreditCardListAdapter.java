@@ -50,11 +50,11 @@ public class CreditCardListAdapter extends RecyclerView.Adapter<CreditCardListAd
             holder.tv_labels1.setVisibility(View.VISIBLE);
             holder.tv_labels1.setText(info.getLabelsOne());
         }
-        if (AbStringUtil.isEmpty(info.getLabelsTow())) {
+        if (AbStringUtil.isEmpty(info.getLabelsTwo())) {
             holder.tv_labels2.setVisibility(View.GONE);
         } else {
-            holder.tv_labels1.setVisibility(View.VISIBLE);
-            holder.tv_labels2.setText(info.getLabelsTow());
+            holder.tv_labels2.setVisibility(View.VISIBLE);
+            holder.tv_labels2.setText(info.getLabelsTwo());
         }
         AbImageUtil.glideImageList(info.getImg(), holder.ivImg, R.mipmap.credit_card_default);
 
