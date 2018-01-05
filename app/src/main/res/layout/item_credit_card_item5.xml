@@ -118,7 +118,7 @@
             app:sriv_right_bottom_corner_radius="0dp"
             app:sriv_right_top_corner_radius="10dp" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -132,9 +132,10 @@
                 android:id="@+id/tv_labels1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:layout_marginTop="@dimen/dp_6"
                 android:lines="1"
-                android:text="超市必备"
+                android:text="超市必备超市必备"
                 android:textColor="@color/color_ff7f00"
                 android:textSize="@dimen/size_sp_16" />
 
@@ -142,13 +143,15 @@
                 android:id="@+id/tv_labels2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tv_labels1"
                 android:layout_marginTop="@dimen/dp_6"
                 android:lines="1"
                 android:text="双倍积分"
                 android:textColor="@color/color_green"
                 android:textSize="@dimen/size_sp_16" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </RelativeLayout>
 
