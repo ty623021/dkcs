@@ -28,6 +28,7 @@
             android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/dp_18"
+            android:layout_toLeftOf="@+id/iv_right"
             android:layout_toRightOf="@+id/iv_img"
             android:gravity="center_vertical"
             android:orientation="vertical">
@@ -45,7 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_10"
-                android:text="绑卡优惠多"
+                android:maxLength="25"
+                android:text="绑卡优惠"
                 android:textColor="@color/text_tip_color"
                 android:textSize="@dimen/size_sp_small" />
         </LinearLayout>

@@ -201,7 +201,7 @@ public class RegisterActivity extends BaseActivity {
         mPresenter.toSubscribe(HttpManager.getApi().getMobileCode(mapParams), new HttpSubscriber() {
             @Override
             protected void _onStart() {
-                LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "");
+                LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "");
             }
 
             @Override
@@ -216,7 +216,7 @@ public class RegisterActivity extends BaseActivity {
 
             @Override
             protected void _onCompleted() {
-                LoadingFragment.getInstends().dismiss();
+                LoadingFragment.getInstance().dismiss();
             }
         });
 
@@ -304,7 +304,7 @@ public class RegisterActivity extends BaseActivity {
                 HttpManager.getApi().register(mapParams), new HttpSubscriber<RegisterInfo>() {
                     @Override
                     protected void _onStart() {
-                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在注册...");
+                        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在注册...");
                     }
 
                     @Override
@@ -331,7 +331,7 @@ public class RegisterActivity extends BaseActivity {
                     @Override
                     protected void _onCompleted() {
 
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
                     }
                 }
         );
@@ -349,7 +349,7 @@ public class RegisterActivity extends BaseActivity {
                 HttpManager.getApi().getCode(mapParams), new HttpSubscriber() {
                     @Override
                     protected void _onStart() {
-                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "");
+                        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "");
                     }
 
                     @Override
@@ -369,7 +369,7 @@ public class RegisterActivity extends BaseActivity {
 
                     @Override
                     protected void _onCompleted() {
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
 
                     }
                 }

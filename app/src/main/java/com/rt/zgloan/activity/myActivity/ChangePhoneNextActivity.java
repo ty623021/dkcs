@@ -147,7 +147,7 @@ public class ChangePhoneNextActivity extends BaseActivity {
                 HttpManager.getApi().changePhoneTwo(mapParams), new HttpSubscriber() {
                     @Override
                     protected void _onStart() {
-                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在修改...");
+                        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在修改...");
                     }
 
                     @Override
@@ -169,7 +169,7 @@ public class ChangePhoneNextActivity extends BaseActivity {
 
                     @Override
                     protected void _onCompleted() {
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
                     }
                 }
         );
@@ -222,7 +222,7 @@ public class ChangePhoneNextActivity extends BaseActivity {
                 HttpManager.getApi().getCode(mapParams), new HttpSubscriber() {
                     @Override
                     protected void _onStart() {
-                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "");
+                        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "");
                     }
 
                     @Override
@@ -243,7 +243,7 @@ public class ChangePhoneNextActivity extends BaseActivity {
 
                     @Override
                     protected void _onCompleted() {
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
 
                     }
                 }

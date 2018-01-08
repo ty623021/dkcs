@@ -982,7 +982,7 @@ public class LoanDetailActivity extends BaseActivity<LoanDetailBean> implements 
                 HttpManager.getApi().getLoansDetail(mapParams2), new HttpSubscriber<LoanDetailBean>() {
                     @Override
                     protected void _onStart() {
-                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在刷新...");
+                        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在刷新...");
                     }
 
                     @Override
@@ -1000,7 +1000,7 @@ public class LoanDetailActivity extends BaseActivity<LoanDetailBean> implements 
 
                     @Override
                     protected void _onCompleted() {
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
                         pull.onHeaderRefreshFinish();
 
                     }
@@ -1025,7 +1025,7 @@ public class LoanDetailActivity extends BaseActivity<LoanDetailBean> implements 
                 HttpManager.getApi().saveJump(mapParams), new HttpSubscriber() {
                     @Override
                     protected void _onStart() {
-                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在申请...");
+                        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在申请...");
                     }
 
                     @Override
@@ -1045,7 +1045,7 @@ public class LoanDetailActivity extends BaseActivity<LoanDetailBean> implements 
                     @Override
                     protected void _onCompleted() {
 
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
                     }
                 }
         );

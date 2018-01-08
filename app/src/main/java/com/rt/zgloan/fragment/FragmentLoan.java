@@ -169,7 +169,7 @@ public class FragmentLoan extends BaseFragment<LoanClassListBean> implements AbP
         mPresenter.toSubscribe(HttpManager.getApi().getLoansListByLoanType(mapParams2), new HttpSubscriber<LoansListByLoanTypeBean>() {
             @Override
             protected void _onStart() {
-//                LoadingDialog.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在加载...");
+//                LoadingDialog.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在加载...");
 
             }
 
@@ -191,7 +191,7 @@ public class FragmentLoan extends BaseFragment<LoanClassListBean> implements AbP
 
             @Override
             protected void _onCompleted() {
-//                LoadingDialog.getInstends().dismiss();
+//                LoadingDialog.getInstance().dismiss();
             }
         });
     }
@@ -255,7 +255,7 @@ public class FragmentLoan extends BaseFragment<LoanClassListBean> implements AbP
                 HttpManager.getApi().getLoanClassList(mapParams), new HttpSubscriber<LoanClassListBean>() {
                     @Override
                     protected void _onStart() {
-//                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在刷新...");
+//                        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在刷新...");
                     }
 
                     @Override
@@ -276,7 +276,7 @@ public class FragmentLoan extends BaseFragment<LoanClassListBean> implements AbP
 
                     @Override
                     protected void _onCompleted() {
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
                         pull.onHeaderRefreshFinish();
                     }
                 }
@@ -289,7 +289,7 @@ public class FragmentLoan extends BaseFragment<LoanClassListBean> implements AbP
     public void onHeaderRefresh(AbPullToRefreshView view) {
         isRefresh = true;
         setHttp();
-        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在刷新...");
+        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在刷新...");
     }
 
 //    @Override

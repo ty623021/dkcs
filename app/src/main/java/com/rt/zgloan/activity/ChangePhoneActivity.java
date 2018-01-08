@@ -150,7 +150,7 @@ public class ChangePhoneActivity extends BaseActivity {
                 HttpManager.getApi().changePhoneOne(mapParams), new HttpSubscriber() {
                     @Override
                     protected void _onStart() {
-                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在验证...");
+                        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在验证...");
                     }
 
                     @Override
@@ -170,7 +170,7 @@ public class ChangePhoneActivity extends BaseActivity {
                     @Override
                     protected void _onCompleted() {
 
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
                     }
                 }
         );
@@ -188,7 +188,7 @@ public class ChangePhoneActivity extends BaseActivity {
                 HttpManager.getApi().getCodeForgotPassword(mapParams), new HttpSubscriber() {
                     @Override
                     protected void _onStart() {
-                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "");
+                        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "");
                     }
 
                     @Override
@@ -208,7 +208,7 @@ public class ChangePhoneActivity extends BaseActivity {
 
                     @Override
                     protected void _onCompleted() {
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
 
                     }
                 }

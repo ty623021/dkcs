@@ -252,7 +252,7 @@ public class PersonalDataActivity extends BaseActivity<UserDataBean> {
         mPresenter.toSubscribe(HttpManager.getApi().getCreditByType(mapParams), new HttpSubscriber<DataBean>() {
             @Override
             protected void _onStart() {
-//                LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "");
+//                LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "");
             }
 
             @Override
@@ -348,7 +348,7 @@ public class PersonalDataActivity extends BaseActivity<UserDataBean> {
 
             @Override
             protected void _onCompleted() {
-//                LoadingFragment.getInstends().dismiss();
+//                LoadingFragment.getInstance().dismiss();
             }
         });
     }
@@ -757,7 +757,7 @@ public class PersonalDataActivity extends BaseActivity<UserDataBean> {
                 HttpManager.getApi().saveUserData(mapParams), new HttpSubscriber() {
                     @Override
                     protected void _onStart() {
-                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在保存...");
+                        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在保存...");
                     }
 
                     @Override
@@ -777,7 +777,7 @@ public class PersonalDataActivity extends BaseActivity<UserDataBean> {
                     @Override
                     protected void _onCompleted() {
 
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
                     }
                 }
         );

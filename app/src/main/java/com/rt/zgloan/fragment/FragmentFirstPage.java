@@ -250,29 +250,25 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
                     @Override
                     protected void _onStart() {
                         if (progressTitle != null)
-                            LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), progressTitle);
+                            LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), progressTitle);
                     }
 
                     @Override
                     protected void _onNext(LabelListBean labelListBean) {
                         mListLabel = labelListBean.getLabel();
                         setProduct(mListLabel);
-                        pull.onHeaderRefreshFinish();
                         progressTitle = null;
-                        LoadingFragment.getInstends().dismiss();
                     }
 
                     @Override
                     protected void _onError(String message) {
                         ToastUtil.showToast(message);
-                        pull.onHeaderRefreshFinish();
-                        LoadingFragment.getInstends().dismiss();
                     }
 
                     @Override
                     protected void _onCompleted() {
                         pull.onHeaderRefreshFinish();
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
                     }
                 }
         );

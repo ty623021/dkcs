@@ -82,7 +82,6 @@ public class DynamicLoginFragment extends BaseFragment {
                     ToastUtil.showToast("请输入正确格式的手机号码");
                     return;
                 }
-                setSendCode(true);
                 getMobileCode(phoneNum);
                 break;
             case R.id.btn_login:
@@ -109,11 +108,12 @@ public class DynamicLoginFragment extends BaseFragment {
         mPresenter.toSubscribe(HttpManager.getApi().getMobileCode(mapParams), new HttpSubscriber() {
             @Override
             protected void _onStart() {
-                LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "");
+                LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "发送中...");
             }
 
             @Override
             protected void _onNext(Object o) {
+                setSendCode(true);
                 ToastUtil.showToast("发送验证码成功");
             }
 
@@ -124,7 +124,7 @@ public class DynamicLoginFragment extends BaseFragment {
 
             @Override
             protected void _onCompleted() {
-                LoadingFragment.getInstends().dismiss();
+                LoadingFragment.getInstance().dismiss();
             }
         });
 
@@ -139,12 +139,11 @@ public class DynamicLoginFragment extends BaseFragment {
                 HttpManager.getApi().loginBySmsCd(mapParams), new HttpSubscriber<LoginBySmsCdBean>() {
                     @Override
                     protected void _onStart() {
-                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在登录...");
+                        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在登录...");
                     }
 
                     @Override
                     protected void _onNext(LoginBySmsCdBean loginBySmsCdBean) {
-                        // Log.e("tag", "_onNext");
                         ToastUtil.showToast("登录成功");
                         SpUtil.putBoolean(SpUtil.isLogin, true);
                         SpUtil.putString(SpUtil.userId, loginBySmsCdBean.getId());//useID
@@ -157,16 +156,12 @@ public class DynamicLoginFragment extends BaseFragment {
 
                     @Override
                     protected void _onError(String message) {
-                        //  Log.e("tag", "_onError..." + message);
                         ToastUtil.showToast(message);
-
-
                     }
 
                     @Override
                     protected void _onCompleted() {
-
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
                     }
                 }
         );

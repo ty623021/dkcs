@@ -155,7 +155,7 @@ public class InviteFriendsRecordActivity extends BaseActivity<InviteFriendsRecor
                 HttpManager.getApi().inviteFriendsList(mapParams), new HttpSubscriber<InviteFriendsRecordInfo>() {
                     @Override
                     protected void _onStart() {
-                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在刷新...");
+                        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在刷新...");
                     }
 
                     @Override
@@ -173,7 +173,7 @@ public class InviteFriendsRecordActivity extends BaseActivity<InviteFriendsRecor
 
                     @Override
                     protected void _onCompleted() {
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
                     }
                 }
         );

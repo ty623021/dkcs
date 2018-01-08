@@ -197,7 +197,7 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     protected void _onStart() {
                         //  Log.e("tag", "_onStart");
-                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在登录...");
+                        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在登录...");
                     }
 
                     @Override
@@ -224,7 +224,7 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     protected void _onCompleted() {
 
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
                     }
                 }
         );

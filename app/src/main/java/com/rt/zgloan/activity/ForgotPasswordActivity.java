@@ -122,7 +122,7 @@ public class ForgotPasswordActivity extends BaseActivity {
         mPresenter.toSubscribe(HttpManager.getApi().getMobileCode(mapParams), new HttpSubscriber() {
             @Override
             protected void _onStart() {
-                LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "");
+                LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "");
             }
 
             @Override
@@ -137,7 +137,7 @@ public class ForgotPasswordActivity extends BaseActivity {
 
             @Override
             protected void _onCompleted() {
-                LoadingFragment.getInstends().dismiss();
+                LoadingFragment.getInstance().dismiss();
             }
         });
 
@@ -155,7 +155,7 @@ public class ForgotPasswordActivity extends BaseActivity {
                 HttpManager.getApi().resetPwd(mapParams), new HttpSubscriber() {
                     @Override
                     protected void _onStart() {
-                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在修改...");
+                        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在修改...");
                     }
 
                     @Override
@@ -175,7 +175,7 @@ public class ForgotPasswordActivity extends BaseActivity {
                     @Override
                     protected void _onCompleted() {
 
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
                     }
                 }
         );
@@ -193,7 +193,7 @@ public class ForgotPasswordActivity extends BaseActivity {
                 HttpManager.getApi().getCodeForgotPassword(mapParams), new HttpSubscriber() {
                     @Override
                     protected void _onStart() {
-                        LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "");
+                        LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "");
                     }
 
                     @Override
@@ -214,7 +214,7 @@ public class ForgotPasswordActivity extends BaseActivity {
 
                     @Override
                     protected void _onCompleted() {
-                        LoadingFragment.getInstends().dismiss();
+                        LoadingFragment.getInstance().dismiss();
 
                     }
                 }

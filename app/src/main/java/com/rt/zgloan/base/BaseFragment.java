@@ -79,12 +79,11 @@ public abstract class BaseFragment<T> extends Fragment implements BaseView<T> {
             return;
         }
         mPresenter.init(this);
-        // mPresenter.toSubscribe(HttpManager.getApi().request(initParams()), new HttpSubscriber<T>(){
         mPresenter.toSubscribe(initObservable(), new HttpSubscriber<T>() {
             @Override
             protected void _onStart() {
                 mPresenter.mView.showLoading("");
-                LoadingFragment.getInstends().show(((FragmentActivity) mContext).getSupportFragmentManager(), "Loading");
+                LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), progressTitle);
             }
 
             @Override
@@ -105,7 +104,7 @@ public abstract class BaseFragment<T> extends Fragment implements BaseView<T> {
 
             @Override
             protected void _onCompleted() {
-                LoadingFragment.getInstends().dismiss();
+                LoadingFragment.getInstance().dismiss();
             }
         });
 

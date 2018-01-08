@@ -19,7 +19,7 @@ public class LoadingDialog extends DialogFragment {
     private Dialog dialog;
     private static LoadingFragment loadingFragment;
 
-    public static LoadingFragment getInstends() {
+    public static LoadingFragment getInstance() {
         if (loadingFragment == null) {
             synchronized (LoadingFragment.class) {
                 loadingFragment = new LoadingFragment();
