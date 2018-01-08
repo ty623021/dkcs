@@ -137,7 +137,7 @@
                 android:lines="1"
                 android:text="超市必备超市必备"
                 android:textColor="@color/color_ff7f00"
-                android:textSize="@dimen/size_sp_16" />
+                android:textSize="@dimen/size_sp_micro" />
 
             <TextView
                 android:id="@+id/tv_labels2"
@@ -149,7 +149,7 @@
                 android:lines="1"
                 android:text="双倍积分"
                 android:textColor="@color/color_green"
-                android:textSize="@dimen/size_sp_16" />
+                android:textSize="@dimen/size_sp_micro" />
 
         </RelativeLayout>
 

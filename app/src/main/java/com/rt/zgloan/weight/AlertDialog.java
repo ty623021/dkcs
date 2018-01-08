@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -148,81 +147,6 @@ public class AlertDialog extends Dialog {
         this.getWindow().setWindowAnimations(R.style.dialogAnimationStyle);
     }
 
-    /**
-     * 有标题对话框 提示
-     *
-     * @param title    标题
-     * @param message  提示内容
-     * @param listener
-     */
-    public void showDialog(String title, String message, DialogOnClickListener listener) {
-        dialogOnClickListener = listener;
-        tvTitle.setText(title);
-        tvContent.setText(message);
-        if (dialogOnClickListener != null) {
-            //确定
-            btConfirm.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (dialogOnClickListener != null) {
-                        dialogOnClickListener.onPositiveClick();
-                    }
-                }
-            });
-            //取消
-            btCancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (dialogOnClickListener != null) {
-                        dialogOnClickListener.onNegativeClick();
-                    }
-                }
-            });
-        }
-        show();
-        double with = context.getResources().getDisplayMetrics().widthPixels * factor;
-        this.getWindow().setLayout((int) with, ViewGroup.LayoutParams.WRAP_CONTENT);
-        this.getWindow().setWindowAnimations(R.style.dialogAnimationStyle);
-    }
-
-
-    /**
-     * 有标题对话框 提示
-     *
-     * @param message  HTML格式提示内容
-     * @param listener
-     */
-    public void showDialog2(String title, String message, DialogOnClickListener listener) {
-        dialogOnClickListener = listener;
-        tvTitle.setText(title);
-        tvContent.setGravity(Gravity.LEFT);
-        tvContent.setText(Html.fromHtml(message));
-        if (dialogOnClickListener != null) {
-            //确定
-            btConfirm.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (dialogOnClickListener != null) {
-                        dialogOnClickListener.onPositiveClick();
-                    }
-                }
-            });
-            //取消
-            btCancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (dialogOnClickListener != null) {
-                        dialogOnClickListener.onNegativeClick();
-                    }
-                }
-            });
-        }
-        show();
-        double with = context.getResources().getDisplayMetrics().widthPixels * factor;
-        this.getWindow().setLayout((int) with, ViewGroup.LayoutParams.WRAP_CONTENT);
-        this.getWindow().setWindowAnimations(R.style.dialogAnimationStyle);
-    }
-
 
     public void removeDialog(Context context) {
         if (context != null) {
@@ -230,79 +154,6 @@ public class AlertDialog extends Dialog {
                 this.dismiss();
             }
         }
-    }
-
-    /**
-     * 无标题dialog对话框提示
-     *
-     * @param message
-     * @param listener
-     */
-    public void showDialog(String message, DialogOnClickListener listener) {
-        tvTitle.setVisibility(View.GONE);
-        dialogOnClickListener = listener;
-        tvContent.setText(Html.fromHtml(message));
-        if (dialogOnClickListener != null) {
-            //确定
-            btConfirm.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (dialogOnClickListener != null) {
-                        dialogOnClickListener.onPositiveClick();
-                    }
-                }
-            });
-            //取消
-            btCancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (dialogOnClickListener != null) {
-                        dialogOnClickListener.onNegativeClick();
-                    }
-                }
-            });
-        }
-        double with = context.getResources().getDisplayMetrics().widthPixels * factor;
-        this.getWindow().setLayout((int) with, ViewGroup.LayoutParams.WRAP_CONTENT);
-        this.getWindow().setWindowAnimations(R.style.dialogAnimationStyle);
-    }
-
-    /**
-     * 无标题dialog对话框提示
-     *
-     * @param message
-     * @param listener
-     */
-    public void showDialog(String message, DialogOnClickListener listener, boolean isLeft) {
-        tvTitle.setVisibility(View.GONE);
-        dialogOnClickListener = listener;
-        tvContent.setText(message);
-        if (isLeft) {
-            tvContent.setGravity(Gravity.LEFT);
-        }
-        if (dialogOnClickListener != null) {
-            //确定
-            btConfirm.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (dialogOnClickListener != null) {
-                        dialogOnClickListener.onPositiveClick();
-                    }
-                }
-            });
-            //取消
-            btCancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (dialogOnClickListener != null) {
-                        dialogOnClickListener.onNegativeClick();
-                    }
-                }
-            });
-        }
-        double with = context.getResources().getDisplayMetrics().widthPixels * factor;
-        this.getWindow().setLayout((int) with, ViewGroup.LayoutParams.WRAP_CONTENT);
-        this.getWindow().setWindowAnimations(R.style.dialogAnimationStyle);
     }
 
     @Override

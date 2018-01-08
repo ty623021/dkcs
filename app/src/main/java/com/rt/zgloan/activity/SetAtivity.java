@@ -26,6 +26,7 @@ import com.rt.zgloan.base.BaseActivity;
 import com.rt.zgloan.bean.BaseResponse;
 import com.rt.zgloan.bean.VersionBean;
 import com.rt.zgloan.http.HttpManager;
+import com.rt.zgloan.util.AbStringUtil;
 import com.rt.zgloan.util.AppUtil;
 import com.rt.zgloan.util.SpUtil;
 import com.rt.zgloan.util.ToastUtil;
@@ -108,6 +109,9 @@ public class SetAtivity extends BaseActivity<VersionBean> {
                 break;
             //检查更新
             case R.id.Rl_check_version:
+                if (AbStringUtil.isEmpty(version)) {
+                    return;
+                }
                 if (versionCode < Integer.parseInt(version)) {
                     mIvLastestVersion.setVisibility(View.VISIBLE);
                     getDialog();
@@ -144,8 +148,6 @@ public class SetAtivity extends BaseActivity<VersionBean> {
                 MainActivity.startMainActivity(mActivity, 3);
             }
         }, "设置");
-//        String phone = SpUtil.getString(SpUtil.mobile).replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2");
-//        tv_phone.setText(phone);
         versionCode = ViewUtil.getAppVersionCode(mContext);//当前的版本号
 
     }

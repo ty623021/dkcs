@@ -63,11 +63,17 @@
     <QZone AppId="1106331387" AppKey="7L0ZR0qLGljUa6EN" BypassApproval="true" Enable="true" Id="3"
         SortId="3" />
 
+    <!--  汇生财 微信AppId：wxaac4e8803a6fcfd5
+          汇生财 微信AppSecret：fb868cb0748bc63223ef9d5c30bc5a07
+     -->
+    <!--  优贷汇 微信AppId：wxa67a3b369496f205
+          优贷汇 微信AppSecret：ace7c4c527bb8b8eed23cf52de0ec7a1
+     -->
 
-    <Wechat AppId="wxa67a3b369496f205" AppSecret="ace7c4c527bb8b8eed23cf52de0ec7a1"
+    <Wechat AppId="wxaac4e8803a6fcfd5" AppSecret="fb868cb0748bc63223ef9d5c30bc5a07"
         BypassApproval="false" Enable="true" Id="4" SortId="4" />
 
-    <WechatMoments AppId="wxa67a3b369496f205" AppSecret="ace7c4c527bb8b8eed23cf52de0ec7a1"
+    <WechatMoments AppId="wxaac4e8803a6fcfd5" AppSecret="fb868cb0748bc63223ef9d5c30bc5a07"
         BypassApproval="false" Enable="true" Id="5" SortId="5" />
 
 
