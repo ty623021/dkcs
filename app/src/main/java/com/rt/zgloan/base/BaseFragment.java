@@ -35,7 +35,7 @@ public abstract class BaseFragment<T> extends Fragment implements BaseView<T> {
     public Context mContext;
     public BaseActivity mActivity;
     protected TitleUtil mTitle;
-    protected String progressTitle = "正在加载";
+    protected String progressTitle = "正在加载···";
     // protected KeyboardNumberUtil input_controller;
     public Map<String, String> mapParams = new HashMap<>();//请求参数
     public Map<String, Integer> mapParams2 = new HashMap<>();

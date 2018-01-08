@@ -58,7 +58,7 @@ public abstract class BaseActivity<T> extends AppCompatActivity implements BaseV
     protected int type;
     public Map<String, String> mapParams = new HashMap<>();//请求参数
     public Map<String, Integer> mapParams2 = new HashMap<>();
-    protected String progressTitle = "正在加载";
+    protected String progressTitle = "正在加载···";
     private String className = this.getClass().getSimpleName();
     private UserAction userAction;
     private long s, e;
