@@ -99,7 +99,7 @@ public interface HttpApi {
 
     //获取验证码接口
     @FormUrlEncoded
-    @POST("user/getMobileCode")
+    @POST("mobileCode/getMobileCode")
     Observable<BaseResponse> getMobileCode(@FieldMap Map<String, String> paramsMap);
 
     //注册接口

@@ -245,6 +245,10 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
 
     //获取产品标签及产品
     private void getLabelList() {
+        int cityId = SpUtil.getInt(SpUtil.CITY_ID);
+        if (cityId > 0) {
+            mapParams.put("cityId", cityId + "");
+        }
         mPresenter.toSubscribe(
                 HttpManager.getApi().getLabelList(mapParams), new HttpSubscriber<LabelListBean>() {
                     @Override
