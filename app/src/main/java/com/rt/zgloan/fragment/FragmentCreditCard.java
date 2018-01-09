@@ -16,6 +16,8 @@ import com.rt.zgloan.base.BaseFragment;
 import com.rt.zgloan.bean.BaseResponse;
 import com.rt.zgloan.bean.CreditCardHomeBean;
 import com.rt.zgloan.bean.CreditCardHomeListBean;
+import com.rt.zgloan.bean.CreditCardListBean;
+import com.rt.zgloan.globe.Constant;
 import com.rt.zgloan.http.HttpManager;
 import com.rt.zgloan.http.HttpSubscriber;
 import com.rt.zgloan.pullView.AbPullToRefreshView;
@@ -31,7 +33,9 @@ import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import rx.Observable;
@@ -44,7 +48,7 @@ import static android.app.Activity.RESULT_OK;
  * Created by Administrator on 2017/8/24.
  */
 
-public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> implements AbPullToRefreshView.OnHeaderRefreshListener {
+public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> implements AbPullToRefreshView.OnHeaderRefreshListener, AbPullToRefreshView.OnFooterLoadListener {
     private static final String TAG = "FragmentCreditCard";
 
     @BindView(R.id.no_record)
@@ -63,6 +67,10 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
     private List<CreditCardHomeBean.CreditBannerBean> mActivityListBean = new ArrayList<>();
     private List list = new ArrayList();
     private int cityId;//被选中的城市ID
+    private int pageNo = 1;
+    private int pageSize = 5;
+    private int totalPages;
+    private boolean isRefresh = true;
 
     @Override
     public int getLayoutId() {
@@ -105,7 +113,7 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
 
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setFocusable(false);
-        AbRefreshUtil.initRefresh(pull, this);
+        AbRefreshUtil.initRefresh(pull, this, this);
         adapter = new CreditCardAdapter(mContext, list);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setAdapter(adapter);
@@ -185,10 +193,21 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
 
     @Override
     public void onHeaderRefresh(AbPullToRefreshView view) {
+        isRefresh = true;
         getCreditCardList();
     }
 
-    //获取产品分类
+    @Override
+    public void onFooterLoad(AbPullToRefreshView view) {
+        isRefresh = false;
+        if (AbRefreshUtil.isLoad(pageNo, totalPages, pull)) {
+            getHotCreditCardList();
+        } else {
+            ToastUtil.showToast(Constant.LOADED);
+        }
+    }
+
+    //获取所有列表数据
     private void getCreditCardList() {
         if (cityId > 0) {
             mapParams.put("cityId", cityId + "");
@@ -243,8 +262,75 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
         }
         if (AbStringUtil.isListEmpty(creditCardBean.getHotCardList())) {
             CreditCardHomeListBean cardBean = new CreditCardHomeListBean(CreditCardAdapter.TYPE_TYPE5, creditCardBean.getHotCardList());
+            if (creditCardBean.getHotCardList().size() == 5) {
+                totalPages = 2;
+            }
             list.add(cardBean);
         }
         adapter.notifyDataSetChanged();
     }
+
+
+    /**
+     * 获取热门信用卡的数据
+     */
+    private void getHotCreditCardList() {
+        Map<String, String> mapParams = new HashMap<>();
+        if (cityId > 0) {
+            mapParams.put("cityId", cityId + "");
+        }
+        if (isRefresh) {
+            pageNo = 1;
+        } else {
+            pageNo++;
+        }
+        mapParams.put("pageNo", pageNo + "");
+        mapParams.put("pageSize", pageSize + "");
+        mPresenter.toSubscribe(HttpManager.getApi().getHotCreditCardList(mapParams), new HttpSubscriber<CreditCardListBean>() {
+                    @Override
+                    protected void _onStart() {
+                    }
+
+                    @Override
+                    protected void _onNext(CreditCardListBean cardBean) {
+                        setHotCreditCardBean(cardBean);
+                        totalPages = cardBean.getTotalPages();
+                        pull.onFooterLoadFinish();
+                    }
+
+                    @Override
+                    protected void _onError(String message) {
+                        pageNo--;
+                        pull.onFooterLoadFinish();
+                        ToastUtil.showToast(message);
+                    }
+
+                    @Override
+                    protected void _onCompleted() {
+
+                    }
+                }
+        );
+    }
+
+    /**
+     * 设置上拉加载的条目
+     *
+     * @param creditCardBean
+     */
+    public void setHotCreditCardBean(CreditCardListBean creditCardBean) {
+        if (AbStringUtil.isListEmpty(creditCardBean.getClassify())) {
+            CreditCardHomeListBean info = (CreditCardHomeListBean) list.get(list.size() - 1);
+            if (info.getType() == CreditCardAdapter.TYPE_TYPE5) {
+                //如果已经存在热门推荐列表直接添加到列表中
+                info.getList().addAll(creditCardBean.getClassify());
+                list.add(info);
+            } else {
+                CreditCardHomeListBean cardBean = new CreditCardHomeListBean(CreditCardAdapter.TYPE_TYPE5, creditCardBean.getClassify());
+                list.add(cardBean);
+            }
+        }
+        adapter.notifyDataSetChanged();
+    }
+
 }

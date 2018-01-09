@@ -269,6 +269,12 @@ public interface HttpApi {
     @POST("creditcards/initData")
     Observable<BaseResponse<CreditCardHomeBean>> getCreditCardHome(@FieldMap Map<String, String> paramsMap);
 
+
+    //获取信用卡推荐列表
+    @FormUrlEncoded
+    @POST("creditcards/getCreditCardsByRecom")
+    Observable<BaseResponse<CreditCardListBean>> getHotCreditCardList(@FieldMap Map<String, String> paramsMap);
+
     //获取银行列表
     @FormUrlEncoded
     @POST("bank/getBanks")

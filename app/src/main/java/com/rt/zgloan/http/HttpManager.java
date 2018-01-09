@@ -104,40 +104,6 @@ public class HttpManager {
 
         Cache cache = new Cache(new File(App.getContext().getCacheDir(), "zgdCache"),
                 1024 * 1024 * 100);
-
-        //添加全局统一请求头
-//        Interceptor headerInterceptor = new Interceptor() {
-//            @Override
-//            public Response intercept(Chain chain) throws IOException {
-//                Request.Builder builder = chain.request().newBuilder();
-//                String sessionid = SpUtil.getString(Constant.CACHE_TAG_SESSIONID);
-//                if (App.getConfig().getLoginStatus()&&!TextUtils.isEmpty(sessionid)){
-//                    builder.addHeader("Cookie", "SESSIONID="+sessionid);
-//                }
-//                Response response = chain.proceed(builder.build());
-//                return response;
-//            }
-//        };
-//        //添加全局统一请求参数
-//        Interceptor paramsInterceptor = new Interceptor() {
-//            @Override
-//            public Response intercept(Chain chain) throws IOException {
-//                Request request = chain.request();
-//                HttpUrl httpUrl = request.url();
-//                HttpUrl url = httpUrl.newBuilder()
-//                        .addQueryParameter("clientType", "android")
-//                        .addQueryParameter("appVersion", ViewUtil.getAppVersion(App.getContext()))
-//                        .addQueryParameter("deviceId", ViewUtil.getDeviceId(App.getContext()))
-//                        .addQueryParameter("mobilePhone", App.getConfig().getLoginStatus()? SpUtil.getString(Constant.CACHE_TAG_USERNAME):"")
-//                        .addQueryParameter("deviceName", ViewUtil.getDeviceName().trim())
-//                        .addQueryParameter("osVersion", ViewUtil.getOsVersion())
-//                        .addQueryParameter("appName", "mld")
-//                        .addQueryParameter("appMarket", App.getConfig().getChannelName()).build();
-//                Request.Builder builder = request.newBuilder().url(url);
-//                Response response = chain.proceed(builder.build());
-//                return response;
-//            }
-//        };
         //是否显示"请求繁忙"倒计时dialog  PS：需要显示的在HttpApi接口添加请求头@Headers("showDialog:true")
         Interceptor showDialogInterceptor = new Interceptor() {
             @Override

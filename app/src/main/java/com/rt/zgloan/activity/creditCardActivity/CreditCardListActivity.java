@@ -186,6 +186,7 @@ public class CreditCardListActivity extends BaseActivity<CreditCardListBean> imp
 
             @Override
             protected void _onError(String message) {
+                pageNo--;
                 ToastUtil.showToast(message);
                 AbRefreshUtil.hintView(pull, adapter, true, linearNoNet, noRecord);
             }

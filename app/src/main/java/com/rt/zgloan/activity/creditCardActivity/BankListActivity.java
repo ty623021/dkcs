@@ -157,6 +157,7 @@ public class BankListActivity extends BaseActivity<BankBean> implements AbPullTo
 
             @Override
             protected void _onError(String message) {
+                pageNo--;
                 ToastUtil.showToast(message);
                 AbRefreshUtil.hintView(pull, adapter, true, linearNoNet, noRecord);
             }
