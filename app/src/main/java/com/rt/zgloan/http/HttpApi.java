@@ -272,7 +272,7 @@ public interface HttpApi {
 
     //获取信用卡推荐列表
     @FormUrlEncoded
-    @POST("creditcards/getCreditCardsByRecom")
+    @POST("creditcards/getCreditCardsByHot")
     Observable<BaseResponse<CreditCardListBean>> getHotCreditCardList(@FieldMap Map<String, String> paramsMap);
 
     //获取银行列表
