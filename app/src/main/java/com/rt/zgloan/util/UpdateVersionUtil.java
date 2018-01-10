@@ -77,8 +77,6 @@ public class UpdateVersionUtil {
         BasePresenter mPresenter = new BasePresenter();
         Map<String, String> parmas = new HashMap<String, String>();
         parmas.put("version_number", ViewUtil.getAppVersionCode(context) + "");
-//        parmas.put("version_number","2");
-        //...........
         parmas.put("canal_id", context.getResources().getString(R.string.channelId));
         mPresenter.toSubscribe(HttpManager.getApi().checkAppVersion(parmas), new HttpSubscriber<Version>() {
             @Override
@@ -118,60 +116,6 @@ public class UpdateVersionUtil {
 
             }
         });
-
-
-//        IRequest http = new IRequest(context);
-//        versionCode = AppUtil.getAppVersionCode(context);
-//        versionName = AppUtil.getAppVersionName(context);
-//        RequestParams params = new RequestParams();
-//        params.put("version", versionName + "");
-//        params.put("client", Constant.CLIENT_ID_NAME);
-//
-//        http.post(Config.URL_VERSIONON, params, new RequestListener() {
-//            @Override
-//            public void requestSuccess(String json) {
-//                AbLogUtil.e("checkVersion", json.toString());
-//
-//                if (AbJsonUtil.isSuccess(json)) {
-//                    final Version version = (Version) AbJsonUtil.fromJson(json, Version.class);
-//                    if (version.getStatus().equals("maybe")) {
-//                        getDialog(version);
-//                    } else if (version.getStatus().equals("none")) {
-//                        if (type == 0) {
-//                            return;
-//                        } else if (type == 1) {
-//                            final AlertDialog dialog = new AlertDialog(context);
-//                            if (dialog != null) {
-//                                dialog.showDialog("版本更新", "已是最新版本V" + versionName, new AlertDialog.DialogOnClickListener() {
-//
-//                                    @Override
-//                                    public void onPositiveClick() {
-//                                        dialog.removeDialog(context);
-//                                    }
-//
-//                                    @Override
-//                                    public void onNegativeClick() {
-//                                        dialog.removeDialog(context);
-//                                    }
-//                                });
-//                            }
-//                        }
-//                    } else if (version.getStatus().equals("must")) {
-//                        if (AbNetwork.getNetworkType() == AbNetwork.NETTYPE_WIFI) {
-//                            isShow = false;
-//                            startDownLoad(version);
-//                        } else {
-//                            getDialog(version);
-//                        }
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void requestError(String message) {
-//
-//            }
-//        });
 
     }
 
@@ -228,22 +172,20 @@ public class UpdateVersionUtil {
         try {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 String fileProvider = context.getResources().getString(R.string.fileprovider);
                 Uri contentUri = FileProvider.getUriForFile(context, fileProvider, file);
                 intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
             } else {
                 intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             }
             context.startActivity(intent);
         } catch (Resources.NotFoundException e) {
             e.printStackTrace();
             ToastUtil.showToast("安装失败,请手动选择安装");
         }
-//        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        i.setDataAndType(Uri.parse("file://" + file.toString()), "application/vnd.android.package-archive");
-//        context.startActivity(i);
     }
 
     /**
