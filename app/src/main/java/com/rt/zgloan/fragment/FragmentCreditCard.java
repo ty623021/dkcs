@@ -181,19 +181,20 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
 
     @Override
     public void showErrorMsg(String msg, String type) {
-        AbRefreshUtil.hintView(pull, adapter, true, linearNoNet, noRecord);
+        AbRefreshUtil.hintView(adapter, pull, true, linearNoNet, noRecord);
         ToastUtil.showToast(msg);
     }
 
     @Override
     public void recordSuccess(CreditCardHomeBean cardBean) {
         setCreditCardBean(cardBean);
-        AbRefreshUtil.hintView(pull, adapter, false, linearNoNet, noRecord);
+        AbRefreshUtil.hintView(adapter, pull, false, linearNoNet, noRecord);
     }
 
     @Override
     public void onHeaderRefresh(AbPullToRefreshView view) {
         isRefresh = true;
+        pageNo = 1;
         getCreditCardList();
     }
 
@@ -220,12 +221,12 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
                     @Override
                     protected void _onNext(CreditCardHomeBean cardBean) {
                         setCreditCardBean(cardBean);
-                        AbRefreshUtil.hintView(pull, adapter, false, linearNoNet, noRecord);
+                        AbRefreshUtil.hintView(adapter, pull, false, linearNoNet, noRecord);
                     }
 
                     @Override
                     protected void _onError(String message) {
-                        AbRefreshUtil.hintView(pull, adapter, true, linearNoNet, noRecord);
+                        AbRefreshUtil.hintView(adapter, pull, true, linearNoNet, noRecord);
                         ToastUtil.showToast(message);
                     }
 
@@ -262,7 +263,7 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
         }
         if (AbStringUtil.isListEmpty(creditCardBean.getHotCardList())) {
             CreditCardHomeListBean cardBean = new CreditCardHomeListBean(CreditCardAdapter.TYPE_TYPE5, creditCardBean.getHotCardList());
-            if (creditCardBean.getHotCardList().size() == 5) {
+            if (creditCardBean.getHotCardList().size() == pageSize) {
                 totalPages = 2;
             }
             list.add(cardBean);
@@ -324,7 +325,6 @@ public class FragmentCreditCard extends BaseFragment<CreditCardHomeBean> impleme
             if (info.getType() == CreditCardAdapter.TYPE_TYPE5) {
                 //如果已经存在热门推荐列表直接添加到列表中
                 info.getList().addAll(creditCardBean.getClassify());
-                list.add(info);
             } else {
                 CreditCardHomeListBean cardBean = new CreditCardHomeListBean(CreditCardAdapter.TYPE_TYPE5, creditCardBean.getClassify());
                 list.add(cardBean);

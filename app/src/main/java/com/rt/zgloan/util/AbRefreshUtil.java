@@ -3,7 +3,6 @@ package com.rt.zgloan.util;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Adapter;
-import android.widget.LinearLayout;
 
 import com.rt.zgloan.pullView.AbPullToRefreshView;
 
@@ -87,7 +86,7 @@ public class AbRefreshUtil {
      * @param network   包裹网络加载失败和无数据的布局
      * @param nodata    没有请求到数据
      */
-    public static void hintView(AbPullToRefreshView pull, RecyclerView.Adapter adapter, boolean isNetwork, LinearLayout network, LinearLayout nodata) {
+    public static void hintView(AbPullToRefreshView pull, RecyclerView.Adapter adapter, boolean isNetwork, View network, View nodata) {
         pull.onHeaderRefreshFinish();
         pull.onFooterLoadFinish();
         if (adapter.getItemCount() == 0) {
@@ -109,6 +108,31 @@ public class AbRefreshUtil {
         }
     }
 
+    /**
+     * 用recycleView列表页面的网络请求
+     *
+     * @param adapter   适配器
+     * @param isNetwork 是否显示网络链接失败
+     * @param network   包裹网络加载失败和无数据的布局
+     * @param nodata    没有请求到数据
+     */
+    public static void hintView(RecyclerView.Adapter adapter, AbPullToRefreshView pull, boolean isNetwork, View network, View nodata) {
+        pull.onHeaderRefreshFinish();
+        pull.onFooterLoadFinish();
+        if (adapter.getItemCount() == 0) {
+            network.setVisibility(View.VISIBLE);
+            if (isNetwork) {
+                network.setVisibility(View.VISIBLE);
+                nodata.setVisibility(View.GONE);
+            } else {
+                network.setVisibility(View.GONE);
+                nodata.setVisibility(View.VISIBLE);
+            }
+        } else {
+            network.setVisibility(View.GONE);
+            nodata.setVisibility(View.GONE);
+        }
+    }
 
     /**
      * 判断是否需要加载更多
