@@ -196,13 +196,11 @@ public class LoginActivity extends BaseActivity {
                 HttpManager.getApi().login(mapParams), new HttpSubscriber<RegisterInfo>() {
                     @Override
                     protected void _onStart() {
-                        //  Log.e("tag", "_onStart");
                         LoadingFragment.getInstance().show(((FragmentActivity) mContext).getSupportFragmentManager(), "正在登录...");
                     }
 
                     @Override
                     protected void _onNext(RegisterInfo registerInfo) {
-                        // Log.e("tag", "_onNext");
                         ToastUtil.showToast("登录成功");
                         SpUtil.putBoolean(SpUtil.isLogin, true);
                         SpUtil.putString(SpUtil.userId, registerInfo.getRelute().getId());
@@ -215,10 +213,7 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     protected void _onError(String message) {
-                        //  Log.e("tag", "_onError..." + message);
                         ToastUtil.showToast(message);
-
-
                     }
 
                     @Override

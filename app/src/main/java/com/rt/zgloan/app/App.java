@@ -4,9 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
-import com.rt.zgloan.BuildConfig;
 import com.rt.zgloan.R;
-import com.rt.zgloan.util.LogUtils;
 import com.rt.zgloan.util.ToastUtil;
 
 /**
@@ -28,8 +26,6 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         mApp = this;
-        //log初始化,根据configUtil的isDebug参数控制是否显示log
-        LogUtils.logInit(BuildConfig.DEBUG);
         //toast初始化
         ToastUtil.register(getContext());
     }

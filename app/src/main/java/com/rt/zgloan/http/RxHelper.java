@@ -73,12 +73,6 @@ public class RxHelper {
                             }else{
                                 return Observable.error(new ApiException(result.getMsg(),Integer.parseInt(result.getCode())));
                             }
-//                            if (TextUtils.isEmpty(String.valueOf(result.getErrorCode()))){
-//                                return Observable.error(new ApiException(result.getMessage()));
-//                            }else{
-//                                // return Observable.error(new ApiException(result.getMessage(),Integer.parseInt(result.getCode()),result.getTime()));
-//                                return Observable.error(new ApiException(result.getMessage(),result.getErrorCode()));
-//                            }
                         }
                     }
                 }) .takeUntil(compareLifecycleObservable)

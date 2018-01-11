@@ -5,10 +5,10 @@ import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.orhanobut.logger.Logger;
 import com.rt.zgloan.BuildConfig;
 import com.rt.zgloan.app.App;
 import com.rt.zgloan.util.AbMd5;
+import com.rt.zgloan.util.LogUtils;
 import com.rt.zgloan.util.ViewUtil;
 
 import org.json.JSONException;
@@ -45,10 +45,6 @@ public class HttpManager {
     private HttpApi mHttpApi;
     public static String baseUrl = BuildConfig.SERVER_URL;
     private static HttpManager instance = null;
-
-    public static void setBaseUrl(String baseUrl) {
-        HttpManager.baseUrl = baseUrl;
-    }
 
     /**
      * 获取单例
@@ -131,7 +127,8 @@ public class HttpManager {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(String message) {
-                Logger.t("http").e(message);
+//                Logger.t("http").e(message);
+                LogUtils.loge("http",message);
             }
         });
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -173,13 +170,6 @@ public class HttpManager {
             } else {
                 ret_url = url + "?";
             }
-//            ret_url += "clientType=android&"
-//                    +"appVersion="+ ViewUtil.getAppVersion(App.getContext())
-//                    + "&deviceId="+ ViewUtil.getDeviceId(App.getContext())
-//                    + "&mobilePhone="+(App.getConfig().getLoginStatus()?SpUtil.getString(Constant.CACHE_TAG_USERNAME):"")
-//                    + "&deviceName=" + ViewUtil.getDeviceName() + "&osVersion="
-//                    + ViewUtil.getOsVersion() + "&appMarket="
-//                    + App.getConfig().getChannelName()+"&appName=mld";
             return ret_url.replace(" ", "");
         }
     }

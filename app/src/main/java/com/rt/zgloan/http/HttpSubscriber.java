@@ -1,9 +1,8 @@
 package com.rt.zgloan.http;
 
 
-import android.util.Log;
-
 import com.rt.zgloan.app.App;
+import com.rt.zgloan.util.LogUtils;
 import com.rt.zgloan.util.NetUtil;
 
 import java.net.SocketTimeoutException;
@@ -42,13 +41,12 @@ public abstract class HttpSubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onError(Throwable e) {
-        Log.e("tag", "HttpSubscriber onError.....................");
+        LogUtils.loge("onError", e.toString());
         e.printStackTrace();
         if (!NetUtil.isConnected(App.getContext())) {
             _onError("网络不可用", ERROR_NETWORK);
         } else if (e instanceof ApiException) {
             if (((ApiException) e).getCode() == ERROR_NOT_LOGIN) {
-                //  EventBus.getDefault().post(new LogoutEvent(App.getContext(),0));
                 _onError("请先登录", ((ApiException) e).getCode());
             } else if (((ApiException) e).getCode() == ERROR_BUSY) {
 //                    if (null!=AppManager.getInstance().currentActivity()){
@@ -60,8 +58,6 @@ public abstract class HttpSubscriber<T> extends Subscriber<T> {
         } else if (e instanceof HttpException) {
             HttpException exception = (HttpException) e;
             if (exception.code() == 401) {
-                //清空
-                // EventBus.getDefault().post(new LogoutEvent(App.getContext(),0));
                 _onError("请先登录", ERROR_NOT_LOGIN);
             } else if (exception.code() == 500) {
                 _onError("服务器异常，请稍后重试.", ERROR_DEFAULT);
