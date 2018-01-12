@@ -1,7 +1,6 @@
 package com.rt.zgloan.fragment;
 
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +22,7 @@ import com.rt.zgloan.activity.myActivity.AboutOurActivity;
 import com.rt.zgloan.base.BaseFragment;
 import com.rt.zgloan.bean.BaseResponse;
 import com.rt.zgloan.globe.Constant;
+import com.rt.zgloan.util.AbStringUtil;
 import com.rt.zgloan.util.AppUtil;
 import com.rt.zgloan.util.SpUtil;
 import com.rt.zgloan.weight.MyShareSdk;
@@ -92,7 +92,6 @@ public class FragmentMy extends BaseFragment {
                 } else {
                     this.startActivity(LoginActivity.class);
                 }
-//                this.startActivity(PersonalDataActivity.class);
                 break;
             case R.id.btn_register:
                 this.startActivity(RegisterActivity.class);
@@ -106,7 +105,6 @@ public class FragmentMy extends BaseFragment {
                 } else {
                     this.startActivity(LoginActivity.class);
                 }
-//                this.startActivity(InvitingFriendsActivity.class);
                 break;
             case R.id.rel_about_us:
                 this.startActivity(AboutOurActivity.class);
@@ -117,7 +115,6 @@ public class FragmentMy extends BaseFragment {
                 } else {
                     this.startActivity(LoginActivity.class);
                 }
-//                this.startActivity(SetAtivity.class);
                 break;
             case R.id.Rl_my_share:
                 if (SpUtil.getBoolean(SpUtil.isLogin)) {
@@ -125,7 +122,6 @@ public class FragmentMy extends BaseFragment {
                 } else {
                     this.startActivity(LoginActivity.class);
                 }
-//                showSharePopWindow();
                 break;
 
         }
@@ -143,31 +139,6 @@ public class FragmentMy extends BaseFragment {
         } else {
             mLayoutHeightTop.setVisibility(View.GONE);
         }
-
-        if (SpUtil.getBoolean(SpUtil.isLogin)) {
-            mTvLoginPhone.setText(SpUtil.getString(SpUtil.mobile));
-            mLineLogin.setVisibility(View.GONE);
-//            mTvLoginPhone.setText(SpUtil.getString(SpUtil.mobile));//登录显示手机号
-//            mLineLogin.setVisibility(View.GONE);
-//            line_aready_login.setVisibility(View.GONE);
-//            rel_no_login.setVisibility(View.GONE);
-//            String phone = SpUtil.getString(SpUtil.mobile).replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2");
-//            tv_phone.setText(phone);
-            if (SpUtil.getString(SpUtil.is_state).equals("0")) {
-                red_circel.setVisibility(View.INVISIBLE);
-            } else if (SpUtil.getString(SpUtil.is_state).equals("1")) {
-                red_circel.setVisibility(View.INVISIBLE);
-            }
-
-        } else {
-            mTvLoginPhone.setText("立即登录");
-            mLineLogin.setVisibility(View.INVISIBLE);
-//            line_aready_login.setVisibility(View.GONE);
-//            rel_no_login.setVisibility(View.GONE);
-            red_circel.setVisibility(View.INVISIBLE);
-        }
-
-
     }
 
     @Override
@@ -180,12 +151,9 @@ public class FragmentMy extends BaseFragment {
     public void onResume() {
         super.onResume();
         if (SpUtil.getBoolean(SpUtil.isLogin)) {
-            mTvLoginPhone.setText(SpUtil.getString(SpUtil.mobile));
+            String mobile = SpUtil.getString(SpUtil.mobile);
+            mTvLoginPhone.setText(AbStringUtil.hideUserPhone(mobile));
             mLineLogin.setVisibility(View.GONE);
-//            line_aready_login.setVisibility(View.VISIBLE);
-//            rel_no_login.setVisibility(View.GONE);
-//            String phone = SpUtil.getString(SpUtil.mobile).replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2");
-//            tv_phone.setText(phone);
             if (SpUtil.getString(SpUtil.is_state).equals("0")) {
                 red_circel.setVisibility(View.INVISIBLE);
             } else if (SpUtil.getString(SpUtil.is_state).equals("1")) {
@@ -194,10 +162,8 @@ public class FragmentMy extends BaseFragment {
         } else {
             mTvLoginPhone.setText("立即登录");
             mLineLogin.setVisibility(View.VISIBLE);
-//            line_aready_login.setVisibility(View.GONE);
-//            rel_no_login.setVisibility(View.VISIBLE);
+            red_circel.setVisibility(View.INVISIBLE);
         }
-
     }
 
     @Override
