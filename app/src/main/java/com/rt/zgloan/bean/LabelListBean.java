@@ -7,17 +7,18 @@ import java.util.List;
  * 首页列表
  */
 public class LabelListBean {
-    public List<LabelBean> getLabel() {
-        return label;
+    private LoanBean loan;//借款列表数据
+    private CardBean card;//热门信用卡数据
+
+    public LoanBean getLoan() {
+        return loan;
     }
 
-    public void setLabel(List<LabelBean> label) {
-        this.label = label;
+    public CardBean getCard() {
+        return card;
     }
 
-    private List<LabelBean> label;
-
-    public static class LabelBean {
+    public static class LoanBean {
         /**
          * id : 1
          * image_url : 标签图标
@@ -26,61 +27,8 @@ public class LabelListBean {
         private int id;
         private String image_url;
         private String name;
-        private List<LabelLoansBean> loans;//借款标的列表
-        private List<CreditCardBean> cards;//信用卡推荐列表
+        private List<LabelLoansBean> list;//借款标的列表
 
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getImage_url() {
-            return image_url;
-        }
-
-        public void setImage_url(String image_url) {
-            this.image_url = image_url;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public List<LabelLoansBean> getLoans() {
-            return loans;
-        }
-
-        public void setLoans(List<LabelLoansBean> loans) {
-            this.loans = loans;
-        }
-
-        public List<CreditCardBean> getCards() {
-            return cards;
-        }
-
-        public void setCards(List<CreditCardBean> cards) {
-            this.cards = cards;
-        }
-
-        /**
-         * id : 35
-         * name : null
-         * money_sml : null
-         * money_big : null
-         * deadline_sml : null
-         * deadline_big : null
-         * image_url : http://chaoshi.rohao.cn/data/upload/
-         * rate : 10
-         * propaganda_language : aaaaa
-         * rate_type : 1
-         */
         public static class LabelLoansBean {
             private int id;
             private String name;
@@ -174,5 +122,48 @@ public class LabelListBean {
             }
         }
 
+        public int getId() {
+            return id;
+        }
+
+        public String getImage_url() {
+            return image_url;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public List<LabelLoansBean> getList() {
+            return list;
+        }
+    }
+
+    public static class CardBean {
+        /**
+         * id : 1
+         * image_url : 标签图标
+         * name : 极速借款
+         */
+        private int id;
+        private String image_url;
+        private String name;
+        private List<CreditCardBean> list;//借款标的列表
+
+        public int getId() {
+            return id;
+        }
+
+        public String getImage_url() {
+            return image_url;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public List<CreditCardBean> getList() {
+            return list;
+        }
     }
 }

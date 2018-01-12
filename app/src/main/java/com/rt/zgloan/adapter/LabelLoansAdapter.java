@@ -19,6 +19,7 @@ import com.rt.zgloan.activity.MainActivity;
 import com.rt.zgloan.activity.WebViewActivity;
 import com.rt.zgloan.activity.creditCardActivity.CreditCardDetailsActivity;
 import com.rt.zgloan.bean.CreditCardBean;
+import com.rt.zgloan.bean.LabelHomeListBean;
 import com.rt.zgloan.bean.LabelListBean;
 import com.rt.zgloan.util.AbImageUtil;
 import com.rt.zgloan.util.AbStringUtil;
@@ -35,15 +36,14 @@ import butterknife.ButterKnife;
 
 public class LabelLoansAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
-    private List<LabelListBean.LabelBean> list;
-    public static final int TYPE_TYPE1 = 2;//借款热门推荐
-    public static final int TYPE_TYPE2 = 3;//信用卡热门推荐
+    private List<LabelHomeListBean> list;
+    public static final int TYPE_TYPE1 = 1;//借款热门推荐
+    public static final int TYPE_TYPE2 = 2;//信用卡热门推荐
 
-    public LabelLoansAdapter(Context mContext, List<LabelListBean.LabelBean> list) {
+    public LabelLoansAdapter(Context mContext, List<LabelHomeListBean> list) {
         this.mContext = mContext;
         this.list = list;
     }
-
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -58,16 +58,24 @@ public class LabelLoansAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     private void bindType(HolderType holder, int position) {
-        LabelListBean.LabelBean labelBean = list.get(position);
+        LabelHomeListBean listBean = list.get(position);
+        int type = listBean.getType();
         holder.item_recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        holder.mTvLabel.setText(labelBean.getName() + "");
-        AbImageUtil.glideImageList(labelBean.getImage_url(), holder.mIvLabel, R.drawable.image_default, R.drawable.image_default);
-        if (TYPE_TYPE1 == labelBean.getId()) {
-            holder.item_recyclerView.setAdapter(new ItemRecycleAdapter(labelBean.getId(), labelBean.getLoans()));
-        } else if (TYPE_TYPE2 == labelBean.getId()) {
-            holder.item_recyclerView.setAdapter(new ItemRecycleAdapter(labelBean.getId(), labelBean.getCards()));
+        if (TYPE_TYPE1 == type) {
+            LabelListBean.LoanBean loanBean = (LabelListBean.LoanBean) listBean.getObj();
+            holder.mTvLabel.setText(loanBean.getName() + "");
+            AbImageUtil.glideImageList(loanBean.getImage_url(), holder.mIvLabel, R.drawable.image_default, R.drawable.image_default);
+            holder.item_recyclerView.setAdapter(new ItemRecycleAdapter(type, loanBean.getList()));
+        } else if (TYPE_TYPE2 == type) {
+            LabelListBean.CardBean cardBean = (LabelListBean.CardBean) listBean.getObj();
+            holder.mTvLabel.setText(cardBean.getName() + "");
+            AbImageUtil.glideImageList(cardBean.getImage_url(), holder.mIvLabel, R.drawable.image_default, R.drawable.image_default);
+            holder.item_recyclerView.setAdapter(new ItemRecycleAdapter(type, cardBean.getList()));
         } else {
-            holder.item_recyclerView.setAdapter(new ItemRecycleAdapter(labelBean.getId(), labelBean.getLoans()));
+            LabelListBean.LoanBean loanBean = (LabelListBean.LoanBean) listBean.getObj();
+            holder.mTvLabel.setText(loanBean.getName() + "");
+            AbImageUtil.glideImageList(loanBean.getImage_url(), holder.mIvLabel, R.drawable.image_default, R.drawable.image_default);
+            holder.item_recyclerView.setAdapter(new ItemRecycleAdapter(type, loanBean.getList()));
         }
     }
 
@@ -121,7 +129,7 @@ public class LabelLoansAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
 
         private void bindType(ItemHolderType holder, final int position) {
-            final LabelListBean.LabelBean.LabelLoansBean info = (LabelListBean.LabelBean.LabelLoansBean) data.get(position);
+            final LabelListBean.LoanBean.LabelLoansBean info = (LabelListBean.LoanBean.LabelLoansBean) data.get(position);
             if (info.getRate_type() == 1) {
                 holder.mTvDayRate.setText("日利率");
                 holder.mTvLoanDay.setText("借款期限(天):");

@@ -17,6 +17,7 @@ import com.rt.zgloan.base.BaseFragment;
 import com.rt.zgloan.bean.BannerListBean;
 import com.rt.zgloan.bean.BaseResponse;
 import com.rt.zgloan.bean.CommentListBean;
+import com.rt.zgloan.bean.LabelHomeListBean;
 import com.rt.zgloan.bean.LabelListBean;
 import com.rt.zgloan.bean.LoanClassListBean;
 import com.rt.zgloan.http.HttpManager;
@@ -71,7 +72,6 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
 
     private FragmentActivity activity;
     private List<BannerListBean.BannerBean> mActivityListBean = new ArrayList<>();
-    private List<LabelListBean.LabelBean> mListLabel = new ArrayList<>();
     private ProductCategoryAdapter mProductCategoryAdapter;//产品分类
     private LabelLoansAdapter mLabelLoansAdapter;//标签和对应产品
 
@@ -116,8 +116,14 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
         }
         mTitle.setTitle(false, "汇生财");
         activity = getActivity();
-
         AbRefreshUtil.initRefresh(pull, this);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recycleView.setLayoutManager(layoutManager);
+        recycleView.setNestedScrollingEnabled(false);
+        recycleView.setFocusable(false);
+        mLabelLoansAdapter = new LabelLoansAdapter(mContext, list);
+        recycleView.setAdapter(mLabelLoansAdapter);
 
         getBannerList();
         getMessageList();
@@ -259,8 +265,9 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
 
                     @Override
                     protected void _onNext(LabelListBean labelListBean) {
-                        mListLabel = labelListBean.getLabel();
-                        setProduct(mListLabel);
+                        if (labelListBean != null) {
+                            setProduct(labelListBean);
+                        }
                         progressTitle = null;
                     }
 
@@ -303,15 +310,24 @@ public class FragmentFirstPage extends BaseFragment<BannerListBean> implements A
 
     }
 
+    private List list = new ArrayList();
+
     //设置产品
-    private void setProduct(List<LabelListBean.LabelBean> labelBeans) {
-        if (labelBeans != null) {
-            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-            recycleView.setLayoutManager(layoutManager);
-            recycleView.setNestedScrollingEnabled(false);
-            recycleView.setFocusable(false);
-            mLabelLoansAdapter = new LabelLoansAdapter(mContext, labelBeans);
-            recycleView.setAdapter(mLabelLoansAdapter);
+    private void setProduct(LabelListBean label) {
+        if (label != null) {
+            if (list.size() > 0) {
+                list.clear();
+            }
+            LabelListBean.LoanBean loan = label.getLoan();
+            LabelListBean.CardBean card = label.getCard();
+            if (loan != null) {
+                LabelHomeListBean loanBean = new LabelHomeListBean(LabelLoansAdapter.TYPE_TYPE1, loan);
+                list.add(loanBean);
+            }
+            if (card != null) {
+                LabelHomeListBean cardBean = new LabelHomeListBean(LabelLoansAdapter.TYPE_TYPE2, card);
+                list.add(cardBean);
+            }
             mLabelLoansAdapter.notifyDataSetChanged();
         }
     }
