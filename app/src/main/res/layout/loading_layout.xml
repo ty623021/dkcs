@@ -2,14 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/loading_relative"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@+id/linear">
-
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/no_record"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:orientation="vertical"
         android:visibility="gone">
 
@@ -17,7 +16,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="41dp"
             android:src="@mipmap/not_data" />
 
         <TextView
@@ -39,11 +37,11 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-
     <LinearLayout
         android:id="@+id/linear_no_net"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:orientation="vertical"
         android:visibility="gone">
 
@@ -51,7 +49,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/margin_95"
             android:src="@mipmap/not_net" />
 
         <TextView
