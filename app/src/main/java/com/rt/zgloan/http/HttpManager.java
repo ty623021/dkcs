@@ -127,8 +127,23 @@ public class HttpManager {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(String message) {
+                if (message != null) {
+                    //过滤无用的日志信息
+                    if (message.contains("Content-Type")
+                            || message.contains("Content-Length")
+                            || message.contains("Server: nginx")
+                            || message.contains("Transfer-Encoding")
+                            || message.contains("Connection:")
+                            || message.contains("OkHttp-Sent-Millis:")
+                            || message.contains("OkHttp-Received-Millis:")
+                            || message.contains("<-- END HTTP")
+                            || message.contains("--> END POST")
+                            || message.contains("Date:")) {
+                        return;
+                    }
+                }
 //                Logger.t("http").e(message);
-                LogUtils.loge("http",message);
+                LogUtils.loge("http", message);
             }
         });
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
