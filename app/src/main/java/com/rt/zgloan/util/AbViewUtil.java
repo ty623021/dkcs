@@ -1,7 +1,6 @@
 package com.rt.zgloan.util;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.Environment;
 import android.text.InputType;
 import android.text.Selection;
@@ -18,17 +17,14 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-
 import com.rt.zgloan.R;
 import com.rt.zgloan.globe.Constant;
 import com.rt.zgloan.weight.EditTextWithDel;
-
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Hashtable;
 
 /**
  * Created by geek on 2016/6/21.
@@ -389,7 +385,7 @@ public class AbViewUtil {
         if (!mTempDir.exists()) {
             mTempDir.mkdirs();
         }
-        String fileName = "/logo.png";
+        String fileName = "/logo1.png";
 
         String path = mTempDir.getPath();//Environment.getExternalStorageDirectory().getPath();//获取手机本地存//储路径，这个位置可以根据需要自己改。
 
