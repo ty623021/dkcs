@@ -10,7 +10,7 @@
         android:layout_height="1px"
         android:background="@color/global_line_color"></View>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -26,7 +26,8 @@
             android:text="热门推荐"
             android:textColor="@color/color_575656"
             android:textSize="@dimen/size_sp_medium" />
-    </LinearLayout>
+
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
